@@ -15,8 +15,20 @@ app.get("/",(req,res)=>{
 
 
 // Student Login Page...
-app.get("/studentlogin",(req,res)=>{
+app.get("/student_login",(req,res)=>{
     res.render("login.ejs");
+})
+
+
+// Teacher's Signup Page...
+app.get("/teacher_signup",(req,res)=>{
+    res.render("signup.ejs");
+})
+
+
+// Teacher's Login Page...
+app.get("/teacher_login",(req,res)=>{
+    res.render("tLogin.ejs");
 })
 
 

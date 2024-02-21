@@ -27,7 +27,7 @@ body{
     height: 320px;
     width: 500px;
     /* background-color: pink; */
-    margin: 20px auto;
+    margin: 10px auto;
     border: 3px solid black;
     border-radius: 20px;
     box-shadow: 2px 2px 8px gray;
@@ -52,6 +52,10 @@ body{
     border-radius: 10px;
     margin-top: 15px;
 }
+.branch{
+    display: flex;
+    justify-content: space-between;
+}
 .check{
     height: 35px;
     width: 240px;
@@ -70,6 +74,7 @@ body{
 .tec{
     width: 140px;
     margin: auto;
+    /* background-color: red; */
 }
 .teach{
     font-size: 1.2rem;

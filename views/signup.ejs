@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Attendance-Tracker-Student-Login</title>
+    <title>Attendance-Tracker Teacher-Signup</title>
     <link rel="stylesheet" href="    https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,18 +13,25 @@
 </head>
 <body>
     <div class="top">Attendance Tracker</div>
-    <div id="box">
-        <div class="log centerItems"><p>Student's Login</p></div>
+    <div id="box" style="height: 530px;">
+        <div class="log centerItems"><p>Teacher's Sign-Up</p></div>
         <form>
             <div class="allInputs centerItems">
-                <input name="sName" class="inputs" placeholder="Enter Your Name">
-                <input name="sRollNo" class="inputs" placeholder="Enter Your Roll No.">
+                <input name="tName" class="inputs" placeholder="Teacher's Name">
+                <input name="tEmail" class="inputs" placeholder="Teacher's E-mail">
+                <input name="college" class="inputs" placeholder="College Name">
+                <div class="branch">
+                    <input name="branch" class="inputs" placeholder="Branch" style="width: 170px;">
+                    <input name="subject" class="inputs" placeholder="Subject" style="width: 170px;">
+                </div>
                 <div class="branch">
                     <input name="year" class="inputs" placeholder="Year" style="width: 100px;">
                     <input name="semester" class="inputs" placeholder="Semester" style="width: 100px;">
                     <input name="section" class="inputs" placeholder="Section" style="width: 100px;">
-                </div>                
-                <button type="submit" class="check">Check Attendance</button>
+                </div>
+                <input name="password" type="password" class="inputs" placeholder="Password">
+                <input name="cPassword" type="password" class="inputs" placeholder="Confirm Password">
+                <button type="submit" class="check">Create Account</button>
             </div>
         </form>
         <div class="tec centerItems"><a href="http://localhost:8080/teacher_login" class="teach">Teacher's Login</a></div>
