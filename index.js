@@ -8,17 +8,16 @@ app.use(express.static(path.join(__dirname,"public")));
 let port="8080";
 
 
+// Home Page...
 app.get("/",(req,res)=>{
-    res.render("login.ejs");
+    res.render("home.ejs");
 })
 
 
-
-
-
-
-
-
+// Student Login Page...
+app.get("/studentlogin",(req,res)=>{
+    res.render("login.ejs");
+})
 
 
 app.listen(port,()=>{

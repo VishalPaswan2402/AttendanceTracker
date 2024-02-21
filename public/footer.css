@@ -1,0 +1,47 @@
+#foot{
+    height: 60px;
+    width: 90%;
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    display: table;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 18px auto;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px gray;
+    align-items: center;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.icons{
+    display: flex;
+    height: 30px;
+    width: 180px;
+    justify-content: space-evenly;
+   /* background-color: blue; */
+   margin:3px auto;
+}
+.icons a{
+    text-decoration: none;
+}
+.iconbox{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: rgb(0, 0, 0);
+    align-items: center;
+    font-size: 1.2rem;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: space-evenly;
+    color: white;
+    transition: 1s;
+    border: 1px solid blue;
+}
+.iconbox:hover{
+    background-color: #a8edea;
+    color: black;
+}
