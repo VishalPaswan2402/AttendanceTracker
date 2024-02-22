@@ -32,6 +32,13 @@ app.get("/teacher_login",(req,res)=>{
 })
 
 
+// Student's Attendance Page...
+app.get("/student_page",(req,res)=>{
+    res.render("stPage.ejs");
+})
+
+
 app.listen(port,()=>{
     console.log("Server is listening...")
 })
+

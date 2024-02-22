@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance-Tracker Teacher-Signup</title>
+    <link rel="stylesheet" href="    https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=DM+Serif+Display&family=Lora:ital,wght@0,400..700;1,400..700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Protest+Revolution&family=Roboto+Slab:wght@100..900&family=Song+Myung&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stPage.css">
+    <link rel="stylesheet" href="footer.css">
+</head>
+<body>
+    <div class="top">Attendance Tracker</div>
+    <div class="prof">
+        <div class="profImage"></div>
+        <div class="about margin">
+            <p>Name : Arundendra Sharma</p>
+            <p>Roll No. : 2214256344857</p>
+        </div>
+        <div class="about margin">
+            <p>Year : 3rd Year</p>
+            <p>Semester : 4th</p>
+        </div>
+    </div>
+    <div id="graphBox">
+        <div class="graph">
+            <div class="bar b1">74.9</div>
+            <div class="bar b2">100</div>
+            <div class="bar b3">60</div>
+            <div class="bar b4">80</div>
+            <div class="bar b5">90</div>
+            <div class="bar b6">62</div>
+            <div class="bar b7">75</div>
+            <div class="bar b8">84</div>
+            <div class="bar b9">70</div>
+        </div>
+        <div class="subject margin">
+            <div class="sub margin">DSTL</div>
+            <div class="sub margin">CS</div>
+            <div class="sub margin">EE</div>
+            <div class="sub margin">COA</div>
+            <div class="sub margin">DSA</div>
+            <div class="sub margin">TC</div>
+            <div class="sub margin">WD</div>
+            <div class="sub margin">COAL</div>
+            <div class="sub margin">DSAL</div>
+        </div>
+    </div>
+    <div id="foot">
+        <div class="icons">
+            <a href="#"><div class="iconbox"><i class="fa-brands fa-linkedin-in"></i></div></a>
+            <a href="#"><div class="iconbox"><i class="fa-brands fa-twitter"></i></div></a>
+            <a href="#"><div class="iconbox"><i class="fa-brands fa-git"></i></div></a>
+            <a href="#"><div class="iconbox"><i class="fa-brands fa-instagram"></i></div></a>
+        </div>
+        <i class="fa-regular fa-copyright"></i> 2024
+        Attendance Tracker India, All rights reserved.
+    </div>
+
+    <script>
+
+        let i=0;
+
+        function barHeight(element){
+            element.style.height=`${element.innerHTML}%`;
+        }
+
+        function changeColor(element,val){
+            if(val<75){
+                element.style.backgroundColor='red';
+            }
+        }
+        
+        function changeColorWithDelay(element, color, delay) {
+            setTimeout(() => {
+                element.style.color = color;
+            }, delay);
+        }
+
+        for(i=1;i<=9;i++){
+            let element = document.querySelector(`.b${i}`);
+            barHeight(element);
+        }
+
+        for(i=1;i<=9;i++){
+            let element = document.querySelector(`.b${i}`);
+            let val=element.innerHTML;
+            changeColor(element,val);
+        }
+
+        console.log(`b${i+1}`);
+        for(i=1;i<=9;i++){
+            let element = document.querySelector(`.b${i}`);
+            changeColorWithDelay(element, 'white', 2050);
+        }
+
+    </script>
+
+</body>
+</html>

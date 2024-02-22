@@ -34,7 +34,7 @@ body{
     margin: 22px auto;
     border: 8px double rgb(86, 87, 87);
     border-radius: 20px;
-    transition: 1s;
+    transition: 0.5s;
 }
 .into:hover{
     box-shadow: 3px 3px 8px gray;
