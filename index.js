@@ -38,6 +38,11 @@ app.get("/student_page",(req,res)=>{
 })
 
 
+app.get("/teacher_page",(req,res)=>{
+    res.render("techPage.ejs");
+})
+
+
 app.listen(port,()=>{
     console.log("Server is listening...")
 })
