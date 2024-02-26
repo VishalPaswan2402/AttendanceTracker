@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance-Tracker Student-Signup</title>
+    <link rel="stylesheet" href="    https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=DM+Serif+Display&family=Lora:ital,wght@0,400..700;1,400..700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Protest+Revolution&family=Roboto+Slab:wght@100..900&family=Song+Myung&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="footer.css">
+</head>
+<body>
+    <div class="top">Attendance Tracker</div>
+    <div id="box" style="height: 530px;">
+        <div class="log centerItems"><p>Student's Sign-Up</p></div>
+        <form>
+            <div class="allInputs centerItems">
+                <input name="tName" class="inputs" placeholder="Student's Name">
+                <input name="tEmail" class="inputs" placeholder="Student's Roll No.">
+                <div class="branch">
+                    <input name="year" class="inputs year" placeholder="Year" style="width: 70px;">
+                    <input name="semester" class="inputs sem" placeholder="Sem." style="width: 70px;">
+                    <input name="branch" class="inputs branch" placeholder="Branch" style="width: 70px;">
+                    <input name="section" class="inputs" placeholder="Sec." style="width: 70px;">
+                </div>
+                <div class="subBtn centerItems">Add Subject</div>
+                <div class="hide">
+                    <div class="branch">
+                        <input name="year" class="inputs s1" placeholder="Subj." style="width: 60px;">
+                        <input name="year" class="inputs" placeholder="Subj." style="width: 60px;">
+                        <input name="year" class="inputs" placeholder="Subj." style="width: 60px;">
+                        <input name="year" class="inputs" placeholder="Subj." style="width: 60px;">
+                        <input name="year" class="inputs" placeholder="Subj." style="width: 60px;">
+                    </div>
+                    <div class="branch">
+                        <input name="year" class="inputs" placeholder="Subj." style="width: 60px;">
+                        <input name="year" class="inputs" placeholder="Subj." style="width: 60px;">
+                        <input name="year" class="inputs" placeholder="Subj." style="width: 60px;">
+                        <input name="year" class="inputs" placeholder="Subj." style="width: 60px;">
+                        <input name="year" class="inputs" placeholder="Subj." style="width: 60px;">
+                    </div>
+                </div>
+                <input name="password" type="password" class="inputs" placeholder="Password">
+                <input name="cPassword" type="password" class="inputs" placeholder="Confirm Password">
+                <button type="submit" class="check">Create Account</button>
+            </div>
+        </form>
+        <div class="tec centerItems"><a href="http://localhost:8080/teacher_login" class="teach">Teacher's Login</a></div>
+    </div>
+    <div id="foot">
+        <div class="icons">
+            <a href="#"><div class="iconbox"><i class="fa-brands fa-linkedin-in"></i></div></a>
+            <a href="#"><div class="iconbox"><i class="fa-brands fa-twitter"></i></div></a>
+            <a href="#"><div class="iconbox"><i class="fa-brands fa-git"></i></div></a>
+            <a href="#"><div class="iconbox"><i class="fa-brands fa-instagram"></i></div></a>
+        </div>
+        <i class="fa-regular fa-copyright"></i> 2024
+        Attendance Tracker India, All rights reserved.
+    </div>
+
+    <script src="/subject.js"></script>
+</body>
+</html>

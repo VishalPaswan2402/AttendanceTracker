@@ -20,6 +20,12 @@ app.get("/student_login",(req,res)=>{
 })
 
 
+// Student's Signup Page...
+app.get("/student_signup",(req,res)=>{
+    res.render("stSignup.ejs");
+})
+
+
 // Teacher's Signup Page...
 app.get("/teacher_signup",(req,res)=>{
     res.render("signup.ejs");

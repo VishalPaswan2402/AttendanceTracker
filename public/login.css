@@ -24,7 +24,7 @@ body{
     /* color: white; */
 }
 #box{
-    height: 320px;
+    height: 370px;
     width: 500px;
     /* background-color: pink; */
     margin: 10px auto;
@@ -45,7 +45,7 @@ body{
 }
 .inputs{
     height: 35px;
-    width: 380px;
+    width: 400px;
     font-size: 1.2rem;
     padding-left: 10px;
     border: 2px solid grey;
@@ -83,4 +83,15 @@ body{
 .teach:hover{
     color: brown;
 }
-
+.subBtn{
+    height: 30px;
+    width: 130px;
+    background-color: rgb(199, 199, 199);
+    align-items: center;
+    border: 2px solid gray;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+.hide{
+    display: none;
+}
