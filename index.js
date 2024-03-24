@@ -6,44 +6,38 @@ app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"/views"));
 app.use(express.static(path.join(__dirname,"public")));
 let port="8080";
+const mongoose = require('mongoose');
+const Teacher = require('./models/teachers.js');
 
+mongoose.connect('mongodb://127.0.0.1:27017/Attendence')
+  .then(() => console.log('Connected!'));
 
 // Home Page...
 app.get("/",(req,res)=>{
     res.render("home.ejs");
 })
 
-
 // Student Login Page...
 app.get("/student_login",(req,res)=>{
     res.render("login.ejs");
 })
-
-
-// Student's Signup Page...
-app.get("/student_signup",(req,res)=>{
-    res.render("stSignup.ejs");
-})
-
 
 // Teacher's Signup Page...
 app.get("/teacher_signup",(req,res)=>{
     res.render("signup.ejs");
 })
 
-
 // Teacher's Login Page...
 app.get("/teacher_login",(req,res)=>{
     res.render("tLogin.ejs");
 })
-
 
 // Student's Attendance Page...
 app.get("/student_page",(req,res)=>{
     res.render("stPage.ejs");
 })
 
-
+// Teachers page...
 app.get("/teacher_page",(req,res)=>{
     res.render("techPage.ejs");
 })

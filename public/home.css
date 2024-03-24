@@ -16,57 +16,30 @@ body{
     color: blueviolet;
     /* color: white; */
 }
-#box{
-    height: 550px;
-    width: 30%;
-    border: 3px solid black;
-    margin: auto;
-    border-radius: 20px;
-    box-shadow: 4px 4px 8px gray;
+.loginbox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 2px solid black; */
+    margin-top: 1rem;
 }
-#box a{
-    text-decoration: none;
-}
-.into{
-    height: 41%;
-    width: 47%;
-    background-color: #f6e6e6;
-    margin: 22px auto;
-    border: 8px double rgb(86, 87, 87);
-    border-radius: 20px;
-    transition: 0.5s;
-}
-.into:hover{
-    box-shadow: 3px 3px 8px gray;
-    background-color: #d2f5e9;
-}
-.prof{
-    height: 70%;
-    width: 70%;
-    background-color: green;
-    background-size: cover;
-    background-repeat: no-repeat;
-    border-radius: 50%;
-    margin-top: 10px;
-    margin-left: 30px;
-    border: 2px solid black;
-}
-.bott{
-    height: 15%;
-    width: 90%;
-    /* background-color: gray; */
-    border: 2px solid gray;
-    background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
-    margin-top: 10px;
-    margin-left: 10px;
-    border-radius: 10px;
-    font-size: 1.5rem;
-    color: rgb(40, 40, 40);
-    font-weight: 620;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;    
+.card{
+    border: 2px solid black !important; 
     display: flex;
     align-items: center;
-    text-align: center;
-    justify-content: center;
 }
-
+.iconImg{
+    height: 10rem;
+    width: 10rem !important;
+    margin-top: 0.5rem;
+}
+@media(min-width:430px) and (max-width:500px){
+    .top{
+        font-size: 2.7rem;
+    }
+}
+@media(min-width:330px) and (max-width:430px){
+    .top{
+        font-size: 2.4rem;
+    }
+}

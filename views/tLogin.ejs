@@ -15,15 +15,16 @@
     <div class="top">Attendance Tracker</div>
     <div id="box">
         <div class="log centerItems"><p>Teacher's Login</p></div>
-        <form>
+        <form method="post" action="/teacherLogin">
             <div class="allInputs centerItems">
-                <input name="sRollNo" class="inputs" placeholder="Teacher's E-mail">
-                <div class="branch">
-                    <input name="year" class="inputs" placeholder="Year" style="width: 100px;">
-                    <input name="semester" class="inputs" placeholder="Semester" style="width: 100px;">
-                    <input name="section" class="inputs" placeholder="Section" style="width: 100px;">
-                </div>
-                <input name="sName" class="inputs" type="password" placeholder="Password">                
+                <input name="teacherName" class="inputs" placeholder="Teacher's Name">
+                <input name="teacherEmail" class="inputs" placeholder="Teacher's E-mail">
+                <!-- <div class="branch">
+                    <input name="year" class="inputs input3" placeholder="Year">
+                    <input name="semester" class="inputs input3" placeholder="Semester">
+                    <input name="section" class="inputs input3" placeholder="Section">
+                </div> -->
+                <input name="password" class="inputs" type="password" placeholder="Password">                
                 <button type="submit" class="check">Login</button>
             </div>
         </form>

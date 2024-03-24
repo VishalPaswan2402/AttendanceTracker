@@ -52,6 +52,12 @@ body{
     border-radius: 10px;
     margin-top: 15px;
 }
+.input2{
+    width: 170px;
+}
+.input3{
+    width: 100px;
+}
 .branch{
     display: flex;
     justify-content: space-between;
@@ -83,15 +89,50 @@ body{
 .teach:hover{
     color: brown;
 }
-.subBtn{
-    height: 30px;
-    width: 130px;
-    background-color: rgb(199, 199, 199);
-    align-items: center;
-    border: 2px solid gray;
-    font-size: 1.2rem;
-    cursor: pointer;
+
+@media(min-width:420px) and (max-width:530px){
+    #box{
+        height: 370px;
+        width: 400px;
+    }
+    .inputs{
+        height: 35px;
+        width: 350px;
+    }
+    .top{
+        font-size: 2.5rem;
+    }
+    .input3{
+        width: 100px;
+    }
+    .input2{
+        width: 150px;
+    }
 }
-.hide{
-    display: none;
+
+@media(min-width:320px) and (max-width:420px){
+    #box{
+        height: 370px;
+        width: 300px;
+    }
+    .inputs{
+        height: 35px;
+        width: 270px;
+        font-size: 1rem;
+    }
+    .top{
+        font-size: 2rem;
+    }
+    .input3{
+        width: 70px;
+    }
+    .teach{
+        font-size: 1rem;
+    }
+    .input2{
+        width: 120px;
+    }
+    .teclog{
+        font-size: 1.8rem;
+    }
 }

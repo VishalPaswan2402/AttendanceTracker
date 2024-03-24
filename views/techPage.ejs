@@ -17,15 +17,25 @@
 
         <div class="profImage"></div>
         <div class="about margin">
-            <p>E-mail : sanjay120@gmail.com</p>
-            <p>Name : Sanjay Maddheshiya</p>
+            <p>E-mail : abc@gmail.com</p>
+            <p>Name : Abcd @ gamil</p>
         </div>
 
         <div class="about margin">
             <button class="new">CSE-01</button>
             <button class="new">CSE-03</button>
-            <button class="new">Add New Class</button>
+            <button class="new newSub">Add New Class</button>
         </div>
+
+
+        <!-- FORM FOR SUBJECt -->
+    <form class="subform" style="display: none;" method="post" action="/newsubject">
+        <input name="newSubject" placeholder="CSE-03">
+        <button type="submit">Submit
+    </form>
+        
+
+
 
     </div>
     
@@ -42,18 +52,18 @@
             </div>
             <div class="box2 margin">
                 <div class="stName stColor" style="width: 25%;">
-                    <div class="data margin">Avinash Pandey</div>
-                    <div class="data margin">Harigovind Yadav</div>
-                    <div class="data margin">Pardeep Maurya</div>
-                    <div class="data margin">Avinash Pandey</div>
-                    <div class="data margin">Harigovind Yadav</div>
-                    <div class="data margin">Pardeep Maurya</div>
-                    <div class="data margin">Avinash Pandey</div>
-                    <div class="data margin">Harigovind Yadav</div>
-                    <div class="data margin">Pardeep Maurya</div>
-                    <div class="data margin">Avinash Pandey</div>
-                    <div class="data margin">Harigovind Yadav</div>
-                    <div class="data margin">Pardeep Maurya</div>
+                    <div class="data margin">Abcdefghijklmnopq</div>
+                    <div class="data margin">Abcdefghijklmnopq</div>
+                    <div class="data margin">Abcdefghijklmnopq</div>
+                    <div class="data margin">Abcdefghijklmnopq</div>
+                    <div class="data margin">Abcdefghijklmnopq</div>
+                    <div class="data margin">Abcdefghijklmnopq</div>
+                    <div class="data margin">Abcdefghijklmnopq</div>
+                    <div class="data margin">Abcdefghijklmnopq</div>
+                    <div class="data margin">Abcdefghijklmnopq</div>
+                    <div class="data margin">Abcdefghijklmnopq</div>
+                    <div class="data margin">Abcdefghijklmnopq</div>
+                    <div class="data margin">Abcdefghijklmnopq</div>
                 </div>
                 <div class="stRoll stColor" style="width: 17%;">
                     <div class="data margin">1245685322145</div>
@@ -150,6 +160,7 @@
         <button class="new mar">Submit</button>
     </div>
 
+
     <div id="foot">
         <div class="icons">
             <a href="#"><div class="iconbox"><i class="fa-brands fa-linkedin-in"></i></div></a>
@@ -179,6 +190,22 @@
             elementP.innerHTML=perst;
             perColor(elementP,perst);
         }
+
+        let subForm=document.querySelector(".subform");
+        let newSub=document.querySelector(".newSub");
+        let attend=document.querySelector("#attend");
+        newSub.addEventListener("click",function(){
+            if(subForm.style.display==="block"){
+                subForm.style.display="none";
+                attend.style.opacity="1";
+            }
+            else{
+                attend.style.opacity="0.2";
+            subForm.style.display="block";
+            }
+        })
+
+
     </script>
 </body>
 </html>
