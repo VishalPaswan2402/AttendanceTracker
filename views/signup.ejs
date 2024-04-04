@@ -4,37 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Attendance-Tracker Teacher-Signup</title>
+    <link rel="icon" href="/imageFolder/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="    https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=DM+Serif+Display&family=Lora:ital,wght@0,400..700;1,400..700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Protest+Revolution&family=Roboto+Slab:wght@100..900&family=Song+Myung&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="login.css">
-    <link rel="stylesheet" href="footer.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="/cssFolder/login.css">
+    <link rel="stylesheet" href="/cssFolder/footer.css">
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand logo" href="/"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link textSize" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active textSize" aria-current="page">Teacher's SignUp</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link textSize" href="/Attendence-Tracker/userGuide">User Guide</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     <div class="top">Attendance Tracker</div>
-    <div id="box" style="height: 530px;">
+    <div id="box" style="height: 490px;">
         <div class="log centerItems teclog"><p>Teacher's Sign-Up</p></div>
-        <form method="post" action="/teacher_page">
+        <form method="post" action="/Attendence-Tracker/Teacher-HomePage" id="teacherForm">
             <div class="allInputs centerItems">
-                <input name="teacherName" class="inputs" placeholder="Teacher's Name">
-                <input name="teacherEmail" class="inputs" placeholder="Teacher's E-mail">
-                <input name="collegeName" class="inputs" placeholder="College Name">
-                <div class="branch">
-                    <input name="branch" class="inputs input2" placeholder="Branch">
-                    <input name="subject" class="inputs input2" placeholder="Subject">
-                </div>
-                <div class="branch">
+                <input name="teacherName" class="inputs" placeholder="Teacher's Name" required>
+                <input name="teacherEmail" class="inputs" placeholder="Teacher's E-mail" required>
+                <input name="collegeName" class="inputs" placeholder="College Name" required>
+                <input name="subject" class="inputs" placeholder="Enter Subject Name" required>
+                <!-- <div class="branch">
+                    <input name="branch" class="inputs input2" placeholder="Branch" required>
+                    <input name="subject" class="inputs input2" placeholder="Subject" required>
+                </div> -->
+
+                <!-- <div class="branch">
                     <input name="year" class="inputs input3" placeholder="Year">
                     <input name="semester" class="inputs input3" placeholder="Semester">
                     <input name="section" class="inputs input3" placeholder="Section">
-                </div>
-                <input name="password" type="password" class="inputs" placeholder="Password">
-                <input name="cPassword" type="password" class="inputs" placeholder="Confirm Password">
+                </div> -->
+
+                <input name="password" type="password" id="password" class="inputs" placeholder="Password" required>
+                <input name="cPassword" type="password" id="cPassword" class="inputs" placeholder="Confirm Password" required>
                 <button type="submit" class="check">Create Account</button>
             </div>
         </form>
-        <div class="tec centerItems"><a href="http://localhost:8080/teacher_login" class="teach">Teacher's Login</a></div>
+        <div class="tec centerItems"><a href="/Attendence-Tracker/Teacher-Login" class="teach">Teacher's Login</a></div>
     </div>
     <div id="foot">
         <div class="icons">
@@ -44,7 +70,21 @@
             <a href="#"><div class="iconbox"><i class="fa-brands fa-instagram"></i></div></a>
         </div>
         <i class="fa-regular fa-copyright"></i> 2024
-        Attendance Tracker India, All rights reserved.
+        Attendance Tracker India, All Rights Reserved.
     </div>
+    
+    <script>
+        document.getElementById("teacherForm").addEventListener("submit", function(event) {
+            var password = document.getElementById("password").value;
+            var cPassword = document.getElementById("cPassword").value;
+            if (password !== cPassword) {
+                alert("Passwords do not match!");
+                event.preventDefault();
+            }
+        });
+        </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
 </body>
 </html>

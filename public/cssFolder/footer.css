@@ -6,7 +6,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin: 13px auto;
+    margin: 25px auto;
     border-radius: 10px;
     box-shadow: 1px 1px 5px gray;
     align-items: center;
@@ -44,4 +44,27 @@
 .iconbox:hover{
     background-color: #a8edea;
     color: black;
+}
+
+.cardLog{
+    margin: 50px auto;
+    align-items: center;
+    text-align: center;
+}
+.allBtns{
+    margin-top: 10px;
+}
+.logo{
+    background-image: url(/imageFolder/logo.png);
+    height: 50px;
+    width: 50px;
+    background-size: contain;
+}
+.logo:hover{
+    filter: drop-shadow(1px 1px 3px grey);
+}
+.textSize{
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: rgb(194, 192, 192);
 }

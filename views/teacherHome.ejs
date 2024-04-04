@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance-Tracker Teacher's-All-Classes</title>
+    <link rel="icon" href="/imageFolder/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="    https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="/logo.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="/cssFolder/login.css">
+    <link rel="stylesheet" href="/cssFolder/footer.css">
+    <style>
+      .newClass{
+        margin-top: 15px;
+        display: flex;
+        justify-content: space-evenly;
+      }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand logo" href="/"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link textSize" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active textSize" aria-current="page">All Classes</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link textSize" href="/Attendence-Tracker/userGuide">User Guide</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link textSize" href="/">Log Out</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    <div class="card cardLog" style="width: 18rem;">
+        <img src="/imageFolder/abc.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h4 class="card-title" style="color: rgb(255, 132, 0);">Hey <%=newTeacher.teacherName%> !</h4>
+          <h5 class="card-title">Manage Your All Attendence Records Here...</h5>
+          <p class="card-text"></p>
+          <%for(classe of allClass){%>
+            <a href="/Attendence-Tracker/<%=newTeacher._id%>/<%=classe._id%>/Attendence-Sheet" class="btn btn-primary allBtns"><%=classe.semester%> Attendence Sheet For Section <%=classe.section%> </a>
+            <%}%>
+            <a class="btn btn-primary allBtns" id="createNewClass">Create New Class</a>
+        </div>
+      </div>
+
+
+      <!-- Add New New Class Form... -->
+        <div id="box" style="height: 310px; display: none; margin: 50px auto;">
+          <div class="log centerItems"><p>Create New Class</p></div>
+          <form method="post" action="/Attendence-Tracker/<%=newTeacher._id%>/New-Class">
+              <div class="allInputs centerItems">
+                <select class="inputs" name="semester">
+                  <option>1st Semester</option>
+                  <option>2nd Semester</option>
+                  <option>3rd Semester</option>
+                  <option>4th Semester</option>
+                  <option>5th Semester</option>
+                  <option>6th Semester</option>
+                  <option>7th Semester</option>
+                  <option>8th Semester</option>
+                </select>
+                  <input name="section" class="inputs" placeholder="Enter Section" required>
+                  <input name="password" class="inputs" type="password" placeholder="Enter Your Password" required>   
+                  <div class="newClass">
+                    <button type="submit" class="btn btn-primary">Add Class</button>
+                    <button type="button" class="btn btn-danger" id="cancleForm">Cancle Class</button>
+                  </div>             
+              </div>
+          </form>
+      </div>
+
+
+      <div id="foot">
+        <div class="icons">
+            <a href="#"><div class="iconbox"><i class="fa-brands fa-linkedin-in"></i></div></a>
+            <a href="#"><div class="iconbox"><i class="fa-brands fa-twitter"></i></div></a>
+            <a href="#"><div class="iconbox"><i class="fa-brands fa-git"></i></div></a>
+            <a href="#"><div class="iconbox"><i class="fa-brands fa-instagram"></i></div></a>
+        </div>
+        <i class="fa-regular fa-copyright"></i> 2024
+        Attendance Tracker India, All Rights Reserved.
+    </div>
+
+
+    <script>
+      let createNewClass=document.querySelector("#createNewClass");
+      let createNewForm=document.querySelector("#box");
+      let cardLog=document.querySelector(".cardLog");
+      let cancleForm=document.querySelector("#cancleForm");
+      createNewClass.addEventListener("click",function(){
+        createNewForm.style.display="block";
+        cardLog.style.display="none";
+      })
+      cancleForm.addEventListener("click",function(){
+        cardLog.style.display="block";
+        createNewForm.style.display="none";
+
+      })
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+</body>
+</html>

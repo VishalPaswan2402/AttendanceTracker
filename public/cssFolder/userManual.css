@@ -1,0 +1,37 @@
+*{
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+body{
+    background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
+}
+.top{
+    font-family: "Protest Revolution", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 3.5rem;
+    margin: 5px;
+    text-align: center;
+    color: blueviolet;
+}
+ul li,ol li,p{
+    font-size: 1.2rem;
+    color: rgb(96, 96, 96);
+}
+.manualBox{
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: space-evenly;
+    /* margin-top: 20px; */
+}
+.card{
+    margin-top: 10px !important;
+}
+h1{
+    color: rgb(0, 169, 158);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+h5{
+    color: rgb(46, 140, 168);
+}

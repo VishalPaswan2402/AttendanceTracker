@@ -3,41 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Attendance-Tracker Teacher-Signup</title>
+    <title>Attendance-Tracker Teacher-Page</title>
+    <link rel="icon" href="/imageFolder/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="    https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=DM+Serif+Display&family=Lora:ital,wght@0,400..700;1,400..700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Protest+Revolution&family=Roboto+Slab:wght@100..900&family=Song+Myung&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="techPage.css">
-    <link rel="stylesheet" href="footer.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="/cssFolder/techPage.css">
+    <link rel="stylesheet" href="/cssFolder/footer.css">
+    
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand logo" href="/"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link textSize"  href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link textSize active" aria-current="page">Teacher's Page</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link textSize" href="/Attendence-Tracker/<%=classTech._id%>/TeacherHome">All Classes</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link textSize" href="/Attendence-Tracker/userGuide">User Guide</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link textSize" href="/">Log Out</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     <div class="top">Attendance Tracker</div>
+    
     <div class="prof">
-
-        <div class="profImage"></div>
-        <div class="about margin">
-            <p>E-mail : abc@gmail.com</p>
-            <p>Name : Abcd @ gamil</p>
+        <!-- <div class="profImage"></div> -->
+            <div class="about">
+                <p>Teacher's Name : <span style="color: rgb(0, 83, 207);"> <%=classTech.teacherName%></span></p>
+            </div>
+            <div class="about">
+                <p>Sem. || Sec. : <span style="color: rgb(0, 83, 207);"> <%=allClass.semester%> || <%=allClass.section%></span></p>
+            </div>
+            <div class="about">
+                <p>Subject : <span style="color: rgb(0, 83, 207);"> <%=classTech.subject%></span></p>
+            </div>
+            <div class="about">
+                <p>College : <span style="color: rgb(0, 83, 207);"> <%=classTech.collegeName%></span></p>
+            </div>
         </div>
-
-        <div class="about margin">
-            <button class="new">CSE-01</button>
-            <button class="new">CSE-03</button>
-            <button class="new newSub">Add New Class</button>
-        </div>
-
-
-        <!-- FORM FOR SUBJECt -->
-    <form class="subform" style="display: none;" method="post" action="/newsubject">
-        <input name="newSubject" placeholder="CSE-03">
-        <button type="submit">Submit
-    </form>
-        
-
-
-
     </div>
+
     
     <div id="attend">
         <div id="stcol">
@@ -48,118 +71,77 @@
                 <div class="stAttend stColorTop centerItems" style="width: 8%;">Attended</div>
                 <div class="stPer stColorTop centerItems" style="width: 8%;">%age</div>
                 <div class="stPrev stColorTop centerItems" style="width: 10%;">Previous Day</div>
-                <div class="stTod stColorTop centerItems" style="width: 10%;"><button class="new">Today's Class</button></div>
+                <div class="stTod stColorTop centerItems" id="todayClass" style="width: 10%;">Today's Class</div>
             </div>
+            <%if(students.length>0){%>
+            <%for(student of students){%>
             <div class="box2 margin">
                 <div class="stName stColor" style="width: 25%;">
-                    <div class="data margin">Abcdefghijklmnopq</div>
-                    <div class="data margin">Abcdefghijklmnopq</div>
-                    <div class="data margin">Abcdefghijklmnopq</div>
-                    <div class="data margin">Abcdefghijklmnopq</div>
-                    <div class="data margin">Abcdefghijklmnopq</div>
-                    <div class="data margin">Abcdefghijklmnopq</div>
-                    <div class="data margin">Abcdefghijklmnopq</div>
-                    <div class="data margin">Abcdefghijklmnopq</div>
-                    <div class="data margin">Abcdefghijklmnopq</div>
-                    <div class="data margin">Abcdefghijklmnopq</div>
-                    <div class="data margin">Abcdefghijklmnopq</div>
-                    <div class="data margin">Abcdefghijklmnopq</div>
+                    <div class="data margin"><%=student.studentName%></div>
                 </div>
                 <div class="stRoll stColor" style="width: 17%;">
-                    <div class="data margin">1245685322145</div>
-                    <div class="data margin">4452158966321</div>
-                    <div class="data margin">7844521759632</div>
-                    <div class="data margin">1245685322145</div>
-                    <div class="data margin">4452158966321</div>
-                    <div class="data margin">1245685322145</div>
-                    <div class="data margin">4452158966321</div>
-                    <div class="data margin">7844521759632</div>
-                    <div class="data margin">7844521759632</div>
-                    <div class="data margin">1245685322145</div>
-                    <div class="data margin">4452158966321</div>
-                    <div class="data margin">7844521759632</div>
+                    <div class="data margin"><%=student.studentRollNo%></div>
                 </div>
-                <div class="stTotal stColor" style="width: 8%;">
-                    <div class="data margin to1">24</div>
-                    <div class="data margin to2">24</div>
-                    <div class="data margin to3">24</div>
-                    <div class="data margin to4">24</div>
-                    <div class="data margin to5">24</div>
-                    <div class="data margin to6">24</div>
-                    <div class="data margin to7">24</div>
-                    <div class="data margin to8">24</div>
-                    <div class="data margin to9">24</div>
-                    <div class="data margin to10">24</div>
-                    <div class="data margin to11">24</div>
-                    <div class="data margin to12">24</div>
-                </div>
-                <div class="stAttend stColor" style="width: 8%;">
-                    <div class="data margin at1">21</div>
-                    <div class="data margin at2">8</div>
-                    <div class="data margin at3">15</div>
-                    <div class="data margin at4">19</div>
-                    <div class="data margin at5">16</div>
-                    <div class="data margin at6">24</div>
-                    <div class="data margin at7">9</div>
-                    <div class="data margin at8">18</div>
-                    <div class="data margin at9">12</div>
-                    <div class="data margin at10">10</div>
-                    <div class="data margin at11">13</div>
-                    <div class="data margin at12">20</div>
-                </div>
-                <div class="stPer stColor" style="width: 8%;">
-                    <div class="data margin per1"></div>
-                    <div class="data margin per2"></div>
-                    <div class="data margin per3"></div>
-                    <div class="data margin per4"></div>
-                    <div class="data margin per5"></div>
-                    <div class="data margin per6"></div>
-                    <div class="data margin per7"></div>
-                    <div class="data margin per8"></div>
-                    <div class="data margin per9"></div>
-                    <div class="data margin per10"></div>
-                    <div class="data margin per11"></div>
-                    <div class="data margin per12"></div>
-                </div>
-                <div class="stPrev stColor" style="width: 10%;">
-                    <div class="data margin">Present</div>
-                    <div class="data margin">Absent</div>
-                    <div class="data margin">Absent</div>
-                    <div class="data margin">Present</div>
-                    <div class="data margin">Absent</div>
-                    <div class="data margin">Absent</div>
-                    <div class="data margin">Present</div>
-                    <div class="data margin">Absent</div>
-                    <div class="data margin">Absent</div>
-                    <div class="data margin">Present</div>
-                    <div class="data margin">Absent</div>
-                    <div class="data margin">Absent</div>
-                </div>
-                <div class="stTod stColor" style="width: 10%;">
-                    <div class="data margin"></div>
-                    <div class="data margin"></div>
-                    <div class="data margin"></div>
-                    <div class="data margin"></div>
-                    <div class="data margin"></div>
-                    <div class="data margin"></div>
-                    <div class="data margin"></div>
-                    <div class="data margin"></div>
-                    <div class="data margin"></div>
-                    <div class="data margin"></div>
-                    <div class="data margin"></div>
-                    <div class="data margin"></div>
-                </div>
+                
+                    <%for(attend of studentAttendence){%>
+                        <%if(attend.studentId.toString()===student._id.toString()){%>
+                            <div class="stTotal stColor" style="width: 8%;">
+                                <%if(attend.totalClass>0){%>
+                                    <div class="data margin to1" data-student-id="<%=attend._id%>"><%=attend.totalClass%></div>
+                                <%}%>    
+                            </div>
+                            <div class="stAttend stColor" style="width: 8%;">
+                                <%if(attend.totalClass>0){%>
+                                    <div class="data margin at1" data-student-id="<%=attend._id%>"><%=attend.attendenClass%></div>
+                                <%}%>    
+                            </div>
+                            <div class="stPer stColor" style="width: 8%;">
+                                <%if(attend.totalClass>0){%>
+                                    <div class="data margin per1" data-student-id="<%=attend._id%>"><%=attend.classPercent%></div>
+                                <%}%>
+                            </div>
+                            <div class="stPrev stColor" style="width: 10%;">
+                                <%if(attend.totalClass>0){%>
+                                <div class="data margin" data-student-id="<%=attend._id%>"><%=attend.classPrevious%></div>
+                                <%}%>
+                            </div>
+                            <!-- You Can Change Previous Code... -->
+
+                            <div class="stTod stColor" style="width: 10%;">
+                                <div class="data margin preColor" id="buttonContainer">
+                                    <div><button type="submit" data-student-id="<%=attend._id%>" class="present preP">Pre.</button></div>
+                                    <div><button type="submit" data-student-id="<%=attend._id%>" class="present absA absent">Abs.</button></div>
+                                    <form method="post" data-student-id="<%=attend._id%>" style="display: none;">
+                                        <div style="display: flex;">
+                                            <input name="preId" data-student-id="<%=attend._id%>" class="preIdInput" value="">
+                                            <input name="absId" data-student-id="<%=attend._id%>" class="absIdInput" value="">
+                                            <button type="submit" data-student-id="<%=attend._id%>" id="letSubmit">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <!-- You Can Change Previous Code... -->
+                        <%break}%>
+                    <%}%>
             </div>
+            <%}%>
+            <%}%>
         </div>
     </div>
 
-    <div id="downl">
-        <button class="new mar">Add New</button>
-        <button class="new mar">Print All</button>
-        <button class="new mar">Detained</button>
-        <button class="new mar">Submit</button>
-    </div>
+    <form id="finalFormSubmit" action="/Attendence-Tracker/Submit-All-Attendence" method="post" style="display: none;">
+        <input name="allPresent" value="" id="allPresent">
+        <input name="allAbsent" value="" id="allAbsent">
+        <button type="submit" id="mySubmit"></button>
+    </form>
 
+    <div id="downl">
+        <button class="new mar studentNew">Add New Student</button>
+        <a href="/Attendence-Tracker/<%=classTech._id%>/<%=classTech.subject%>/<%=allClass._id%>/Print-Attendence-sheet"><button class="new mar">Attendence Sheet</button></a>
+        <button class="new mar">Detained Students</button>
+        <button class="new mar" id="showClickedValues">Submit Attendence</button>
+    </div>
 
     <div id="foot">
         <div class="icons">
@@ -169,43 +151,21 @@
             <a href="#"><div class="iconbox"><i class="fa-brands fa-instagram"></i></div></a>
         </div>
         <i class="fa-regular fa-copyright"></i> 2024
-        Attendance Tracker India, All rights reserved.
+        Attendance Tracker India, All Rights Reserved.
     </div>
 
-    <script>
-        let i=0;
+    <!-- FORM FOR New Students -->
+    <form class="studentForm" method="post" action="/Attendence-Tracker/<%=classTech._id%>/<%=allClass._id%>/New-Student">
+        <input name="studentName" placeholder="Student's Name" required>
+        <input name="studentRollNo" placeholder="Student's Roll No." required>
+        <div style="display: flex; align-items: center; justify-content: space-evenly;">
+            <button type="submit" class="studSubmit">Submit
+            <button type="button" class="studCancle">Cancle
+        </div>
+    </form>
 
-        function perColor(elementP,perst){
-            if(perst<75){
-                elementP.style.backgroundColor='rgb(285, 143, 143)';
-            }
-        }
-
-        for(i=1;i<=12;i++){
-            let elementT=document.querySelector(`.to${i}`)
-            let elementA=document.querySelector(`.at${i}`)
-            let elementP=document.querySelector(`.per${i}`)
-            let perst=((elementA.innerHTML/elementT.innerHTML)*100).toFixed(2);
-            console.log(perst);
-            elementP.innerHTML=perst;
-            perColor(elementP,perst);
-        }
-
-        let subForm=document.querySelector(".subform");
-        let newSub=document.querySelector(".newSub");
-        let attend=document.querySelector("#attend");
-        newSub.addEventListener("click",function(){
-            if(subForm.style.display==="block"){
-                subForm.style.display="none";
-                attend.style.opacity="1";
-            }
-            else{
-                attend.style.opacity="0.2";
-            subForm.style.display="block";
-            }
-        })
-
-
-    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="/scriptFolder/techPage.js"></script>
 </body>
 </html>

@@ -21,10 +21,9 @@ body{
     margin: 5px;
     text-align: center;
     color: blueviolet;
-    /* color: white; */
 }
 #box{
-    height: 370px;
+    height: 400px;
     width: 500px;
     /* background-color: pink; */
     margin: 10px auto;
@@ -56,7 +55,7 @@ body{
     width: 170px;
 }
 .input3{
-    width: 100px;
+    width: 170px;
 }
 .branch{
     display: flex;
@@ -90,9 +89,10 @@ body{
     color: brown;
 }
 
+
 @media(min-width:420px) and (max-width:530px){
     #box{
-        height: 370px;
+        height: 400px;
         width: 400px;
     }
     .inputs{
@@ -103,16 +103,20 @@ body{
         font-size: 2.5rem;
     }
     .input3{
-        width: 100px;
+        width: 155px;
     }
     .input2{
         width: 150px;
+    }
+    .check{
+        width: 200px;
+        font-size: 1rem;
     }
 }
 
 @media(min-width:320px) and (max-width:420px){
     #box{
-        height: 370px;
+        height: 400px;
         width: 300px;
     }
     .inputs{
@@ -124,7 +128,7 @@ body{
         font-size: 2rem;
     }
     .input3{
-        width: 70px;
+        width: 130px;
     }
     .teach{
         font-size: 1rem;
@@ -134,5 +138,9 @@ body{
     }
     .teclog{
         font-size: 1.8rem;
+    }
+    .check{
+        width: 170px;
+        font-size: 0.95rem;
     }
 }

@@ -14,19 +14,18 @@ body{
     margin: 5px;
     text-align: center;
     color: blueviolet;
-    /* color: white; */
 }
 .loginbox{
     display: flex;
     justify-content: center;
     align-items: center;
-    /* border: 2px solid black; */
     margin-top: 1rem;
 }
 .card{
     border: 2px solid black !important; 
     display: flex;
     align-items: center;
+    border-radius: 10px !important;
 }
 .iconImg{
     height: 10rem;
@@ -38,8 +37,13 @@ body{
         font-size: 2.7rem;
     }
 }
-@media(min-width:330px) and (max-width:430px){
+@media(min-width:350px) and (max-width:430px){
     .top{
         font-size: 2.4rem;
+    }
+}
+@media(min-width:300px) and (max-width:350px){
+    .top{
+        font-size: 2rem;
     }
 }

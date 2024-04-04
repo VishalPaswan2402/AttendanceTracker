@@ -29,7 +29,7 @@ body{
     /* color: white; */
 }
 .prof{
-    height: 180px;
+    height: 150px;
     width: 50%;
     /* background-color: red; */
     margin: 15px auto;
@@ -43,7 +43,7 @@ body{
     border-radius: 50%;
     background-color: rgb(169, 242, 227);
     margin: 10px auto;
-    background-image: url(logo-2.png);
+    background-image: url(/imageFolder/logo-2.png);
     background-size: contain;
     border: 1px solid black;
     box-shadow: 2px 2px 10px gray;
@@ -51,8 +51,9 @@ body{
 .about{
     height: 30px;
     width: 100%;
-    margin-top: 5px;
+    margin-top: 4px;
     /* background-color: palevioletred; */
+    padding-left: 25px;
 }
 .about p{
     font-size: 1.2rem;
@@ -97,6 +98,7 @@ body{
 .bar{
     /* height: 50%; */
     width: 6%;
+    font-size: 0.8rem;
     background-color: rgb(66, 66, 255);
     color: transparent;
     font-weight: 600;
