@@ -73,7 +73,8 @@ body{
 }
 #attend{
     height: 335px;
-    width: 80%;
+    /* width: 80%; */
+    width: 85%;
     /* background-color: rgb(171, 255, 229); */
     border: 2px solid rgb(173, 173, 173);
     margin: auto;
@@ -97,6 +98,27 @@ body{
     box-shadow: 2px 2px 5px gray;
     position: sticky;
     top: 0px;
+}
+#editIcons{
+    font-size: 1.6rem;
+    margin-left: 8px;
+    margin-bottom: 10px;
+}
+
+.editAttSt{
+    text-decoration: none;
+    color: rgb(171, 171, 171);
+    cursor: pointer;
+    /* background-color: red; */
+    width: 3%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-top: 7px;
+    height: 30px;
+}
+.editAttSt:hover{
+    color: blue;
 }
 .box2{
     /* height: 600px; */
@@ -215,6 +237,7 @@ body{
     cursor: pointer;
     margin-bottom: 5px;
 }
+
 /* .studentForm button:hover{
     background-color: lightblue;
 } */

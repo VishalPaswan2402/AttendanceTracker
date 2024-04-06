@@ -15,6 +15,9 @@
     
 </head>
 <body>
+
+    <div class="overlay" id="overlay"></div>
+
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
           <a class="navbar-brand logo" href="/"></a>
@@ -65,6 +68,7 @@
     <div id="attend">
         <div id="stcol">
             <div class="topBar margin">
+                <div class="stName stColorTop centerItems" style="width: 3%;"> Edit</div>
                 <div class="stName stColorTop centerItems" style="width: 25%;"> Student's Name</div>
                 <div class="stRoll stColorTop centerItems" style="width: 17%;"> Student's Roll No.</div>
                 <div class="stTotal stColorTop centerItems" style="width: 8%;">Total</div>
@@ -76,8 +80,12 @@
             <%if(students.length>0){%>
             <%for(student of students){%>
             <div class="box2 margin">
+                <a href="/Attendence-Tracker/<%=classTech._id%>/<%=allClass._id%>/<%=student._id%>/Edit-Student-Page" class="editAttSt "><div class=" data stColor" style="width: 3%;"><i class="fa-solid fa-pen-to-square" id="editIcons"></i></div></a>
+                <!-- Edit Button -->
+                
+
                 <div class="stName stColor" style="width: 25%;">
-                    <div class="data margin"><%=student.studentName%></div>
+                    <div class="data margin student"><%=student.studentName%></div>
                 </div>
                 <div class="stRoll stColor" style="width: 17%;">
                     <div class="data margin"><%=student.studentRollNo%></div>
@@ -97,7 +105,7 @@
                             </div>
                             <div class="stPer stColor" style="width: 8%;">
                                 <%if(attend.totalClass>0){%>
-                                    <div class="data margin per1" data-student-id="<%=attend._id%>"><%=attend.classPercent%></div>
+                                    <div class="data margin per1" data-student-id="<%=attend._id%>"><%=attend.classPercent%> %</div>
                                 <%}%>
                             </div>
                             <div class="stPrev stColor" style="width: 10%;">
@@ -138,8 +146,8 @@
 
     <div id="downl">
         <button class="new mar studentNew">Add New Student</button>
-        <a href="/Attendence-Tracker/<%=classTech._id%>/<%=classTech.subject%>/<%=allClass._id%>/Print-Attendence-sheet"><button class="new mar">Attendence Sheet</button></a>
-        <button class="new mar">Detained Students</button>
+        <a href="/Attendence-Tracker/<%=classTech._id%>/<%=classTech.subject%>/<%=allClass._id%>/Print-All-Attendence-sheet"><button class="new mar">Attendence Sheet</button></a>
+        <a href="/Attendence-Tracker/<%=classTech._id%>/<%=classTech.subject%>/<%=allClass._id%>/Print-Detained-Attendence-sheet"><button class="new mar">Detained Students</button></a>
         <button class="new mar" id="showClickedValues">Submit Attendence</button>
     </div>
 
@@ -155,7 +163,7 @@
     </div>
 
     <!-- FORM FOR New Students -->
-    <form class="studentForm" method="post" action="/Attendence-Tracker/<%=classTech._id%>/<%=allClass._id%>/New-Student">
+    <form class="studentForm popup" method="post" action="/Attendence-Tracker/<%=classTech._id%>/<%=allClass._id%>/New-Student">
         <input name="studentName" placeholder="Student's Name" required>
         <input name="studentRollNo" placeholder="Student's Roll No." required>
         <div style="display: flex; align-items: center; justify-content: space-evenly;">

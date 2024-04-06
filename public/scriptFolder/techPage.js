@@ -7,24 +7,20 @@ let cancleForm=document.querySelector(".studCancle");
 studentNew.addEventListener("click",function(){
     if(studentForm.style.display==="block"){
         studentForm.style.display="none";
-        attend.style.opacity="1";
+        document.getElementById("overlay").style.display = "none";
     }
     else{
-        attend.style.opacity="0.2";
         studentForm.style.display="block";
+        document.getElementById("overlay").style.display = "block";
+
     }
 })
 cancleForm.addEventListener("click",function(){
     if(studentForm.style.display==="block"){
         studentForm.style.display="none";
-        attend.style.opacity="1";
+        document.getElementById("overlay").style.display = "none";
     }
-    // else{
-    //     attend.style.opacity="0.2";
-    //     studentForm.style.display="block";
-    // }
 })
-
 
 
 // To Hide And Show Todays class....
@@ -43,34 +39,23 @@ cancleForm.addEventListener("click",function(){
 // });
 
 
-// To Calculate Percentage of all students...
+
+// To change background color according to percentage...
 document.addEventListener('DOMContentLoaded', function() {
-    // Iterate over each student
+    // Iterate over each student percentage element
     document.querySelectorAll('.stPer .data').forEach(perElement => {
-        // Get student ID
-        const studentId = perElement.dataset.studentId;
+        // Get the percentage value and convert it to a number
+        const percentage = parseFloat(perElement.textContent.replace('%', ''));
 
-        // Get total and attended classes for the current student
-        const totalClasses = parseInt(document.querySelector(`.stTotal .data[data-student-id="${studentId}"]`).textContent);
-        const attendClasses = parseInt(document.querySelector(`.stAttend .data[data-student-id="${studentId}"]`).textContent);
-        
-        // Calculate percentage for the current student
-        const percentage = (attendClasses / totalClasses) * 100;
-
-        // Display percentage for the current student
-        perElement.textContent = percentage.toFixed(2) + '%';
-
-        if (perElement.textContent==="NaN%") {
-            perElement.textContent = " ";
-            // perElement.style.color = 'white';
-        }
-        // Change background color if percentage is less than 75%
-        if (percentage < 75) {
+        // Check if the percentage is less than 75
+        if (!isNaN(percentage) && percentage < 75) {
+            // Change background color
             perElement.style.backgroundColor = 'rgb(253, 200, 208)';
-            // perElement.style.color = 'white';
         }
     });
 });
+
+
 
 // Previous day value color change...
 document.addEventListener('DOMContentLoaded', function() {
@@ -120,60 +105,12 @@ presentButtons.forEach(button => {
 });
 
 
-//To Mark and Store Present absent data
-// $(document).ready(function () {
-//     var presentStudents = []; // Array to store IDs of students marked present
-//     var absentStudents = []; // Array to store IDs of students marked absent
 
-//     // When a button with class 'present' is clicked
-//     $('.present').click(function () {
-//         var studentId = $(this).data('student-id'); // Get the student ID from the data attribute
-
-//         // Check if the student ID is not already in the absentStudents array
-//         var index = absentStudents.indexOf(studentId);
-//         if (index !== -1) {
-//             absentStudents.splice(index, 1); // Remove the student ID from the absentStudents array
-//         }
-
-//         // Check if the student ID is not already in the presentStudents array
-//         if (!presentStudents.includes(studentId)) {
-//             presentStudents.push(studentId); // Add the student ID to the presentStudents array
-//         }
-//     });
-
-//     // When a button with class 'absent' is clicked
-//     $('.absent').click(function () {
-//         var studentId = $(this).data('student-id'); // Get the student ID from the data attribute
-
-//         // Check if the student ID is not already in the presentStudents array
-//         var index = presentStudents.indexOf(studentId);
-//         if (index !== -1) {
-//             presentStudents.splice(index, 1); // Remove the student ID from the presentStudents array
-//         }
-
-//         // Check if the student ID is not already in the absentStudents array
-//         if (!absentStudents.includes(studentId)) {
-//             absentStudents.push(studentId); // Add the student ID to the absentStudents array
-//         }
-//     });
-
-//     // When the external button is clicked
-//     $('#showClickedValues').click(function () {
-//         // Update the values of the form inputs
-//         $('#allPresent').val(presentStudents.join(',')); // Join the present students array into a comma-separated string
-//         $('#allAbsent').val(absentStudents.join(',')); // Join the absent students array into a comma-separated string
-
-//         // Submit the form
-//         $('#finalFormSubmit').submit();
-//     });
-// });
-
-
-
-
+// Array to store attendence...
 $(document).ready(function () {
     var presentStudents = []; // Array to store IDs of students marked present
     var absentStudents = []; // Array to store IDs of students marked absent
+    var totalStudents = $('.student').length; // Total number of students
 
     // When a button with class 'present' is clicked
     $('.present').click(function () {
@@ -228,8 +165,16 @@ $(document).ready(function () {
         $('#allPresent').val(presentStudents.join(',')); // Join the present students array into a comma-separated string
         $('#allAbsent').val(absentStudents.join(',')); // Join the absent students array into a comma-separated string
 
-        // Submit the form
-        $('#finalFormSubmit').submit();
+        // Check if the sum of present and absent students is less than the total number of students
+        var totalMarkedStudents = presentStudents.length + absentStudents.length;
+        // console.log(totalMarkedStudents);
+        // console.log(totalStudents);
+        if (totalMarkedStudents < totalStudents) {
+            alert("Some students are not marked as either present or absent!");
+        } else {
+            // Submit the form if all students are marked
+            $('#finalFormSubmit').submit();
+        }
     });
 
     // Initially check if any of the arrays is empty and hide/show the button accordingly

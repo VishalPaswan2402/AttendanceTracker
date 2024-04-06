@@ -89,6 +89,19 @@ body{
     color: brown;
 }
 
+#alertSt{
+    font-size: 2.5rem;
+    color: red;
+    align-items: center;
+}
+#cardDel{
+    align-items: center;
+    text-align: center;
+}
+#deleteForm{
+    margin-left: 39%;
+    display: none;
+}
 
 @media(min-width:420px) and (max-width:530px){
     #box{
@@ -142,5 +155,8 @@ body{
     .check{
         width: 170px;
         font-size: 0.95rem;
+    }
+    .restore{
+        font-size: 1.7rem;
     }
 }
