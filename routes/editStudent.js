@@ -31,6 +31,7 @@ router.put("/Students-Edit",validateStudent,wrapAsync(async(req,res,next)=>{
     let{techId,classId,stId}=req.params;
     let{sName,sRollNo}=req.body;
     let stEdit=await allStudent.findByIdAndUpdate(stId,({studentName:sName,studentRollNo:sRollNo}));
+    req.flash("success","Student data edited successfully...");
     res.redirect(`/Attendence-Tracker/${techId}/${classId}/Attendence-Sheet`);
 }));
 
@@ -39,6 +40,7 @@ router.delete("/Students-Destroy",async(req,res)=>{
     let{techId,classId,stId}=req.params;
     let destroyStudent=await allStudent.findByIdAndDelete(stId);
     let destAtt=await Attendence.deleteMany({studentId:stId});
+    req.flash("success","Student data deleted successfully...");
     res.redirect(`/Attendence-Tracker/${techId}/${classId}/Attendence-Sheet`);
 });
 

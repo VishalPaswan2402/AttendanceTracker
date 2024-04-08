@@ -41,9 +41,9 @@
         <form action="/Attendence-Tracker/<%=findTech._id%>/Change-Password?_method=put" method="post" id="passwordChangeForm">
             <div class="allInputs centerItems">
                 <input name="tName" class="inputs" placeholder="Enter Your Name" required readonly value="<%=findTech.teacherName%>">
-                <input name="tEmail" class="inputs" placeholder="Enter Your E-mail" required readonly value="<%=findTech.teacherEmail%>">
-                <input id="newPassword" name="newpassword" class="inputs" placeholder="Enter New Password" required>
-                <input id="confirmPassword" name="confPass" class="inputs" placeholder="Re-enter Password" required>
+                <input name="tEmail" class="inputs" placeholder="Enter Your E-mail" required readonly value="<%=findTech.teacherEmail%>" type="email">
+                <input id="newPassword" name="newpassword" class="inputs" placeholder="Enter New Password" required type="password">
+                <input id="confirmPassword" name="confPass" class="inputs" placeholder="Re-enter Password" required type="password">
                 <button type="submit" class="check">Change Password</button>
             </div>
         </form>

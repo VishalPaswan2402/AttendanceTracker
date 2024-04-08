@@ -26,6 +26,7 @@ router.put("/:id/Change-Password",async(req,res,next)=>{
     let{id}=req.params;
     let{newpassword,confPass}=req.body;
     let currTech=await Teacher.findByIdAndUpdate(id,{password:newpassword});
+    req.flash("success","Password changed successfully, you can login with new password...");
     res.redirect("/Attendence-Tracker/Teacher-Login");
 });
 

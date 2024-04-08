@@ -31,13 +31,16 @@ router.post("/Teacher-HomePage",validateTeacher,wrapAsync(async(req,res,next)=>{
     let{teacherName,teacherEmail,collegeName,subject,password}=req.body;
     let allTech=await Teacher.find({teacherName:teacherName,teacherEmail:teacherEmail,collegeName:collegeName,subject:subject});
     if(allTech.length>0){
-        next(new expressError(404,"Teacher already exist with same college and subject. Go back to home page for Log In !"));
+        req.flash("error","You have already created account for same subject...");
+        res.redirect("/Attendence-Tracker/Teacher-SignUp");
+        // next(new expressError(404,"Teacher already exist with same college and subject. Go back to home page for Log In !"));
     }
     else{
         let newTeacher=new Teacher({teacherName,teacherEmail,collegeName,subject,password});
         await newTeacher.save();
         let id=newTeacher._id;
         let allClass=await newClass.find({teacherId:id});
+        req.flash("success","Account created successfully, add your class to manage attendence...");
         res.redirect(`/Attendence-Tracker/${id}/TeacherHome`);
     }
 }));

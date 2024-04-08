@@ -35,13 +35,30 @@
           </div>
         </div>
       </nav>  
+
+      <!-- Flash Message... -->
+    <% if (success && success.length) { %>
+      <div class="alert alert-success alert-dismissible fade show" role="alert" style="align-items: center; text-align: center; font-size: 1.3rem;">
+        <%= success %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% } else if (error && error.length) { %>
+      <!-- Use 'else if' instead of 'else' and fix the condition syntax -->
+      <div class="alert alert-danger alert-dismissible fade show" role="alert" style="align-items: center; text-align: center; font-size: 1.3rem;">
+        <%= error %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% }%>
+    <!-- Flash Message... -->
+
+
     <div class="top">Attendance Tracker</div>
     <div id="box" style="height: 350px;">
         <div class="log centerItems"><p>Teacher's Login</p></div>
         <form method="post" action="/Attendence-Tracker/Teacher-HomePages">
             <div class="allInputs centerItems">
                 <input name="teacherName" class="inputs" placeholder="Teacher's Name" required>
-                <input name="teacherEmail" class="inputs" placeholder="Teacher's E-mail" required>
+                <input name="teacherEmail" class="inputs" placeholder="Teacher's E-mail" required type="email">
                 <input name="password" class="inputs" type="password" placeholder="Password" required>                
                 <button type="submit" class="check">Login</button>
             </div>

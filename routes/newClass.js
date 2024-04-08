@@ -44,15 +44,19 @@ router.post("/New-Class",validatenewClass,wrapAsync(async(req,res,next)=>{
                     await totalStudent[i].save();
                 }
             }
+            req.flash("success","New class added successfully...");
             res.redirect(`/Attendence-Tracker/${id}/TeacherHome`);
         }
         else{
-            next(new expressError(400,"This class already exist..."));
+            // next(new expressError(400,"This class already exist..."));
+            req.flash("error","This class already exist...");
+            res.redirect(`/Attendence-Tracker/${id}/TeacherHome`);
         }
         
     }
     else{
-        next(new expressError(400,"Incorrect password go back and try again..."));
+        req.flash("error","You have entered incorrect password...");
+        res.redirect(`/Attendence-Tracker/${id}/TeacherHome`);
     }
 }));
 

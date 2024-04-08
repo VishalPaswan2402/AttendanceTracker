@@ -35,7 +35,17 @@
           </div>
         </div>
       </nav>
-    <div class="top">Attendance Tracker</div>
+
+      <!-- Flash Message... -->
+      <%if (error && error.length) { %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" style="align-items: center; text-align: center; font-size: 1.3rem;">
+          <%= error %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <% }%>
+      <!-- Flash Message... -->
+      
+      <div class="top">Attendance Tracker</div>
     <div id="box" style="height: 490px;">
         <div class="log centerItems teclog"><p>Teacher's Sign-Up</p></div>
         <form method="post" action="/Attendence-Tracker/Teacher-HomePage" id="teacherForm">

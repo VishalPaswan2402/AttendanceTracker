@@ -12,7 +12,9 @@ router.get("/Print-All-Attendence-sheet",wrapAsync(async(req,res,next)=>{
     let{techId,sub,classId}=req.params;
     let currAttend=await Attendence.findOne({classId:classId});
     if(!currAttend){
-        next(new expressError(404,"No any student added in class !"));
+        req.flash("error","No any student added in the class !");
+        res.redirect(`/Attendence-Tracker/${techId}/${classId}/Attendence-Sheet`);
+        // next(new expressError(404,"No any student added in class !"));
     }
     else{
         let currClass=await newClass.findById(classId);
@@ -27,7 +29,9 @@ router.get("/Print-Detained-Attendence-sheet",wrapAsync(async(req,res,next)=>{
     let{techId,sub,classId}=req.params;
     let currAttend=await Attendence.findOne({classId:classId});
     if(!currAttend){
-        next(new expressError(404,"No any student added in class !"));
+        req.flash("error","No any student added in the class !");
+        res.redirect(`/Attendence-Tracker/${techId}/${classId}/Attendence-Sheet`);
+        // next(new expressError(404,"No any student added in class !"));
     }
     else{
         let currClass=await newClass.findById(classId);

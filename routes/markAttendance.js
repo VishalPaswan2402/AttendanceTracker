@@ -81,6 +81,7 @@ router.post("/Submit-All-Attendence",wrapAsync( async (req, res,next) => {
             }
         }
         }
+        req.flash("success","Attendance saved successfully...");
         res.redirect(`/Attendence-Tracker/${techId}/${claId}/Attendence-Sheet`);
 }));
 
