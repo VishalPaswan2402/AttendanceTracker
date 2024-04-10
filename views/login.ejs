@@ -55,7 +55,15 @@
                     </select>
                     <input name="section" class="inputs input3" placeholder="Section" required>
                 </div>
-                <input name="collegeName" class="inputs" placeholder="Enter Your College Name" required>
+                <!-- <input name="collegeName" class="inputs" placeholder="Enter Your College Name" required> -->
+
+                <select name="collegeName" class="inputs" required>
+                  <option value="" disabled selected>Select Your College</option>
+                  <% colleges.forEach(colleg => { %>
+                      <option style="height: 300px;" value="<%= colleg.colleges %>"><%= colleg.colleges %></option>
+                  <% }); %>
+              </select>
+
                 <button type="submit" class="check">Check Attendance</button>
             </div>
         </form>

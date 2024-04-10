@@ -13,6 +13,8 @@ const methodOverride = require('method-override');
 app.use(methodOverride('_method'));
 const mongoose = require('mongoose');
 const expressError=require("./utility/expressError.js");
+const college=require("./models/college.js");
+const collegeName=require("./models/collegeName.js");
 const teachers=require("./routes/teachers.js");
 const students=require("./routes/student.js");
 const changePassword=require("./routes/changePassword.js");
@@ -52,6 +54,28 @@ app.use((req,res,next)=>{
     next();
 })  
 
+
+// Save college names...
+
+// collegeName.forEach(College => {
+//     // Create a new College document
+//     const newCollege = new college({
+//         colleges: College.college,
+//     });
+
+//     // Save the document to the database
+//     newCollege.save()
+//         .then(savedCollege => {
+//             console.log(`Saved ${savedCollege.colleges} to the database.`);
+//         })
+//         .catch(error => {
+//             console.error(`Error saving college: ${error}`);
+//         });
+// });
+
+// Save college names...
+
+
 // Route For Teacher...
 app.use("/Attendence-Tracker",teachers);
 
@@ -81,7 +105,6 @@ app.use("/Attendence-Tracker",guide);
 
 // Home page...
 app.get("/",(req,res)=>{
-    // res.cookie("greet","Welcome to AT");
     res.render("home.ejs");
 });
 

@@ -52,7 +52,16 @@
             <div class="allInputs centerItems">
                 <input name="teacherName" class="inputs" placeholder="Teacher's Name" required>
                 <input name="teacherEmail" class="inputs" placeholder="Teacher's E-mail" required>
-                <input name="collegeName" class="inputs" placeholder="College Name" required>
+                <!-- <input name="collegeName" class="inputs" placeholder="College Name" required> -->
+
+                <select name="collegeName" class="inputs"  required>
+                  <option value="" disabled selected>Select Your College</option>
+                  <% colleges.forEach(colleg => { %>
+                      <option value="<%= colleg.colleges %>"><%= colleg.colleges %></option>
+                  <% }); %>
+                </select>
+
+
                 <input name="subject" class="inputs" placeholder="Enter Subject Name" required>
                 <!-- <div class="branch">
                     <input name="branch" class="inputs input2" placeholder="Branch" required>

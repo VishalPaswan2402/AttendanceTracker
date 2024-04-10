@@ -2,10 +2,13 @@ let express=require('express');
 const router=express.Router();
 const wrapAsync=require("../utility/wrapAsync.js");
 const expressError=require("../utility/expressError.js");
+const allCollege=require("../models/college.js");
 const allStudent = require('../models/students.js');
 
-router.get("/Students-Login",(req,res)=>{
-    res.render("login.ejs");
+router.get("/Students-Login",async(req,res)=>{
+    let colleges=await allCollege.find();
+    // console.log(colleges);
+    res.render("login.ejs",{colleges});
 });
 
 // Students Page...

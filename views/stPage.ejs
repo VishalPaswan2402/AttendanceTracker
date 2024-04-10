@@ -40,25 +40,28 @@
         </div>
       </nav>
     <div class="top">Attendance Tracker</div>
-    <div class="prof">
-        <!-- <div class="profImage"></div> -->
-        <div class="about">
-          <p>Name : <span style="color: rgb(0, 83, 207);"> <%=findStudent.studentName%></span></p>
-        </div>
-        <div class="about">
-          <p>Roll No. : <span style="color: rgb(0, 83, 207);"> <%=findStudent.studentRollNo%></span></p>
-        </div>
-        <div class="about">
-          <p>Sem. || Sec. : <span style="color: rgb(0, 83, 207);"> <%=findStudent.studentSemester%> || <%=findStudent.studentSection%></span></p>
-        </div>
-        <div class="about">    
-          <p>College : <span style="color: rgb(0, 83, 207);"> <%=findStudent.college%></span></p>
-        </div>
-    </div>
+    
+
+    <!-- Student data -->
+
+    <div class="container">
+      <div class="student-details">
+          <div class="student-card">
+              <h2><%=findStudent.studentName%></h2>
+              <p><strong>Roll No: </strong><%=findStudent.studentRollNo%></p>
+              <p><strong>Semester: </strong><%=findStudent.studentSemester%></p>
+              <p><strong>Section: </strong><%=findStudent.studentSection%></p>
+              <p><strong>College: </strong><%=findStudent.college%></p>
+          </div>
+      </div>
+  </div>
+
+    <!-- Student data -->
+
+
     <div id="graphBoxs">
         <%if(findStudent.allAttendence.length>0){%>
           <!-- change graph -->
-          
             <%for(attend of findStudent.allAttendence){%>
               <div class="box">
               <div class="subName centerItems"><h5><%=attend.subject%></h5></div>
@@ -67,7 +70,6 @@
               </div>
             </div>
             <%}%>
-
             <!-- change graph -->
         <%}%>
     </div>

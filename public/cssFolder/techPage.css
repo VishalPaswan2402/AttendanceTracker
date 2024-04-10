@@ -28,7 +28,7 @@ body{
 }
 .prof{
     height: 125px;
-    width: 50%;
+    width: 65%;
     /* background-color: red; */
     margin: 15px auto;
     border: 3px solid black;
@@ -48,7 +48,6 @@ body{
 .about{
     height: 30px;
     width: 100%;
-    /* margin-top: 5px; */
     /* background-color: palevioletred; */
     padding-left: 25px;
 }
@@ -86,10 +85,7 @@ body{
     box-shadow: 1px 1px 8px gray;
 }
 #stcol{
-    /* height: 500px; */
     width: 100%;
-    /* background-color: gray; */
-    /* margin: auto; */
 }
 .topBar{
     height: 30px;
@@ -237,20 +233,12 @@ body{
     cursor: pointer;
     margin-bottom: 5px;
 }
-
-/* .studentForm button:hover{
-    background-color: lightblue;
-} */
 .preP,.studSubmit{
     background-color: rgb(219, 252, 169)
 }
 .absA,.studCancle{
     background-color: rgb(249, 184, 194);
 }
-/* .studCancle:hover{
-    background-color: rgb(228, 29, 59);
-    color: white;
-} */
 .present{
     height: 28px;
     width: 56px;

@@ -4,6 +4,7 @@ const wrapAsync=require("../utility/wrapAsync.js");
 const{teachersSchema}=require("../schema.js");
 const expressError=require("../utility/expressError.js");
 const Teacher = require('../models/teachers.js');
+const allCollege=require("../models/college.js");
 const newClass = require('../models/class.js');
 
 
@@ -22,8 +23,9 @@ router.get("/Teacher-Login",(req,res)=>{
     res.render("tlogin.ejs");
 });
 
-router.get("/Teacher-SignUp",(req,res)=>{
-    res.render("signup.ejs");
+router.get("/Teacher-SignUp",async(req,res)=>{
+    let colleges=await allCollege.find();
+    res.render("signup.ejs",{colleges});
 });
 
 // Teacher signup...
