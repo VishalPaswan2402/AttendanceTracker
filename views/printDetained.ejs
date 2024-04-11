@@ -62,9 +62,9 @@
     <div class="top">Attendance Tracker</div>
     <p class="printLink">Click on the link to <a href="#" id="printAttendance">Print</a> or click to <a href="/Attendence-Tracker/<%=techId%>/<%=classId%>/Attendence-Sheet">Go Back</a></p>
     <!-- <div class="container"> -->
-        <h4>List of students whose attendence percentage is less than 75.</h4>
+        <h4>Attendence percentage is less than 75.</h4>
         <%if(totalStudents.length>0){%>
-        <h5>College : <%=currTech.collegeName%></h5>
+        <h5><%=currTech.collegeName%></h5>
         <h5>Teacher : <%=currTech.teacherName%></h5>
         <h5>Semester : <%=currClass.semester%></h5>
         <h5>Section || Subject : <%=currClass.section%> || <%=currTech.subject%></h5>

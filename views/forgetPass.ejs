@@ -36,19 +36,41 @@
         </div>
       </nav>
     <div class="top">Attendance Tracker</div>
-    <div id="box">
-        <div class="log centerItems restore"><p>Restore Password</p></div>
-        <form action="/Attendence-Tracker/Restore-Password" method="post">
-            <div class="allInputs centerItems">
-                <input name="tName" class="inputs" placeholder="Enter Your Name" required>
-                <input name="tEmail" class="inputs" placeholder="Enter Your E-mail" required>
-                <input name="college" class="inputs" placeholder="Enter Your College Name" required>
-                <input name="subject" class="inputs" placeholder="Enter Your Subject" required>
-                <button type="submit" class="check">Find Data</button>
-            </div>
-        </form>
-        <div class="tec centerItems"><a href="/Attendence-Tracker/Teacher-Login" class="teach">Teacher's Login</a></div>
-    </div>
+    
+    <form action="/Attendence-Tracker/Restore-Password" method="post" class="needs-validation" novalidate>
+      <div class="card formCard">
+        <div class="card-body">
+          <h2 class="card-title" style="align-items: center; text-align: center;">Restore Password</h2>
+          <div class="form-floating mb-3">
+            <input type="text" name="tName" class="form-control" id="floatingInput" placeholder="Teacher's Name" required>
+            <label for="floatingInput">Teacher's Name</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" name="tEmail" class="form-control" id="floatingPassword" placeholder="Teacher's E-mail" required>
+            <label for="floatingPassword">Teacher's E-mail</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" name="subject" class="form-control" id="floatingPassword" placeholder="Enter Your Subject In Short Form only" required>
+            <label for="floatingPassword">Enter Your Subject In Short Form only</label>
+          </div>
+          <div class="form-floating ">
+            <select class="form-select" name="college" id="floatingSelect" aria-label="Floating label select example" required>
+              <option value="" disabled selected>Select Your College</option>
+                  <% colleges.forEach(colleg => { %>
+                      <option value="<%= colleg.colleges %>"><%= colleg.colleges %></option>
+                  <% }); %>
+            </select>
+            <label for="floatingSelect">Select Your College</label>
+          </div>
+        </div>
+        <button type="submit" style="width: 12rem; margin: auto;" class="btn btn-primary mb-3">Find Data</button>
+        <div class="logins mb-3" style="display: flex;">
+          <div class="tec centerItems" style="width: 160px;"><a href="/Attendence-Tracker/Teacher-SignUp" class="teach">Teacher's Signup</a></div>
+          <div class="tec centerItems" style="width: 160px;"><a href="/Attendence-Tracker/Teacher-Login" class="teach">Teacher's Login</a></div>
+      </div>
+      </div>
+    </form>
+
     <div id="foot">
         <div class="icons">
             <a href="#"><div class="iconbox"><i class="fa-brands fa-linkedin-in"></i></div></a>
@@ -59,7 +81,7 @@
         <i class="fa-regular fa-copyright"></i> 2024
         Attendance Tracker India, All Rights Reserved.
     </div>
-    
+    <script src="/scriptFolder/inputData.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

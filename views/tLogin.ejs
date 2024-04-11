@@ -53,21 +53,32 @@
 
 
     <div class="top">Attendance Tracker</div>
-    <div id="box" style="height: 350px;">
-        <div class="log centerItems"><p>Teacher's Login</p></div>
-        <form method="post" action="/Attendence-Tracker/Teacher-HomePages">
-            <div class="allInputs centerItems">
-                <input name="teacherName" class="inputs" placeholder="Teacher's Name" required>
-                <input name="teacherEmail" class="inputs" placeholder="Teacher's E-mail" required type="email">
-                <input name="password" class="inputs" type="password" placeholder="Password" required>                
-                <button type="submit" class="check">Login</button>
-            </div>
-        </form>
-        <div class="logins" style="display: flex;">
-            <div class="tec centerItems" style="width: 160px;"><a href="/Attendence-Tracker/Teacher-SignUp" class="teach">Teacher's Signup</a></div>
-            <div class="tec centerItems" style="width: 160px;"><a href="/Attendence-Tracker/Restore-Password" class="teach">Forgot Password?</a></div>
+    
+    <form method="post" action="/Attendence-Tracker/Teacher-HomePages" class="needs-validation" novalidate>
+      <div class="card formCard">
+        <div class="card-body">
+          <h2 class="card-title" style="align-items: center; text-align: center;">Teacher's Login</h2>
+          <div class="form-floating mb-3">
+            <input type="text" name="teacherName" class="form-control" id="floatingInput" placeholder="Teacher's Name" required>
+            <label for="floatingInput">Teacher's Name</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" name="teacherEmail" class="form-control" placeholder="Teacher's E-mail" required>
+            <label for="floatingPassword">Teacher's E-mail</label>
+          </div>
+          <div class="form-floating">
+            <input type="password" name="password" class="form-control " id="password" placeholder="Enter Your Password" required>
+            <label for="floatingPassword">Enter Your Password</label>
+          </div>
         </div>
-    </div>
+        <button type="submit" style="width: 12rem; margin: auto;" class="btn btn-primary mb-3">Log-In</button>
+        <div class="logins mb-3" style="display: flex;">
+          <div class="tec centerItems" style="width: 160px;"><a href="/Attendence-Tracker/Teacher-SignUp" class="teach">Teacher's Signup</a></div>
+          <div class="tec centerItems" style="width: 160px;"><a href="/Attendence-Tracker/Restore-Password" class="teach">Forgot Password?</a></div>
+      </div>
+      </div>
+    </form>
+
     <div id="foot">
         <div class="icons">
             <a href="#"><div class="iconbox"><i class="fa-brands fa-linkedin-in"></i></div></a>
@@ -78,7 +89,7 @@
         <i class="fa-regular fa-copyright"></i> 2024
         Attendance Tracker India, All Rights Reserved.
     </div>
-
+    <script src="/scriptFolder/inputData.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 </body>

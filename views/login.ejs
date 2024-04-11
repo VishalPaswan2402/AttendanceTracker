@@ -36,39 +36,51 @@
         </div>
       </nav>
     <div class="top">Attendance Tracker</div>
-    <div id="box">
-        <div class="log centerItems"><p>Student's Login</p></div>
-        <form action="/Attendence-Tracker/Students-Page" method="get">
-            <div class="allInputs centerItems">
-                <input name="sName" class="inputs" placeholder="Enter Your Name" required>
-                <input name="sRollNo" class="inputs" placeholder="Enter Your Roll No." required>
-                <div class="branch">
-                    <select name="semester" class="inputs input3">
-                      <option>1st Semester</option>
-                      <option>2nd Semester</option>
-                      <option>3rd Semester</option>
-                      <option>4th Semester</option>
-                      <option>5th Semester</option>
-                      <option>6th Semester</option>
-                      <option>7th Semester</option>
-                      <option>8th Semester</option>
-                    </select>
-                    <input name="section" class="inputs input3" placeholder="Section" required>
-                </div>
-                <!-- <input name="collegeName" class="inputs" placeholder="Enter Your College Name" required> -->
+    
+    <form action="/Attendence-Tracker/Students-Page" method="get" novalidate class="needs-validation">
+      <div class="card formCard">
+        <div class="card-body">
+          <h2 class="card-title" style="align-items: center; text-align: center;">Student's Login</h2>
+          <div class="form-floating mb-3">
+            <input type="text" name="sName" class="form-control" id="floatingInput" placeholder="Student's Name" required>
+            <label for="floatingInput">Student's Name</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" name="sRollNo" class="form-control" id="floatingPassword" placeholder="Student's Roll No." required>
+            <label for="floatingPassword">Student's Roll No.</label>
+          </div>
+          <div class="form-floating mb-3">
+            <select class="form-select" name="semester" id="floatingSelect" aria-label="Floating label select example" required>
+              <option value="" disabled selected>Select Your Semester</option>
+              <option>1st Semester</option>
+              <option>2nd Semester</option>
+              <option>3rd Semester</option>
+              <option>4th Semester</option>
+              <option>5th Semester</option>
+              <option>6th Semester</option>
+              <option>7th Semester</option>
+              <option>8th Semester</option>
+            </select>
+            <label for="floatingSelect">Current Semester</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" name="section" class="form-control" id="floatingPassword" placeholder="Section" required>
+            <label for="floatingPassword">Your Section</label>
+          </div>
+          <div class="form-floating ">
+            <select class="form-select" name="collegeName" id="floatingSelect" aria-label="Floating label select example" required>
+              <option value="" disabled selected>Select Your College</option>
+              <% colleges.forEach(colleg => { %>
+                <option  value="<%= colleg.colleges %>"><%= colleg.colleges %></option>
+            <% }); %>
+            </select>
+            <label for="floatingSelect">Select Your College</label>
+          </div>
+        </div>
+        <button type="submit" style="width: 15rem; margin: auto;" class="btn btn-primary mb-3">Check Attendance</button>
+      </div>
+    </form>
 
-                <select name="collegeName" class="inputs" required>
-                  <option value="" disabled selected>Select Your College</option>
-                  <% colleges.forEach(colleg => { %>
-                      <option style="height: 300px;" value="<%= colleg.colleges %>"><%= colleg.colleges %></option>
-                  <% }); %>
-              </select>
-
-                <button type="submit" class="check">Check Attendance</button>
-            </div>
-        </form>
-        <div class="tec centerItems"><a href="/Attendence-Tracker/Teacher-Login" class="teach">Teacher's Login</a></div>
-    </div>
     <div id="foot">
         <div class="icons">
             <a href="#"><div class="iconbox"><i class="fa-brands fa-linkedin-in"></i></div></a>
@@ -79,7 +91,7 @@
         <i class="fa-regular fa-copyright"></i> 2024
         Attendance Tracker India, All Rights Reserved.
     </div>
-    
+    <script src="/scriptFolder/inputData.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

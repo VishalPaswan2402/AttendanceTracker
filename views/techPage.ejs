@@ -36,6 +36,9 @@
                 <a class="nav-link textSize" href="/Attendence-Tracker/<%=classTech._id%>/TeacherHome">All Classes</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link textSize" id="delClass" style="cursor: pointer;">Delete Class</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link textSize" href="/Attendence-Tracker/userGuide">User Guide</a>
               </li>
               <li class="nav-item">
@@ -98,8 +101,6 @@
             <div class="box2 margin">
                 <a href="/Attendence-Tracker/<%=classTech._id%>/<%=allClass._id%>/<%=student._id%>/Edit-Student-Page" class="editAttSt "><div class=" data stColor" style="width: 3%;"><i class="fa-solid fa-pen-to-square" id="editIcons"></i></div></a>
                 <!-- Edit Button -->
-                
-
                 <div class="stName stColor" style="width: 25%;">
                     <div class="data margin student"><%=student.studentName%></div>
                 </div>
@@ -129,7 +130,7 @@
                                 <div class="data margin" data-student-id="<%=attend._id%>"><%=attend.classPrevious%></div>
                                 <%}%>
                             </div>
-                            <!-- You Can Change Previous Code... -->
+                            <!-- For Marking present and absent... -->
 
                             <div class="stTod stColor" style="width: 10%;">
                                 <div class="data margin preColor" id="buttonContainer">
@@ -145,7 +146,7 @@
                                 </div>
                             </div>
 
-                            <!-- You Can Change Previous Code... -->
+                            <!-- For marking present and absent... -->
                         <%break}%>
                     <%}%>
             </div>
@@ -154,11 +155,15 @@
         </div>
     </div>
 
+    <!-- Store All Attendance data... -->
+
     <form id="finalFormSubmit" action="/Attendence-Tracker/Submit-All-Attendence" method="post" style="display: none;">
         <input name="allPresent" value="" id="allPresent">
         <input name="allAbsent" value="" id="allAbsent">
         <button type="submit" id="mySubmit"></button>
     </form>
+    
+    <!-- Store All Attendance data... -->
 
     <div id="downl">
         <button class="new mar studentNew">Add New Student</button>
@@ -179,15 +184,48 @@
     </div>
 
     <!-- FORM FOR New Students -->
-    <form class="studentForm popup" method="post" action="/Attendence-Tracker/<%=classTech._id%>/<%=allClass._id%>/New-Student">
-        <input name="studentName" placeholder="Student's Name" required>
-        <input name="studentRollNo" placeholder="Student's Roll No." required>
-        <div style="display: flex; align-items: center; justify-content: space-evenly;">
-            <button type="submit" class="studSubmit">Submit
-            <button type="button" class="studCancle">Cancle
-        </div>
-    </form>
 
+    <div class="card formCard" style="width: 22rem;" id="studentForm">
+        <div class="card-body">
+          <h5 class="card-title">Add New Student</h5>
+          <form method="post" action="/Attendence-Tracker/<%=classTech._id%>/<%=allClass._id%>/New-Student" class="needs-validation" novalidate>
+            <div class="form-floating mb-3">
+                <input type="text" name="studentName" class="form-control" id="floatingInput" placeholder="Student Name" required>
+                <label for="floatingInput">Student's Name</label>
+              </div>
+              <div class="form-floating">
+                <input type="text" name="studentRollNo" class="form-control" id="floatingPassword" placeholder="Student Roll No." required>
+                <label for="floatingPassword">Student's Roll No.</label>
+              </div>
+              <div style="display: flex; align-items: center; justify-content: space-evenly; margin-top: 20px;">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-danger studCancle">Cancle</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    <!-- FORM FOR New Students -->
+
+    <!-- Alert to delete class -->
+
+    <div class="card" style="width: 20rem;" id="deleteClass">
+        <div class="card-body">
+          <i class="fa-solid fa-circle-exclamation" id="alertSt"></i>
+          <h4 class="card-subtitle mb-2 text-body-secondary" style="margin-top: 5px;text-align: center;" >Are You Sure ?</h4>
+          <p class="card-text" style="margin-top: 5px;text-align: center;">It will delete all the data related to <%=allClass.semester%> <%=allClass.section%> class permanently, and you won't be able to restore it again.</p>
+          <div style="display: flex; align-items: center; justify-content: space-evenly;">
+            <form action="/Attendence-Tracker/<%=classTech._id%>/<%=allClass._id%>/Class-Destroy?_method=Delete" method="post">
+                <a href="#" class="card-link"><button type="submit" class="btn btn-danger">Delete it</button></a>
+            </form>
+            <button type="button" id="cancleDel" class="btn btn-primary">Cancle it</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Alert to delete class -->
+
+    <script src="/scriptFolder/inputData.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="/scriptFolder/techPage.js"></script>

@@ -24,6 +24,7 @@ const newStudent=require("./routes/newStudent.js");
 const markAttendance=require("./routes/markAttendance.js");
 const printAttendance=require("./routes/printAttendance.js");
 const guide=require("./routes/guide.js");
+const deleteClass=require("./routes/deleteClass.js");
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 const flash = require('connect-flash');
@@ -99,6 +100,9 @@ app.use("/Attendence-Tracker",markAttendance);
 
 // Print Attendance...
 app.use("/Attendence-Tracker/:techId/:sub/:classId",printAttendance);
+
+// Delete Class...
+app.use("/Attendence-Tracker/:techId/:classId",deleteClass);
 
 // Guide...
 app.use("/Attendence-Tracker",guide);

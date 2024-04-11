@@ -4,9 +4,12 @@ const router=express.Router();
 const wrapAsync=require("../utility/wrapAsync.js");
 const expressError=require("../utility/expressError.js");
 const Teacher = require('../models/teachers.js');
+const allCollege=require("../models/college.js");
 
-router.get("/Restore-Password",(req,res)=>{
-    res.render("forgetPass.ejs");
+
+router.get("/Restore-Password",async(req,res)=>{
+    let colleges=await allCollege.find();
+    res.render("forgetPass.ejs",{colleges});
 });
 
 // To change Password Page...

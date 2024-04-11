@@ -1,7 +1,7 @@
 
 // Form For New Student....
 let attend=document.querySelector("#attend");
-let studentForm=document.querySelector(".studentForm");
+let studentForm=document.querySelector("#studentForm");
 let studentNew=document.querySelector(".studentNew");
 let cancleForm=document.querySelector(".studCancle");
 studentNew.addEventListener("click",function(){
@@ -22,6 +22,29 @@ cancleForm.addEventListener("click",function(){
     }
 })
 
+
+
+// Form For Delete Class....
+let deleteClass=document.querySelector("#deleteClass");
+let delClass=document.querySelector("#delClass");
+let cancleDel=document.querySelector("#cancleDel");
+delClass.addEventListener("click",function(){
+    if(deleteClass.style.display==="block"){
+        deleteClass.style.display="none";
+        document.getElementById("overlay").style.display = "none";
+    }
+    else{
+        deleteClass.style.display="block";
+        document.getElementById("overlay").style.display = "block";
+
+    }
+})
+cancleDel.addEventListener("click",function(){
+    if(deleteClass.style.display==="block"){
+        deleteClass.style.display="none";
+        document.getElementById("overlay").style.display = "none";
+    }
+})
 
 // To Hide And Show Todays class....
 // let todayClass = document.querySelector("#todayClass");
