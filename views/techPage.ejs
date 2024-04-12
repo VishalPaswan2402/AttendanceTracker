@@ -36,10 +36,10 @@
                 <a class="nav-link textSize" href="/Attendence-Tracker/<%=classTech._id%>/TeacherHome">All Classes</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link textSize" id="delClass" style="cursor: pointer;">Delete Class</a>
+                <a class="nav-link textSize" href="/Attendence-Tracker/userGuide">User Guide</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link textSize" href="/Attendence-Tracker/userGuide">User Guide</a>
+                <a class="nav-link textSize" id="delClass" style="cursor: pointer;">Delete Class</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link textSize" href="/">Log Out</a>
@@ -51,23 +51,21 @@
 
       <!-- Flash message -->
       <%if(error && error.length){%>
-            <div class="alert alert-danger alert-dismissible fade show" role="alert" style="align-items: center; text-align: center; font-size: 1.3rem;">
+            <div class="alert alert-danger alert-dismissible fade show" id="flashId" role="alert" style="align-items: center; text-align: center; font-size: 1.3rem;">
                 <%= error %>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         <%}else if(success && success.length){%>  
-            <div class="alert alert-success alert-dismissible fade show" role="alert" style="align-items: center; text-align: center; font-size: 1.3rem;">
+            <div class="alert alert-success alert-dismissible fade show" id="flashId" role="alert" style="align-items: center; text-align: center; font-size: 1.3rem;">
                 <%= success %>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         <%}%>
       <!-- Flash message -->
 
-
     <div class="top">Attendance Tracker</div>
     
     <div class="prof">
-        <!-- <div class="profImage"></div> -->
             <div class="about">
                 <p>Teacher's Name : <span style="color: rgb(0, 83, 207);"> <%=classTech.teacherName%></span></p>
             </div>
@@ -100,14 +98,12 @@
             <%for(student of students){%>
             <div class="box2 margin">
                 <a href="/Attendence-Tracker/<%=classTech._id%>/<%=allClass._id%>/<%=student._id%>/Edit-Student-Page" class="editAttSt "><div class=" data stColor" style="width: 3%;"><i class="fa-solid fa-pen-to-square" id="editIcons"></i></div></a>
-                <!-- Edit Button -->
                 <div class="stName stColor" style="width: 25%;">
                     <div class="data margin student"><%=student.studentName%></div>
                 </div>
                 <div class="stRoll stColor" style="width: 17%;">
                     <div class="data margin"><%=student.studentRollNo%></div>
                 </div>
-                
                     <%for(attend of studentAttendence){%>
                         <%if(attend.studentId.toString()===student._id.toString()){%>
                             <div class="stTotal stColor" style="width: 8%;">
@@ -131,7 +127,6 @@
                                 <%}%>
                             </div>
                             <!-- For Marking present and absent... -->
-
                             <div class="stTod stColor" style="width: 10%;">
                                 <div class="data margin preColor" id="buttonContainer">
                                     <div><button type="submit" data-student-id="<%=attend._id%>" class="present preP">Pre.</button></div>
@@ -145,7 +140,6 @@
                                     </form>
                                 </div>
                             </div>
-
                             <!-- For marking present and absent... -->
                         <%break}%>
                     <%}%>
@@ -156,13 +150,11 @@
     </div>
 
     <!-- Store All Attendance data... -->
-
     <form id="finalFormSubmit" action="/Attendence-Tracker/Submit-All-Attendence" method="post" style="display: none;">
         <input name="allPresent" value="" id="allPresent">
         <input name="allAbsent" value="" id="allAbsent">
         <button type="submit" id="mySubmit"></button>
     </form>
-    
     <!-- Store All Attendance data... -->
 
     <div id="downl">
@@ -184,7 +176,6 @@
     </div>
 
     <!-- FORM FOR New Students -->
-
     <div class="card formCard" style="width: 22rem;" id="studentForm">
         <div class="card-body">
           <h5 class="card-title">Add New Student</h5>
@@ -198,17 +189,15 @@
                 <label for="floatingPassword">Student's Roll No.</label>
               </div>
               <div style="display: flex; align-items: center; justify-content: space-evenly; margin-top: 20px;">
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <button type="button" class="btn btn-danger studCancle">Cancle</button>
+                <button type="submit" class="btn btn-primary">Add Student</button>
+                <button type="button" class="btn btn-danger studCancle">Cancle Student</button>
             </div>
           </form>
         </div>
       </div>
-
     <!-- FORM FOR New Students -->
 
     <!-- Alert to delete class -->
-
     <div class="card" style="width: 20rem;" id="deleteClass">
         <div class="card-body">
           <i class="fa-solid fa-circle-exclamation" id="alertSt"></i>
@@ -222,7 +211,6 @@
           </div>
         </div>
       </div>
-
       <!-- Alert to delete class -->
 
     <script src="/scriptFolder/inputData.js"></script>

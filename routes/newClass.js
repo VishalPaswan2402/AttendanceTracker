@@ -44,18 +44,18 @@ router.post("/New-Class",validatenewClass,wrapAsync(async(req,res,next)=>{
                     await totalStudent[i].save();
                 }
             }
-            req.flash("success","New class added successfully...");
+            req.flash("success","New class added successfully.");
             res.redirect(`/Attendence-Tracker/${id}/TeacherHome`);
         }
         else{
             // next(new expressError(400,"This class already exist..."));
-            req.flash("error","This class already exist...");
+            req.flash("error","A teacher already exists for this class.");
             res.redirect(`/Attendence-Tracker/${id}/TeacherHome`);
         }
         
     }
     else{
-        req.flash("error","You have entered incorrect password...");
+        req.flash("error","You have entered an incorrect password.");
         res.redirect(`/Attendence-Tracker/${id}/TeacherHome`);
     }
 }));

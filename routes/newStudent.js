@@ -8,8 +8,6 @@ const Teacher = require('../models/teachers.js');
 const allStudent = require('../models/students.js');
 const Attendence = require("../models/attendence.js");
 
-
-
 // Validate student...
 const validateStudent=(req,res,next)=>{
     let{error}=studentSchema.validate(req.body.student);
@@ -58,11 +56,11 @@ router.post("/New-Student",validateStudent,wrapAsync(async(req,res,next)=>{
                 }
             }
         }
-        req.flash("success","Student added to your class successfully...");
+        req.flash("success","Student added to your class successfully.");
         res.redirect(`/Attendence-Tracker/${idTeacher}/${idClass}/Attendence-Sheet`);
     }
     else{
-        req.flash("error","Student with same roll no. already added in sheet...");
+        req.flash("error","A student with the same roll number has already been added to the sheet.");
         res.redirect(`/Attendence-Tracker/${idTeacher}/${idClass}/Attendence-Sheet`);
         // next(new expressError(400,"Student with same roll no. already added in sheet..."));
     }

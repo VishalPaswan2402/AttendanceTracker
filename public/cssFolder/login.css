@@ -27,6 +27,7 @@ body{
     box-shadow: 0px 1px 10px rgb(192, 192, 192);
     margin: auto;
     width: 30rem;
+    background-color: transparent;
 }
 .form-control{
     border: 2px solid rgb(182, 180, 180);
@@ -60,6 +61,14 @@ body{
     margin-left: 39%;
     display: none;
 }
+
+.confDel{
+    z-index: 10000;
+    position: absolute;
+    top: 33%;
+    left: 40.5%;
+}
+
 
 @media(min-width:420px) and (max-width:500px){
     .top{

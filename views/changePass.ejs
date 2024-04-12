@@ -49,11 +49,11 @@
             <label for="floatingPassword">Teacher's E-mail</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="password" name="newpassword" class="form-control" id="floatingPassword" placeholder="Enter New Password" required>
+            <input type="password" name="newpassword" id="newPassword" class="form-control" id="floatingPassword" placeholder="Enter New Password" required>
             <label for="floatingPassword">Enter New Password</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="password" name="confPass" class="form-control" id="floatingPassword" placeholder="Re-enter Your Password" required>
+            <input type="password" name="confPass" id="confirmPassword" class="form-control" id="floatingPassword" placeholder="Re-enter Your Password" required>
             <label for="floatingPassword">Re-enter Your Password</label>
           </div>
         </div>
@@ -78,8 +78,8 @@
             var confirmPassword = document.getElementById("confirmPassword").value;
     
             if (newPassword !== confirmPassword) {
-                alert("New password and confirm password do not match!");
-                event.preventDefault(); // Prevent form submission
+                alert("Password do not match!");
+                event.preventDefault();
             }
         });
     </script>

@@ -1,0 +1,40 @@
+table ,tr,td,th{
+    border: 4px double black;
+    align-items: center;
+    text-align: center;
+}
+table th{
+    padding: 15px;
+}
+table td{
+    padding: 5px;
+    font-size: 1.1rem;
+}
+th{
+    font-size: 1.3rem;
+}
+#attendenceTable{
+    margin: 10px auto;
+}
+.top{
+    font-family: "Protest Revolution", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 3.5rem;
+    margin: 5px;
+    text-align: center;
+    color: rgb(125, 125, 125);
+}
+h5,h4,h3{
+    text-align: center;
+}
+.printLink{
+    font-size: 1.4rem;
+    text-align: center;
+    font-weight: 600;
+}
+@media print {
+.printLink {
+    display: none;
+}
+}

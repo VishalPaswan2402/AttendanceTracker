@@ -38,6 +38,9 @@
                 <a class="nav-link textSize" href="/Attendence-Tracker/userGuide">User Guide</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link textSize" href="/Attendence-Tracker/<%=newTeacher._id%>/Delete-Account">Delete Account</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link textSize" href="/">Log Out</a>
               </li>
             </ul>
@@ -47,19 +50,17 @@
 
     <!-- Flash Message... -->
     <% if (success && success.length) { %>
-      <div class="alert alert-success alert-dismissible fade show" role="alert" style="align-items: center; text-align: center; font-size: 1.3rem;">
-        <%= success %>
+      <div class="alert alert-success alert-dismissible fade show" id="flashId" role="alert" style="align-items: center; text-align: center; font-size: 1.3rem;">
+        <%= success %><br>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     <% } else if (error && error.length) { %>
-      <div class="alert alert-danger alert-dismissible fade show" role="alert" style="align-items: center; text-align: center; font-size: 1.3rem;">
-        <%= error %>
+      <div class="alert alert-danger alert-dismissible fade show" id="flashId" role="alert" style="align-items: center; text-align: center; font-size: 1.3rem;">
+        <%= error %><br>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     <%}%>
-    
     <!-- Flash Message... -->
-      
 
     <div class="card cardLog" style="width: 18rem;">
         <img src="/imageFolder/abc.png" class="card-img-top" alt="...">
@@ -74,12 +75,11 @@
         </div>
       </div>
 
-
       <!-- Add New New Class Form... -->
       <form method="post" action="/Attendence-Tracker/<%=newTeacher._id%>/New-Class" id="formBox" style=" display: none; margin-top: 30px;" class="needs-validation" novalidate>
         <div class="card formCard" style="width: 30rem; margin:auto;">
           <div class="card-body">
-            <h2 class="card-title" style="align-items: center; text-align: center;">Teacher's Login</h2>
+            <h2 class="card-title" style="align-items: center; text-align: center;">Add New Class</h2>
             <div class="form-floating mb-3">
               <select class="form-select" name="semester" id="floatingSelect" aria-label="Floating label select example" required>
                 <option value="" disabled selected>Select Your Semester</option>
@@ -109,7 +109,7 @@
           </div>
         </div>
       </form>
-
+      <!-- Add New New Class Form... -->
 
       <div id="foot">
         <div class="icons">
@@ -122,24 +122,8 @@
         Attendance Tracker India, All Rights Reserved.
     </div>
 
-
-    <script>
-      let createNewClass=document.querySelector("#createNewClass");
-      let createNewForm=document.querySelector("#formBox");
-      let cardLog=document.querySelector(".cardLog");
-      let cancleForm=document.querySelector("#cancleForm");
-      createNewClass.addEventListener("click",function(){
-        createNewForm.style.display="block";
-        cardLog.style.display="none";
-      })
-      cancleForm.addEventListener("click",function(){
-        cardLog.style.display="block";
-        createNewForm.style.display="none";
-
-      })
-    </script>
+    <script src="/scriptFolder/teacherHome.js"></script>
     <script src="/scriptFolder/inputData.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
 </body>
 </html>

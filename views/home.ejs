@@ -33,6 +33,14 @@
           </div>
         </div>
       </nav>
+
+      <% if (success && success.length) { %>
+        <div class="alert alert-success alert-dismissible fade show" id="flashId" role="alert" style="align-items: center; text-align: center; font-size: 1.3rem;">
+          <%= success %><br>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <% }%>
+
     <div class="top">Attendance Tracker</div>
             <div class="loginbox">
                 <div class="card" style="width: 18rem;">
@@ -60,6 +68,7 @@
         <i class="fa-regular fa-copyright"></i> 2024
         Attendance Tracker India, All Rights Reserved.
     </div>
+    <script src="/scriptFolder/inputData.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

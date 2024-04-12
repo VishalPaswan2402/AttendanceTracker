@@ -26,7 +26,7 @@
                 <a class="nav-link textSize" href="/">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active textSize" aria-current="page">Student's LogIn</a>
+                <a class="nav-link active textSize" aria-current="page">Edit Student's</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link textSize" href="/Attendence-Tracker/userGuide">User Guide</a>
@@ -80,16 +80,14 @@
               <p class="card-text">All data related to this student will be deleted permanently and cannot be restored again.</p>
               <div style="display: flex; align-items: center; justify-content: space-evenly;">
                 <form action="/Attendence-Tracker/<%=techId%>/<%=classId%>/<%=findStudent._id%>/Students-Destroy?_method=Delete" method="post">
-                    <a href="#" class="card-link"><button type="submit" class="btn btn-danger">Delete</button></a>
+                    <a href="#" class="card-link"><button type="submit" class="btn btn-danger">Confirm</button></a>
                 </form>
-                <a href="/Attendence-Tracker/<%=techId%>/<%=classId%>/Attendence-Sheet" class="card-link"><button type="button" class="btn btn-primary">Go Back</button></a>
+                <a href="/Attendence-Tracker/<%=techId%>/<%=classId%>/Attendence-Sheet" class="card-link"><button type="button" class="btn btn-primary">Cancle</button></a>
               </div>
               
             </div>
           </div>
         </div>
-
-
 
     <div id="foot">
         <div class="icons">
@@ -102,21 +100,7 @@
         Attendance Tracker India, All Rights Reserved.
     </div>
 
-    <script>
-        let remSt=document.querySelector("#removeStudent");
-        let delForm=document.querySelector("#deleteForm");
-        let box=document.querySelector("#editBox");
-        remSt.addEventListener("click",function(){
-            if(delForm.style.display==="block"){
-                delForm.style.display="none";
-                box.style.display="block"
-            }
-            else{
-                delForm.style.display="block";
-                box.style.display="none";
-            }
-        })
-    </script>
+    <script src="/scriptFolder/stEdit.js"></script>
     <script src="/scriptFolder/inputData.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>

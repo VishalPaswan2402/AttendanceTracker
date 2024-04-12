@@ -33,7 +33,7 @@ router.post("/Teacher-HomePage",validateTeacher,wrapAsync(async(req,res,next)=>{
     let{teacherName,teacherEmail,collegeName,subject,password}=req.body;
     let allTech=await Teacher.find({teacherName:teacherName,teacherEmail:teacherEmail,collegeName:collegeName,subject:subject});
     if(allTech.length>0){
-        req.flash("error","You have already created account for same subject...");
+        req.flash("error","You have already created an account for the same subject.");
         res.redirect("/Attendence-Tracker/Teacher-SignUp");
         // next(new expressError(404,"Teacher already exist with same college and subject. Go back to home page for Log In !"));
     }
@@ -42,7 +42,7 @@ router.post("/Teacher-HomePage",validateTeacher,wrapAsync(async(req,res,next)=>{
         await newTeacher.save();
         let id=newTeacher._id;
         let allClass=await newClass.find({teacherId:id});
-        req.flash("success","Account created successfully, add your class to manage attendence...");
+        req.flash("success","Account created successfully ! Add your class to manage attendance.");
         res.redirect(`/Attendence-Tracker/${id}/TeacherHome`);
     }
 }));

@@ -14,6 +14,7 @@ app.use(methodOverride('_method'));
 const mongoose = require('mongoose');
 const expressError=require("./utility/expressError.js");
 const college=require("./models/college.js");
+const allCollege=require("./models/college.js")
 const collegeName=require("./models/collegeName.js");
 const teachers=require("./routes/teachers.js");
 const students=require("./routes/student.js");
@@ -23,6 +24,7 @@ const addClass=require("./routes/newClass.js");
 const newStudent=require("./routes/newStudent.js");
 const markAttendance=require("./routes/markAttendance.js");
 const printAttendance=require("./routes/printAttendance.js");
+const deleteAccount=require("./routes/deleteAccount.js");
 const guide=require("./routes/guide.js");
 const deleteClass=require("./routes/deleteClass.js");
 const cookieParser = require('cookie-parser');
@@ -103,6 +105,9 @@ app.use("/Attendence-Tracker/:techId/:sub/:classId",printAttendance);
 
 // Delete Class...
 app.use("/Attendence-Tracker/:techId/:classId",deleteClass);
+
+// Delete Account...
+app.use("/Attendence-Tracker/:techId",deleteAccount);
 
 // Guide...
 app.use("/Attendence-Tracker",guide);

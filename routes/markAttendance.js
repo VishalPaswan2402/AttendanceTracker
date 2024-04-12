@@ -5,8 +5,6 @@ const expressError=require("../utility/expressError.js");
 const Attendence = require("../models/attendence.js");
 const allStudent = require('../models/students.js');
 
-
-
 // For marking present and absent for all students...
 router.post("/Submit-All-Attendence",wrapAsync( async (req, res,next) => {
     let techId;
@@ -81,7 +79,7 @@ router.post("/Submit-All-Attendence",wrapAsync( async (req, res,next) => {
             }
         }
         }
-        req.flash("success","Attendance saved successfully...");
+        req.flash("success","Attendance saved successfully.");
         res.redirect(`/Attendence-Tracker/${techId}/${claId}/Attendence-Sheet`);
 }));
 
