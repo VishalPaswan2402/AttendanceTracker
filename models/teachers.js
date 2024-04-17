@@ -6,27 +6,27 @@ const passportLocalMongoose=require("passport-local-mongoose");
 const teachersSchema=new Schema({
     username:{
         type:String,
-        required:true
+        required:true,
     },
     teacherName:{
         type:String,
-        required:true
+        required:true,
     },
     teacherEmail:{
         type:String,
-        required:true
+        required:true,
     },
     collegeName:{
         type:String,
-        required:true
+        required:true,
     },
     subject:{
         type:String,
-        required:true
+        required:true,
     },
     password:{
         type:String,
-        required:true
+        required:true,
     },
 });
 

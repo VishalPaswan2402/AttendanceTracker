@@ -22,24 +22,19 @@ const attendenceSchema = new Schema({
     totalClass: {
         type: Number,
         default: 0,
-        // require:true,
     },
     attendenClass: {
         type: Number,
         default: 0,
-        // require:true,
     },
     classPercent: {
         type: Number,
         default: 0,
-        // require:true,
     },
     classPrevious: {
         type: String,
         default:"No",
-        // require:true,
     },
-    // allStudent: [Student.schema],
 });
 
 const Attendence=mongoose.model("Attendence",attendenceSchema);

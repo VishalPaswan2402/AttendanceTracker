@@ -23,7 +23,6 @@ const newClassSchema = new Schema({
         type: String,
         required:true,
     },
-    // allStudent: [Student.schema],
 });
 
 const newClass=mongoose.model("newClass",newClassSchema);
