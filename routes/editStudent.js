@@ -6,7 +6,6 @@ const wrapAsync=require("../utility/wrapAsync.js");
 const expressError=require("../utility/expressError.js");
 const{studentSchema}=require("../schema.js");
 
-
 // Validate student...
 const validateStudent=(req,res,next)=>{
     let{error}=studentSchema.validate(req.body.student);

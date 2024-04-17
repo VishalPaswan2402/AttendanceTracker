@@ -7,7 +7,6 @@ const allStudent = require('../models/students.js');
 
 router.get("/Students-Login",async(req,res)=>{
     let colleges=await allCollege.find();
-    // console.log(colleges);
     res.render("login.ejs",{colleges});
 });
 

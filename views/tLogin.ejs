@@ -50,23 +50,18 @@
     <% }%>
     <!-- Flash Message... -->
 
-
     <div class="top">Attendance Tracker</div>
     
     <form method="post" action="/Attendence-Tracker/Teacher-HomePages" class="needs-validation" novalidate>
       <div class="card formCard">
         <div class="card-body">
           <h2 class="card-title" style="align-items: center; text-align: center;">Teacher's Login</h2>
-          <div class="form-floating mb-3">
-            <input type="text" name="teacherName" class="form-control" id="floatingInput" placeholder="Teacher's Name" required>
-            <label for="floatingInput">Teacher's Name</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="text" name="teacherEmail" class="form-control" placeholder="Teacher's E-mail" required>
-            <label for="floatingPassword">Teacher's E-mail</label>
+          <div class="form-floating mb-3 mt-3">
+            <input type="text" name="username" class="form-control" id="floatingu" placeholder="User Name" required>
+            <label for="floatingu">User Name</label>
           </div>
           <div class="form-floating">
-            <input type="password" name="password" class="form-control " id="password" placeholder="Enter Your Password" required>
+            <input type="password" name="password" class="form-control " id="floatingPassword" placeholder="Enter Your Password" required>
             <label for="floatingPassword">Enter Your Password</label>
           </div>
         </div>

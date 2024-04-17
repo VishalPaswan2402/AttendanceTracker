@@ -6,31 +6,31 @@ const Schema=mongoose.Schema;
 const studentSchema = new Schema({
     studentName: {
         type: String,
-        require:true,
+        required:true,
     },
     studentRollNo: {
         type: String,
-        require:true,
+        required:true,
     },
     studentSemester: {
         type: String,
-        require:true,
+        required:true,
     },
     studentSection: {
         type: String,
-        require:true,
+        required:true,
     },
     teacherId: {
         type: String,
-        require:true,
+        required:true,
     },
     classId: {
         type: String,
-        require:true,
+        required:true,
     },
     college: {
         type: String,
-        require:true,
+        required:true,
     },
     allAttendence:[Attendence.schema],
 });

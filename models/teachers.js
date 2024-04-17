@@ -1,49 +1,35 @@
-const { model } = require("mongoose");
-const newClass = require("./class.js");
-
+const { required } = require("joi");
 const mongoose=require("mongoose");
 const Schema=mongoose.Schema;
+const passportLocalMongoose=require("passport-local-mongoose");
 
 const teachersSchema=new Schema({
+    username:{
+        type:String,
+        required:true
+    },
     teacherName:{
         type:String,
-        require:true,
+        required:true
     },
     teacherEmail:{
         type:String,
-        require:true,
+        required:true
     },
     collegeName:{
         type:String,
-        require:true,
+        required:true
     },
-    // branch:{
-    //     type:String,
-    //     require:true,
-    // },
     subject:{
         type:String,
-        require:true,
+        required:true
     },
-    // year:{
-    //     type:Number,
-    //     require:true,
-    // },
-    // semester:{
-    //     type:Number,
-    //     require:true,
-    // },
-    // section:{
-    //     type:Number,
-    //     require:true,
-    // },
     password:{
         type:String,
-        require:true,
+        required:true
     },
-    // students: [Student.schema],
-    // allClass:[newClass.schema],
 });
 
+teachersSchema.plugin(passportLocalMongoose);
 const Teacher=mongoose.model("Teacher",teachersSchema);
 module.exports=Teacher;

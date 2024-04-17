@@ -1,26 +1,27 @@
+const { required } = require("joi");
 const mongoose=require("mongoose");
 const Schema=mongoose.Schema;
 
 const newClassSchema = new Schema({
     teacherId: {
         type: String,
-        require:true,
+        required:true,
     },
     semester: {
         type: String,
-        require:true,
+        required:true,
     },
     section: {
         type: String,
-        require:true,
+        required:true,
     },
     subject:{
         type: String,
-        require:true,
+        required:true,
     },
     college: {
         type: String,
-        require:true,
+        required:true,
     },
     // allStudent: [Student.schema],
 });

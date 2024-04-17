@@ -54,12 +54,16 @@
           <div class="card-body">
             <h2 class="card-title" style="align-items: center; text-align: center;">Delete Account</h2>
             <div class="form-floating mb-3">
-              <input type="text" name="tName" class="form-control" id="floatingPassword" placeholder="Teacher's Name" required>
-              <label for="floatingPassword">Teachers's Name</label>
+              <input type="text" name="username" class="form-control" id="floatingu" placeholder="User Name" required>
+              <label for="floatingu">User Name</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" name="tEmail" class="form-control" id="floatingPassword" placeholder="Teacher's E-mail" required>
-                <label for="floatingPassword">Teachers's E-mail</label>
+              <input type="text" name="tName" class="form-control" id="floatingt" placeholder="Teacher's Name" required>
+              <label for="floatingt">Teachers's Name</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" name="tEmail" class="form-control" id="floatinge" placeholder="Teacher's E-mail" required>
+                <label for="floatinge">Teachers's E-mail</label>
             </div>
             <div class="form-floating mb-3">
                 <select class="form-select" name="collegeName" id="floatingSelect" aria-label="Floating label select example" required>
@@ -71,11 +75,10 @@
                 <label for="floatingSelect">Select Your College</label>
               </div>
             <div class="form-floating mb-3">
-              <input type="password" name="tpassword" class="form-control " id="password" placeholder="Enter Your Password" required>
+              <input type="password" name="password" class="form-control " id="password" placeholder="Enter Your Password" required>
               <label for="floatingPassword">Enter Your Password</label>
             </div>
             <div style="display: flex; justify-content: space-evenly;">
-              <!-- <button type="submit" class="btn btn-danger" id="deleteAcc" style="display: none;">Delete Account</button> -->
               <button type="button" class="btn btn-danger" id="sureDel">Delete Account</button>
               <a href="/Attendence-Tracker/<%=currTech._id%>/TeacherHome"><button type="button" class="btn btn-primary" id="cancleForm">Back To Classes</button></a>
             </div> 

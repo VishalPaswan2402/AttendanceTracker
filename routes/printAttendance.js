@@ -14,7 +14,6 @@ router.get("/Print-All-Attendence-sheet",wrapAsync(async(req,res,next)=>{
     if(!currAttend){
         req.flash("error","No students have been added to the class yet !");
         res.redirect(`/Attendence-Tracker/${techId}/${classId}/Attendence-Sheet`);
-        // next(new expressError(404,"No any student added in class !"));
     }
     else{
         let currClass=await newClass.findById(classId);
@@ -31,7 +30,6 @@ router.get("/Print-Detained-Attendence-sheet",wrapAsync(async(req,res,next)=>{
     if(!currAttend){
         req.flash("error","No students have been added to the class yet !");
         res.redirect(`/Attendence-Tracker/${techId}/${classId}/Attendence-Sheet`);
-        // next(new expressError(404,"No any student added in class !"));
     }
     else{
         let currClass=await newClass.findById(classId);

@@ -26,24 +26,20 @@ body{
     margin: 5px;
     text-align: center;
     color: blueviolet;
-    /* color: white; */
 }
 .progress{
     height: 60px !important;
     padding: 15px !important;
     font-size: 1.1rem;
-    /* margin: 10px auto; */
 }
 .backColor{
     background-color: transparent;
-    /* background-color: aquamarine; */
     width: 70%;
 }
 h5{
     padding-top: 6px;
 }
 .box{
-
     display: flex;
     align-items: center;
     text-align: center;
@@ -56,14 +52,12 @@ h5{
     border: 2px solid black;
 }
 /* Student card Style... */
-
 .container {
     width: 80%;
     margin: 0 auto;
     padding: 20px;
-    /* background-color: #fff; */
     border-radius: 8px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 4px rgb(196, 195, 195);
 }
 .student-details {
     display: grid;
@@ -71,10 +65,9 @@ h5{
     gap: 20px;
 }
 .student-card {
-    /* background-color: #f9f9f9; */
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 2px 4px rgb(197, 197, 197);
 }
 .student-card p{
     font-size: 1.15rem;
@@ -89,9 +82,7 @@ h5{
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
 }
-
 /* Student card style... */
-
 @media(min-width:300px) and (max-width:700px){
    .top{
     font-size: 2rem;

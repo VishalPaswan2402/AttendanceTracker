@@ -14,7 +14,6 @@ app.use(methodOverride('_method'));
 const mongoose = require('mongoose');
 const expressError=require("./utility/expressError.js");
 const college=require("./models/college.js");
-const allCollege=require("./models/college.js")
 const collegeName=require("./models/collegeName.js");
 const teachers=require("./routes/teachers.js");
 const students=require("./routes/student.js");
@@ -31,6 +30,9 @@ const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 const flash = require('connect-flash');
 const session=require("express-session");
+const passport=require("passport");
+const LocalStrategy=require("passport-local");
+const User=require("./models/teachers.js");
 
 const sessionOption={
     secret:'attendancetracker',
@@ -46,6 +48,11 @@ const sessionOption={
 app.use(session(sessionOption));
 app.use(flash());
 
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 mongoose.connect('mongodb://127.0.0.1:27017/Attendance')
   .then(() => console.log('Connected!'));
@@ -61,12 +68,9 @@ app.use((req,res,next)=>{
 // Save college names...
 
 // collegeName.forEach(College => {
-//     // Create a new College document
 //     const newCollege = new college({
 //         colleges: College.college,
 //     });
-
-//     // Save the document to the database
 //     newCollege.save()
 //         .then(savedCollege => {
 //             console.log(`Saved ${savedCollege.colleges} to the database.`);
@@ -78,39 +82,19 @@ app.use((req,res,next)=>{
 
 // Save college names...
 
-
-// Route For Teacher...
+// All Routers...
 app.use("/Attendence-Tracker",teachers);
-
-// Route For Student...
 app.use("/Attendence-Tracker",students);
-
-// To change password...
 app.use("/Attendence-Tracker",changePassword);
-
-// Edit students...
 app.use("/Attendence-Tracker/:techId/:classId/:stId",editStudent);
-
-// New class...
 app.use("/Attendence-Tracker/:id",addClass);
-
-// New Student...
 app.use("/Attendence-Tracker/:idTeacher/:idClass",newStudent);
-
-// Mark attendence...
 app.use("/Attendence-Tracker",markAttendance);
-
-// Print Attendance...
 app.use("/Attendence-Tracker/:techId/:sub/:classId",printAttendance);
-
-// Delete Class...
 app.use("/Attendence-Tracker/:techId/:classId",deleteClass);
-
-// Delete Account...
 app.use("/Attendence-Tracker/:techId",deleteAccount);
-
-// Guide...
 app.use("/Attendence-Tracker",guide);
+// All Routers...
 
 // Home page...
 app.get("/",(req,res)=>{

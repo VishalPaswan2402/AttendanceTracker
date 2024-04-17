@@ -41,13 +41,13 @@
       <div class="card formCard">
         <div class="card-body">
           <h2 class="card-title" style="align-items: center; text-align: center;">Student's Login</h2>
-          <div class="form-floating mb-3">
-            <input type="text" name="sName" class="form-control" id="floatingInput" placeholder="Student's Name" required>
-            <label for="floatingInput">Student's Name</label>
+          <div class="form-floating mb-3 mt-3">
+            <input type="text" name="sName" class="form-control" id="floatingn" placeholder="Student's Name" required>
+            <label for="floatingn">Student's Name</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="text" name="sRollNo" class="form-control" id="floatingPassword" placeholder="Student's Roll No." required>
-            <label for="floatingPassword">Student's Roll No.</label>
+            <input type="text" name="sRollNo" class="form-control" id="floatingr" placeholder="Student's Roll No." required>
+            <label for="floatingr">Student's Roll No.</label>
           </div>
           <div class="form-floating mb-3">
             <select class="form-select" name="semester" id="floatingSelect" aria-label="Floating label select example" required>
@@ -64,17 +64,17 @@
             <label for="floatingSelect">Current Semester</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="text" name="section" class="form-control" id="floatingPassword" placeholder="Section" required>
-            <label for="floatingPassword">Your Section</label>
+            <input type="text" name="section" class="form-control" id="floatings" placeholder="Section" required>
+            <label for="floatings">Your Section</label>
           </div>
           <div class="form-floating ">
-            <select class="form-select" name="collegeName" id="floatingSelect" aria-label="Floating label select example" required>
+            <select class="form-select" name="collegeName" id="floatingSelectc" aria-label="Floating label select example" required>
               <option value="" disabled selected>Select Your College</option>
               <% colleges.forEach(colleg => { %>
                 <option  value="<%= colleg.colleges %>"><%= colleg.colleges %></option>
             <% }); %>
             </select>
-            <label for="floatingSelect">Select Your College</label>
+            <label for="floatingSelectc">Select Your College</label>
           </div>
         </div>
         <button type="submit" style="width: 15rem; margin: auto;" class="btn btn-primary mb-3">Check Attendance</button>

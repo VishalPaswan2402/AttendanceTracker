@@ -10,7 +10,7 @@ const Attendence = require("../models/attendence.js");
 
 // Validate student...
 const validateStudent=(req,res,next)=>{
-    let{error}=studentSchema.validate(req.body.student);
+    let{error}=studentSchema.validate(req.body);
     if(error){
         let errMsg=error.details.map((el)=>el.message).join(",");
         throw new expressError(400,errMsg);
@@ -62,7 +62,6 @@ router.post("/New-Student",validateStudent,wrapAsync(async(req,res,next)=>{
     else{
         req.flash("error","A student with the same roll number has already been added to the sheet.");
         res.redirect(`/Attendence-Tracker/${idTeacher}/${idClass}/Attendence-Sheet`);
-        // next(new expressError(400,"Student with same roll no. already added in sheet..."));
     }
 }));
 
