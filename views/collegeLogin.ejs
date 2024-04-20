@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Attendance-Tracker Student-Login</title>
+    <title>Attendance-Tracker College-Login</title>
     <link rel="icon" href="/imageFolder/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="    https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,7 +26,7 @@
                 <a class="nav-link textSize" href="/">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active textSize" aria-current="page">Restore Password</a>
+                <a class="nav-link active textSize" aria-current="page">College Login</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link textSize" href="/Attendence-Tracker/userGuide">User Guide</a>
@@ -36,46 +36,41 @@
         </div>
       </nav>
 
-      <% if (error && error.length) { %>
-        <div class="alert alert-success alert-dismissible fade show" id="flashId" role="alert" style="align-items: center; text-align: center; font-size: 1.3rem;">
-          <%= error %><br>
+      <!-- Flash Message... -->
+      <%if (error && error.length) { %>
+        <div class="alert alert-danger alert-dismissible fade show" id="flashId" role="alert" style="align-items: center; text-align: center; font-size: 1.3rem;">
+          <%= error %>
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
       <% }%>
+      <!-- Flash Message... -->
 
     <div class="top">Attendance Tracker</div>
     
-    <form action="/Attendence-Tracker/Restore-Password" method="post" class="needs-validation" novalidate>
+    <form action="/Attendence-Tracker/College-Login" method="post" novalidate class="needs-validation">
       <div class="card formCard">
         <div class="card-body">
-          <h2 class="card-title" style="align-items: center; text-align: center;">Restore Password</h2>
-          <div class="form-floating mb-3 mt-3">
-            <input name="username" class="form-control" id="floatingu" placeholder="User Name" required>
-            <label for="floatingu">User Name</label>
-          </div>
+          <h2 class="card-title" style="align-items: center; text-align: center;">College Login</h2>
           <div class="form-floating mb-3">
-            <input type="text" name="tName" class="form-control" id="floatingt" placeholder="Teacher's Name" required>
-            <label for="floatingt">Teacher's Name</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="email" name="tEmail" class="form-control" id="floatinge" placeholder="Teacher's E-mail" required>
-            <label for="floatinge">Teacher's E-mail</label>
-          </div>
-          <div class="form-floating ">
-            <select class="form-select" name="college" id="floatingSelect" aria-label="Floating label select example" required>
+            <select class="form-select" name="collegeName" id="floatingSelectc" aria-label="Floating label select example" required>
               <option value="" disabled selected>Select Your College</option>
-                  <% colleges.forEach(colleg => { %>
-                      <option value="<%= colleg.colleges %>"><%= colleg.colleges %></option>
-                  <% }); %>
+              <% colleges.forEach(colleg => { %>
+                <option  value="<%= colleg.colleges %>"><%= colleg.colleges %></option>
+            <% }); %>
             </select>
-            <label for="floatingSelect">Select Your College</label>
+            <label for="floatingSelectc">Select Your College</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="email" name="cEmail" class="form-control" id="floatingE" placeholder="College E-mail" required>
+            <label for="floatingE">College E-mail</label>
+          </div>
+          <div class="form-floating">
+            <input type="password" name="password" class="form-control" id="floatingp" placeholder="Enter Password" required>
+            <label for="floatingp">Enter Password</label>
           </div>
         </div>
-        <button type="submit" style="width: 12rem; margin: auto;" class="btn btn-primary mb-3">Find Data</button>
-        <div class="logins mb-3" style="display: flex;">
-          <div class="tec centerItems" style="width: 160px;"><a href="/Attendence-Tracker/Teacher-SignUp" class="teach">Teacher's Signup</a></div>
-          <div class="tec centerItems" style="width: 160px;"><a href="/Attendence-Tracker/Teacher-Login" class="teach">Teacher's Login</a></div>
-      </div>
+        <button type="submit" style="width: 15rem; margin: auto;" class="btn btn-primary mb-3">Log In</button>
+        <div class="tec centerItems mb-3"><a href="/Attendence-Tracker/College-SignUp" class="teach">College SignUp</a></div>
       </div>
     </form>
 

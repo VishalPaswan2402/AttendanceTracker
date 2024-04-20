@@ -60,7 +60,7 @@ body{
 }
 #attend{
     height: 335px;
-    width: 85%;
+    width: 87%;
     border: 2px solid rgb(173, 173, 173);
     margin: auto;
     z-index: -10;
@@ -121,7 +121,7 @@ body{
 }
 #downl{
     height: 30px;
-    width: 80%;
+    width: 87%;
     margin: 10px auto;
     display: flex;
     align-items: center;
@@ -174,8 +174,8 @@ body{
 }
 #deleteClass{
     position: absolute !important;
-    top: 250px;
-    left: 39%;
+    top: 33%;
+    left: 40%;
     z-index: 10000;
     display: none;
 }
@@ -194,4 +194,22 @@ body{
 .form-control{
     border: 2px solid rgb(182, 180, 180);
 }
+#SubAttend,#notMarkedAtt{
+    position: absolute;
+    top: 33%;
+    left: 40%;
+    z-index: 10000;
+    display: none;
+}
 
+@media(min-width:1150px) and (max-width:1250px){
+    .prof{
+        width: 85%;
+    }
+    #attend{
+        width: 97%;
+    }
+    #downl{
+        width: 97%;
+    }
+}

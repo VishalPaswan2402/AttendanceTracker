@@ -12,6 +12,10 @@ const teachersSchema=new Schema({
         type:String,
         required:true,
     },
+    teacherId:{
+        type:String,
+        required:true,
+    },
     teacherEmail:{
         type:String,
         required:true,

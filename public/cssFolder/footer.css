@@ -94,7 +94,9 @@
     background-color: rgb(15, 179, 0);
     animation: borderSuccess 3s forwards;
 }
-
+input[type="text"] {
+    text-transform: capitalize; /* Capitalize first letter of each word */
+}
 @keyframes borderSuccess {
     0% {
         width: 100%;

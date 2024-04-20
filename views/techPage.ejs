@@ -158,7 +158,7 @@
         <button class="new mar studentNew">Add New Student</button>
         <a href="/Attendence-Tracker/<%=classTech._id%>/<%=classTech.subject%>/<%=allClass._id%>/Print-All-Attendence-sheet"><button class="new mar">Attendence Sheet</button></a>
         <a href="/Attendence-Tracker/<%=classTech._id%>/<%=classTech.subject%>/<%=allClass._id%>/Print-Detained-Attendence-sheet"><button class="new mar">Detained Students</button></a>
-        <button class="new mar" id="showClickedValues">Submit Attendence</button>
+        <button class="new mar" id="subAttendence" >Submit Attendence</button>
     </div>
 
     <div id="foot">
@@ -182,7 +182,7 @@
                 <label for="floatingn">Student's Name</label>
               </div>
               <div class="form-floating">
-                <input type="text" name="studentRollNo" class="form-control" id="floatingr" placeholder="Student Roll No." required>
+                <input type="text" name="studentRollNo" class="form-control" style="text-transform: uppercase;" id="floatingr" placeholder="Student Roll No." required>
                 <label for="floatingr">Student's Roll No.</label>
               </div>
               <div style="display: flex; align-items: center; justify-content: space-evenly; margin-top: 20px;">
@@ -197,7 +197,7 @@
     <!-- Alert to delete class -->
     <div class="card" style="width: 20rem;" id="deleteClass">
         <div class="card-body">
-          <i class="fa-solid fa-circle-exclamation" id="alertSt"></i>
+          <i class="fa-solid fa-triangle-exclamation" id="alertSt"></i>
           <h4 class="card-subtitle mb-2 text-body-secondary" style="margin-top: 5px;text-align: center;" >Are You Sure ?</h4>
           <p class="card-text" style="margin-top: 5px;text-align: center;">It will delete all the data related to <%=allClass.semester%> <%=allClass.section%> class permanently, and you won't be able to restore it again.</p>
           <div style="display: flex; align-items: center; justify-content: space-evenly;">
@@ -210,9 +210,36 @@
       </div>
       <!-- Alert to delete class -->
 
-    <script src="/scriptFolder/inputData.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="/scriptFolder/techPage.js"></script>
+      <!-- Submit class attendance -->
+    <div class="card" style="width: 20rem;" id="SubAttend">
+      <div class="card-body">
+        <i class="fa-solid fa-circle-exclamation" id="alertSt"></i>
+        <h4 class="card-subtitle mb-2 text-body-secondary" style="margin-top: 5px;text-align: center;" >Are You Sure ?</h4>
+        <p class="card-text" style="margin-top: 5px;text-align: center;">Once attendance is submitted, it cannot be changed later.</p>
+        <div style="display: flex; align-items: center; justify-content: space-evenly;">
+          <button type="button" id="submitAllAttend" class="btn btn-primary">Submit it</button>
+          <button type="button" id="cancleSub" class="btn btn-danger">Cancle it</button>
+        </div>
+      </div>
+    </div>
+    <!-- Submit class attendance -->
+
+    <!-- Attendance not marked -->
+    <div class="card" style="width: 20rem;" id="notMarkedAtt">
+      <div class="card-body">
+        <i class="fa-solid fa-circle-radiation" id="alertSt"></i>
+        <h4 class="card-subtitle mb-2 text-body-secondary" style="margin-top: 5px;text-align: center;" >Not Marked</h4>
+        <p class="card-text" style="margin-top: 5px;text-align: center;">Some students have not been marked as present or absent. Please go back and mark them also.</p>
+        <div style="display: flex; align-items: center; justify-content: space-evenly;">
+          <button type="button" id="notMarkedOk" class="btn btn-primary" style="width: 6rem;">OK</button>
+        </div>
+      </div>
+    </div>
+    <!-- Attendance not marked -->
+
+  <script src="/scriptFolder/inputData.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="/scriptFolder/techPage.js"></script>
 </body>
 </html>

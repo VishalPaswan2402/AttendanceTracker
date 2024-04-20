@@ -13,8 +13,10 @@ const methodOverride = require('method-override');
 app.use(methodOverride('_method'));
 const mongoose = require('mongoose');
 const expressError=require("./utility/expressError.js");
+const bcrypt=require("bcrypt");
 const college=require("./models/college.js");
 const collegeName=require("./models/collegeName.js");
+const collegeR=require("./routes/college.js")
 const teachers=require("./routes/teachers.js");
 const students=require("./routes/student.js");
 const changePassword=require("./routes/changePassword.js");
@@ -24,6 +26,8 @@ const newStudent=require("./routes/newStudent.js");
 const markAttendance=require("./routes/markAttendance.js");
 const printAttendance=require("./routes/printAttendance.js");
 const deleteAccount=require("./routes/deleteAccount.js");
+const addToCollege=require("./routes/addToCollege.js");
+const editCollT=require("./routes/editCollT.js");
 const guide=require("./routes/guide.js");
 const deleteClass=require("./routes/deleteClass.js");
 const cookieParser = require('cookie-parser');
@@ -51,6 +55,7 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
+
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
@@ -83,6 +88,9 @@ app.use((req,res,next)=>{
 // Save college names...
 
 // All Routers...
+app.use("/Attendence-Tracker",collegeR);
+app.use("/Attendence-Tracker/:id",addToCollege);
+app.use("/Attendence-Tracker/:collId/:tecId",editCollT);
 app.use("/Attendence-Tracker",teachers);
 app.use("/Attendence-Tracker",students);
 app.use("/Attendence-Tracker",changePassword);
@@ -113,4 +121,3 @@ app.use((err,req,res,next)=>{
 app.listen(port,()=>{
     console.log("Server is listening...")
 });
-

@@ -49,15 +49,11 @@
         <div class="card-body">
           <h2 class="card-title" style="align-items: center; text-align: center;">Change Password</h2>
           <div class="form-floating mb-3 mt-3">
-            <input type="text" name="tName" class="form-control" id="floatingt" placeholder="User Name" value="<%=findTech.username%>" required readonly>
+            <input name="tName" class="form-control" id="floatingt" placeholder="User Name" value="<%=findTech.username%>" required readonly>
             <label for="floatingt">User Name</label>
           </div>
-          <div class="form-floating mb-3" style="display: none;">
-            <input type="text" name="oldPass" class="form-control" id="floatingo" placeholder="old Password" value="<%=findTech.username%>" required readonly>
-            <label for="floatingo">Old Password</label>
-          </div>
           <div class="form-floating mb-3">
-            <input type="text" name="tEmail" class="form-control" id="floatinge" placeholder="Teacher's E-mail" value="<%=findTech.teacherEmail%>" required readonly>
+            <input type="email" name="tEmail" class="form-control" id="floatinge" placeholder="Teacher's E-mail" value="<%=findTech.teacherEmail%>" required readonly>
             <label for="floatinge">Teacher's E-mail</label>
           </div>
           <div class="form-floating mb-3">

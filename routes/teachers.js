@@ -7,7 +7,8 @@ const{teachersSchema}=require("../schema.js");
 const expressError=require("../utility/expressError.js");
 const Teacher = require('../models/teachers.js');
 const allCollege=require("../models/college.js");
-const newClass = require('../models/class.js');
+const collegeT = require('../models/collegeT.js');
+const collegeReg = require('../models/collegeReg.js');
 
 const validateTeacher=(req,res,next)=>{
     let{error}=teachersSchema.validate(req.body);
@@ -32,33 +33,46 @@ router.get("/Teacher-SignUp",async(req,res)=>{
 });
 
 // Teacher signup...
-router.post("/Teacher-HomePage",validateTeacher,wrapAsync(async(req,res,next)=>{
-    let{username,teacherName,teacherEmail,collegeName,subject,password,cPassword}=req.body;
+router.post("/Teacher-SignUp",validateTeacher,wrapAsync(async(req,res,next)=>{
+    let{username,teacherName,teacherEmail,teacherId,collegeName,subject,password,cPassword}=req.body;
     if(password!=cPassword){
-        req.session.signupFormData = { username, teacherName, teacherEmail, collegeName, subject };
-        req.flash("error","Password not match.");
+        req.session.signupFormData = { username, teacherName, teacherEmail, teacherId, collegeName, subject };
+        req.flash("error","Password does not match.");
+        return res.redirect("/Attendence-Tracker/Teacher-SignUp");
+    }
+    let currCol=await collegeReg.findOne({collegeName:collegeName});
+    if(!currCol){
+        req.flash("error","College account does not exixt.");
         return res.redirect("/Attendence-Tracker/Teacher-SignUp");
     }
     else{
-        let allTech=await Teacher.find({username:username});
-        if(allTech.length>0){
-            req.session.signupFormData = { username, teacherName, teacherEmail, collegeName, subject };
-            req.flash("error","User with this username already exists.");
+        let collTid=await collegeT.findOne({collegeId:currCol._id,idNo:teacherId});
+        if(!collTid){
+            req.session.signupFormData = { username, teacherName, teacherEmail, teacherId, collegeName, subject };
+            req.flash("error","Your ID does not exist in the college database.");
             return res.redirect("/Attendence-Tracker/Teacher-SignUp");
         }
         else{
-            let hashed=await bcrypt.hash(password,13);
-            let newTeacher=new Teacher({username,teacherName,teacherEmail,collegeName,subject,password:hashed});
-            await newTeacher.save();
-            let id=newTeacher._id;
-            req.flash("success","Account created successfully ! Add your class to manage attendance.");
-            res.redirect(`/Attendence-Tracker/${id}/TeacherHome`);
+            let allTech=await Teacher.findOne({username:username});
+            if(allTech){
+                req.session.signupFormData = { username, teacherName, teacherEmail, teacherId, collegeName, subject };
+                req.flash("error","User with this username already exists.");
+                return res.redirect("/Attendence-Tracker/Teacher-SignUp");
+            }
+            else{
+                let hashed=await bcrypt.hash(password,13);
+                let newTeacher=new Teacher({username,teacherName,teacherId:teacherId,teacherEmail,collegeName,subject,password:hashed});
+                await newTeacher.save();
+                let id=newTeacher._id;
+                req.flash("success","Account created successfully.");
+                res.redirect(`/Attendence-Tracker/${id}/TeacherHome`);
+            }
         }
     }
 }));
 
 // Teacher's login...
-router.post("/Teacher-HomePages",async(req,res,next)=>{
+router.post("/Teacher-Login",wrapAsync(async(req,res,next)=>{
     let{username,password}=req.body;
     let currTeacher=await Teacher.findOne({username:username});
     if(!currTeacher){
@@ -76,6 +90,7 @@ router.post("/Teacher-HomePages",async(req,res,next)=>{
             res.redirect(`/Attendence-Tracker/${id}/TeacherHome`);
         }
     }
-})
+}));
+
 
 module.exports=router;

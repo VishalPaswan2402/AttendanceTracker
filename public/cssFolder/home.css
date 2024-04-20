@@ -32,6 +32,13 @@ body{
     width: 10rem !important;
     margin-top: 0.5rem;
 }
+#flexBox{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: center;
+    justify-content: space-evenly;
+}
 @media(min-width:430px) and (max-width:500px){
     .top{
         font-size: 2.7rem;

@@ -4,20 +4,12 @@ let studentForm=document.querySelector("#studentForm");
 let studentNew=document.querySelector(".studentNew");
 let cancleForm=document.querySelector(".studCancle");
 studentNew.addEventListener("click",function(){
-    if(studentForm.style.display==="block"){
-        studentForm.style.display="none";
-        document.getElementById("overlay").style.display = "none";
-    }
-    else{
-        studentForm.style.display="block";
-        document.getElementById("overlay").style.display = "block";
-    }
+    studentForm.style.display="block";
+    document.getElementById("overlay").style.display = "block";
 })
 cancleForm.addEventListener("click",function(){
-    if(studentForm.style.display==="block"){
-        studentForm.style.display="none";
-        document.getElementById("overlay").style.display = "none";
-    }
+    studentForm.style.display="none";
+    document.getElementById("overlay").style.display = "none";
 })
 
 // Form For Delete Class....
@@ -25,20 +17,12 @@ let deleteClass=document.querySelector("#deleteClass");
 let delClass=document.querySelector("#delClass");
 let cancleDel=document.querySelector("#cancleDel");
 delClass.addEventListener("click",function(){
-    if(deleteClass.style.display==="block"){
-        deleteClass.style.display="none";
-        document.getElementById("overlay").style.display = "none";
-    }
-    else{
-        deleteClass.style.display="block";
-        document.getElementById("overlay").style.display = "block";
-    }
+    deleteClass.style.display="block";
+    document.getElementById("overlay").style.display = "block";
 })
 cancleDel.addEventListener("click",function(){
-    if(deleteClass.style.display==="block"){
-        deleteClass.style.display="none";
-        document.getElementById("overlay").style.display = "none";
-    }
+    deleteClass.style.display="none";
+    document.getElementById("overlay").style.display = "none";
 })
 
 // To change background color according to percentage...
@@ -106,8 +90,6 @@ $(document).ready(function () {
         if (!presentStudents.includes(studentId)) {
             presentStudents.push(studentId); // Add the student ID to the presentStudents array
         }
-        // Check if any of the arrays is empty and hide/show the button accordingly
-        checkArrays();
     });
     // When a button with class 'absent' is clicked
     $('.absent').click(function () {
@@ -121,33 +103,44 @@ $(document).ready(function () {
         if (!absentStudents.includes(studentId)) {
             absentStudents.push(studentId); // Add the student ID to the absentStudents array
         }
-        // Check if any of the arrays is empty and hide/show the button accordingly
-        checkArrays();
     });
-    // Function to check if any of the arrays is empty and hide/show the button accordingly
-    function checkArrays() {
-        if (presentStudents.length === 0 && absentStudents.length === 0) {
-            $('#showClickedValues').hide(); // Hide the button if any of the arrays is empty
-        } else {
-            $('#showClickedValues').show(); // Show the button if both arrays have elements
-        }
-    }
+
     // When the external button is clicked
-    $('#showClickedValues').click(function () {
+    $('#submitAllAttend').click(function () {
         // Update the values of the form inputs
         $('#allPresent').val(presentStudents.join(',')); // Join the present students array into a comma-separated string
         $('#allAbsent').val(absentStudents.join(',')); // Join the absent students array into a comma-separated string
         // Check if the sum of present and absent students is less than the total number of students
         var totalMarkedStudents = presentStudents.length + absentStudents.length;
-        // console.log(totalMarkedStudents);
-        // console.log(totalStudents);
         if (totalMarkedStudents < totalStudents) {
-            alert("Some students are not marked as either present or absent!");
+            // Some students not marked
+            let allSub=document.querySelector("#notMarkedAtt");
+            allSub.style.display="block"
+            document.getElementById("overlay").style.display = "block";
         } else {
             // Submit the form if all students are marked
             $('#finalFormSubmit').submit();
         }
     });
-    // Initially check if any of the arrays is empty and hide/show the button accordingly
-    checkArrays();
 });
+
+let subBox=document.querySelector("#SubAttend");
+let subAttendence=document.querySelector("#subAttendence");
+subAttendence.addEventListener("click",function(){
+    document.getElementById("overlay").style.display = "block";
+    subBox.style.display="block";
+});
+
+let cancleSubF=document.querySelector("#cancleSub");
+cancleSubF.addEventListener("click",function(){
+    document.getElementById("overlay").style.display = "none";
+    subBox.style.display="none";
+})
+
+let notMarkedOk=document.querySelector("#notMarkedOk");
+notMarkedOk.addEventListener("click",function(){
+    document.getElementById("overlay").style.display = "none";
+    document.getElementById("notMarkedAtt").style.display = "none";
+    document.getElementById("SubAttend").style.display = "none";
+})
+
