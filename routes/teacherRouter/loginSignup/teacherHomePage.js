@@ -2,7 +2,7 @@ let express=require('express');
 const router=express.Router({mergeParams:true});
 const wrapAsync=require("../../../utility/wrapAsync.js");
 const expressError=require("../../../utility/expressError.js");
-const collegeTeacher=require("../../../models/collegeT.js");
+const collegeTeacher=require("../../../models/collegeTeacher.js");
 const Teacher = require('../../../models/teachers.js');
 const newClass = require('../../../models/class.js');
 

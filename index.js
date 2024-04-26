@@ -43,7 +43,7 @@ const session=require("express-session");
 const passport=require("passport");
 const LocalStrategy=require("passport-local");
 const Teacher=require("./models/teachers.js");
-const newCollege=require("./models/collegeReg.js");
+const collegeAccount=require("./models/collegeAccount.js");
 
 const sessionOption={
     secret:'attendancetracker',
@@ -62,12 +62,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.use('teacher', new LocalStrategy(Teacher.authenticate()));
-passport.use('college', new LocalStrategy(newCollege.authenticate()));
+passport.use('college', new LocalStrategy(collegeAccount.authenticate()));
 
 passport.serializeUser(function(user, done) {
     if (user instanceof Teacher) {
         done(null, { type: 'teacher', id: user.id });
-    } else if (user instanceof newCollege) {
+    } else if (user instanceof collegeAccount) {
         done(null, { type: 'college', id: user.id });
     } else {
         done(new Error('Unsupported user type'));
@@ -80,7 +80,7 @@ passport.deserializeUser(async function(obj, done) {
             const teacher = await Teacher.findById(obj.id);
             done(null, teacher);
         } else if (obj.type === 'college') {
-            const college = await newCollege.findById(obj.id);
+            const college = await collegeAccount.findById(obj.id);
             done(null, college);
         } else {
             done(new Error('Unsupported user type'));
@@ -102,11 +102,12 @@ app.use((req,res,next)=>{
 })  
 
 
-// Save college names...
+// Save college names and email...
 
 // collegeName.forEach(College => {
 //     const newCollege = new college({
 //         colleges: College.college,
+//         email: College.email,
 //     });
 //     newCollege.save()
 //         .then(savedCollege => {
@@ -117,7 +118,7 @@ app.use((req,res,next)=>{
 //         });
 // });
 
-// Save college names...
+// Save college names and email...
 
 // All Routers...
 app.use("/Attendence-Tracker",collegeLoginLogout);

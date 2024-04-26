@@ -2,7 +2,7 @@ const { required, string } = require("joi");
 const mongoose=require("mongoose");
 const Schema=mongoose.Schema;
 
-const newCollegeTSchema=new Schema({
+const collegeTeacherSchema=new Schema({
     collegeId:{
         type:String,
         required:true,
@@ -21,5 +21,5 @@ const newCollegeTSchema=new Schema({
     },
 });
 
-const newCollegeT=mongoose.model("newCollegeT",newCollegeTSchema);
-module.exports=newCollegeT;
+const collegeTeacher=mongoose.model("collegeTeacher",collegeTeacherSchema);
+module.exports=collegeTeacher;

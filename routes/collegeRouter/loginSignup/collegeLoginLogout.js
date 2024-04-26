@@ -20,7 +20,7 @@ router.post("/College-Login",passport.authenticate('college',{failureRedirect:'C
 }));
 
 // College logOut...
-router.get("/College-Log-Out",async(req,res,next)=>{
+router.get("/College-Log-Out",wrapAsync(async(req,res,next)=>{
     req.logout((err)=>{
         if(err){
             return next(err);
@@ -28,6 +28,6 @@ router.get("/College-Log-Out",async(req,res,next)=>{
         req.flash("success","You are logged out successfully.");
         res.redirect("/Attendence-Tracker/College-Login");
     })
-})
+}));
 
 module.exports=router;

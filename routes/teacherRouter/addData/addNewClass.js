@@ -3,7 +3,6 @@ const router=express.Router({mergeParams:true});
 const wrapAsync=require("../../../utility/wrapAsync.js");
 const expressError=require("../../../utility/expressError.js");
 const{newClassSchema}=require("../../../middlewares/schema.js");
-const collegeTeacher=require("../../../models/collegeT.js");
 const Teacher = require('../../../models/teachers.js');
 const newClass = require('../../../models/class.js');
 const allStudent = require('../../../models/students.js');

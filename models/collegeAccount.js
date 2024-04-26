@@ -4,7 +4,7 @@ const mongoose=require("mongoose");
 const Schema=mongoose.Schema;
 const passportLocalMongoose=require("passport-local-mongoose");
 
-const newCollegeSchema=new Schema({
+const collegeAccountSchema=new Schema({
     collegeType:{
         type:String,
         required:true,
@@ -19,6 +19,6 @@ const newCollegeSchema=new Schema({
     },
 });
 
-newCollegeSchema.plugin(passportLocalMongoose);
-const newCollege=mongoose.model("newCollege",newCollegeSchema);
-module.exports=newCollege;
+collegeAccountSchema.plugin(passportLocalMongoose);
+const collegeAccount=mongoose.model("collegeAccount",collegeAccountSchema);
+module.exports=collegeAccount;

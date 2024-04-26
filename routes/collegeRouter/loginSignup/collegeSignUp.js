@@ -3,11 +3,12 @@ const router=express.Router();
 const wrapAsync=require("../../../utility/wrapAsync.js");
 const expressError=require("../../../utility/expressError.js");
 const allCollege=require("../../../models/college.js");
-const collegeReg=require("../../../models/collegeReg.js");
-const { newCollegeSchema } = require('../../../middlewares/schema.js');
+const collegeAccount=require("../../../models/collegeAccount.js");
+const collegeTeacher=require("../../../models/collegeTeacher.js");
+const {collegeAccountSchema} = require('../../../middlewares/schema.js');
 
 const validateCollege=(req,res,next)=>{
-    let{error}=newCollegeSchema.validate(req.body);
+    let{error}=collegeAccountSchema.validate(req.body);
     if(error){
         let errMsg=error.details.map((el)=>el.message).join(",");
         throw new expressError(400,errMsg);
@@ -34,14 +35,14 @@ router.post("/College-SignPage",validateCollege,wrapAsync(async(req,res,next)=>{
         res.redirect("/Attendence-Tracker/College-SignUp");
     }
     else{
-        let findColl=await collegeReg.findOne({username:collegeName});
+        let findColl=await collegeAccount.findOne({username:collegeName});
         if(findColl){
             req.flash("error","Account already exist. Please Login to your account.");
             res.redirect("/Attendence-Tracker/College-Login")
         }
         else{
-            let newCollege=new collegeReg({username:collegeName,collegeType:collegeType,location:cLocation,eMail:eMail});
-            let registerCollege=await collegeReg.register(newCollege,password)
+            let newCollege=new collegeAccount({username:collegeName,collegeType:collegeType,location:cLocation,eMail:eMail});
+            let registerCollege=await collegeAccount.register(newCollege,password)
             let id=registerCollege._id;
             req.login(registerCollege,(err)=>{
                 if(err){

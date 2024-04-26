@@ -36,12 +36,12 @@ router.put("/Students-Edit",isTeacLoggedIn,isOwner,validateStudent,wrapAsync(asy
 }));
 
 // Destroy Student...
-router.delete("/Students-Destroy",isTeacLoggedIn,isOwner,async(req,res)=>{
+router.delete("/Students-Destroy",isTeacLoggedIn,isOwner,wrapAsync(async(req,res)=>{
     let{techId,classId,stId}=req.params;
     let destroyStudent=await allStudent.findByIdAndDelete(stId);
     let destAtt=await Attendence.deleteMany({studentId:stId});
     req.flash("success","Student data deleted successfully.");
     res.redirect(`/Attendence-Tracker/${techId}/${classId}/Attendence-Sheet`);
-});
+}));
 
 module.exports=router

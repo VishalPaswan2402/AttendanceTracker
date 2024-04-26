@@ -20,7 +20,7 @@ module.exports.studentSchema=Joi.object({
     studentRollNo:Joi.string().required(),
 });
 
-module.exports.newCollegeSchema=Joi.object({
+module.exports.collegeAccountSchema=Joi.object({
     collegeName:Joi.string().required(),
     collegeType:Joi.string().required(),
     cLocation:Joi.string().required(),
@@ -29,7 +29,7 @@ module.exports.newCollegeSchema=Joi.object({
     cPassword:Joi.string().required(),
 });
 
-module.exports.newCollegeTSchema=Joi.object({
+module.exports.collegeTeacherSchema=Joi.object({
     teacherName:Joi.string().required(),
     gender:Joi.string().required(),
     idNo:Joi.string().required(),

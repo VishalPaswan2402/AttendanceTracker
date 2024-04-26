@@ -5,8 +5,8 @@ const{teachersSchema}=require("../../../middlewares/schema.js");
 const expressError=require("../../../utility/expressError.js");
 const Teacher = require('../../../models/teachers.js');
 const allCollege=require("../../../models/college.js");
-const collegeT = require('../../../models/collegeT.js');
-const collegeReg = require('../../../models/collegeReg.js');
+const collegeTeacher = require('../../../models/collegeTeacher.js');
+const collegeAccount = require('../../../models/collegeAccount.js');
 
 const validateTeacher=(req,res,next)=>{
     let{error}=teachersSchema.validate(req.body);
@@ -20,12 +20,12 @@ const validateTeacher=(req,res,next)=>{
 };
 
 // Teacher signup page...
-router.get("/Teacher-SignUp",async(req,res)=>{
+router.get("/Teacher-SignUp",wrapAsync(async(req,res)=>{
     let colleges=await allCollege.find();
     const formData = req.session.signupFormData || {};
     delete req.session.signupFormData;
     res.render("teacher/teacherSignup.ejs",{colleges,formData});
-});
+}));
 
 // Teacher signup...
 router.post("/Teacher-SignUp",validateTeacher,wrapAsync(async(req,res,next)=>{
@@ -35,13 +35,13 @@ router.post("/Teacher-SignUp",validateTeacher,wrapAsync(async(req,res,next)=>{
         req.flash("error","Password does not match.");
         return res.redirect("/Attendence-Tracker/Teacher-SignUp");
     }
-    let currCol=await collegeReg.findOne({username:collegeName});
+    let currCol=await collegeAccount.findOne({username:collegeName});
     if(!currCol){
         req.flash("error","College account does not exist.");
         return res.redirect("/Attendence-Tracker/Teacher-SignUp");
     }
     else{
-        let collTid=await collegeT.findOne({collegeId:currCol._id,idNo:teacherId});
+        let collTid=await collegeTeacher.findOne({collegeId:currCol._id,idNo:teacherId});
         if(!collTid){
             req.session.signupFormData = { username, teacherName, teacherEmail, teacherId, collegeName, subject };
             req.flash("error","Your ID does not exist in the college database.");

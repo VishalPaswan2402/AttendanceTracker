@@ -6,10 +6,10 @@ const allCollege=require("../../models/college.js");
 const allStudent = require('../../models/students.js');
 
 // Login form...
-router.get("/Students-Login",async(req,res)=>{
+router.get("/Students-Login",wrapAsync(async(req,res)=>{
     let colleges=await allCollege.find();
     res.render("student/studentLogin.ejs",{colleges});
-});
+}));
 
 // Students Page...
 router.get("/Students-Page",wrapAsync(async(req,res,next)=>{

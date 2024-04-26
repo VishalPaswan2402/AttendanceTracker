@@ -18,7 +18,7 @@ router.post("/Teacher-Login",saveRedirectUrl,passport.authenticate('teacher',{fa
 }));
 
 // Teachers Logout...
-router.get("/Teacher-Log-Out",async(req,res,next)=>{
+router.get("/Teacher-Log-Out",wrapAsync(async(req,res,next)=>{
     req.logout((err)=>{
         if(err){
             return next(err);
@@ -26,6 +26,6 @@ router.get("/Teacher-Log-Out",async(req,res,next)=>{
         req.flash("success","You are logged out successfully.");
         res.redirect("/Attendence-Tracker/Teacher-Login");
     })
-})
+}));
 
 module.exports=router;
