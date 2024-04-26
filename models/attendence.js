@@ -35,6 +35,10 @@ const attendenceSchema = new Schema({
         type: String,
         default:"No",
     },
+    previousMark: {
+        type: String,
+        default:"-",
+    },
 });
 
 const Attendence=mongoose.model("Attendence",attendenceSchema);

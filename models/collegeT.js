@@ -1,6 +1,7 @@
 const { required, string } = require("joi");
 const mongoose=require("mongoose");
 const Schema=mongoose.Schema;
+
 const newCollegeTSchema=new Schema({
     collegeId:{
         type:String,

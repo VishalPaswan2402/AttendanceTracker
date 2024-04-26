@@ -1,11 +1,10 @@
-const { required, string } = require("joi");
+const passport=require("passport");
+const LocalStrategy=require("passport-local");
 const mongoose=require("mongoose");
 const Schema=mongoose.Schema;
+const passportLocalMongoose=require("passport-local-mongoose");
+
 const newCollegeSchema=new Schema({
-    collegeName:{
-        type:String,
-        required:true,
-    },
     collegeType:{
         type:String,
         required:true,
@@ -18,11 +17,8 @@ const newCollegeSchema=new Schema({
         type:String,
         required:true,
     },
-    password:{
-        type:String,
-        required:true,
-    },
 });
 
+newCollegeSchema.plugin(passportLocalMongoose);
 const newCollege=mongoose.model("newCollege",newCollegeSchema);
 module.exports=newCollege;

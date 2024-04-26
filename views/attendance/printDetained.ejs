@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="icon" href="/imageFolder/logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="    https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Acme&family=Charm:wght@400;700&family=Comic+Neue:wght@700&family=DM+Serif+Display&family=Edu+NSW+ACT+Foundation:wght@400..700&family=Exo:ital,wght@0,100..900;1,100..900&family=Gochi+Hand&family=Jersey+25&family=Kalam:wght@300;400;700&family=Lora:ital,wght@0,400..700;1,400..700&family=Lugrasimo&family=Macondo&family=Monoton&family=Oleo+Script:wght@400;700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Protest+Revolution&family=Protest+Riot&family=Roboto+Slab:wght@100..900&family=Satisfy&family=Sedgwick+Ave+Display&family=Song+Myung&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=DM+Serif+Display&family=Lora:ital,wght@0,400..700;1,400..700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Protest+Revolution&family=Roboto+Slab:wght@100..900&family=Song+Myung&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/cssFolder/print.css">
+</head>
+<body>
+    <div class="top">Attendance Tracker</div>
+    <p class="printLink">Click on the link to <a href="#" id="printAttendance">Print</a> or click to <a href="/Attendence-Tracker/<%=techId%>/<%=classId%>/Attendence-Sheet">Go Back</a></p>
+        <h4>Attendence percentage is less than 75.</h4>
+        <%if(totalStudents.length>0){%>
+        <h5><%=currTech.collegeName%></h5>
+        <h5>Teacher : <%=currTech.teacherName%></h5>
+        <h5>Semester : <%=currClass.semester%></h5>
+        <h5>Section || Subject : <%=currClass.section%> || <%=currTech.subject%></h5>
+        <%if(currAttend){%>
+        <h5>Total Class : <%=currAttend.totalClass%> </h5>
+        <%}%>
+        <%}%>
+    
+    <table id="attendenceTable">
+        <%if(currAttend.totalClass){%>
+        <tr>
+            <th>Student's Name</th>
+            <th>Roll No.</th>
+            <th>Attended</th>
+            <th>Percentage</th>
+        </tr>
+        <%}else{%>
+            <br>
+            <h3>No classes held for this subject.</h3>
+        <%}%>
+        <%if(currAttend.totalClass!=0){%>    
+        <%if(totalStudents.length>0){%>
+        <%for (let i = 0; i < totalStudents.length; i++){%>
+            <%let student = totalStudents[i];%>
+            <%let attend = student.allAttendence;%>
+            <%for (let j = 0; j < attend.length; j++) {%>
+                <%let attendanceRecord = attend[j];%>
+                <%if (attendanceRecord.teacherId === techId && attendanceRecord.classId === classId && attendanceRecord.classPercent<75) {%>
+                    <tr>
+                        <td><%=student.studentName%></td>
+                        <td><%=student.studentRollNo%></td>
+                        <td><%=attendanceRecord.attendenClass%></td>
+                        <td><%=attendanceRecord.classPercent%></td>
+                    </tr>
+                <%}%>
+            <%}%>
+        <%}%>
+        <%}%>
+        <%}%>
+    </table>
+
+    <script>
+        document.getElementById('printAttendance').addEventListener('click', function() {
+            window.print();
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

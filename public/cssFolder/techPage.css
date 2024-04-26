@@ -19,7 +19,7 @@ body{
     font-weight: 600;
 }
 .top{
-    font-family: "Protest Revolution", sans-serif;
+    font-family: "Charm", cursive;
     font-weight: 700;
     font-style: normal;
     font-size: 3.5rem;
@@ -29,7 +29,6 @@ body{
 .prof{
     height: 125px;
     width: 80%;
-    /* background-color: red; */
     margin: 15px auto;
     border: 3px solid black;
     border-radius: 20px;
@@ -87,7 +86,7 @@ body{
 
 .editAttSt{
     text-decoration: none;
-    color: rgb(171, 171, 171);
+    color: #c2bebe;
     cursor: pointer;
     width: 3%;
     display: flex;
@@ -131,13 +130,6 @@ body{
     margin-right:28px;
     background-color: rgb(137, 222, 248);
     width: 180px;
-}
-#todayClass{
-    cursor: pointer;
-}
-#todayClass:hover{
-    background-color: blueviolet;
-    color: white;
 }
 .preP{
     background-color: rgb(219, 252, 169)

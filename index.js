@@ -3,7 +3,7 @@ const app=express();
 const path=require("path");
 app.use(express.urlencoded({extended:true}));
 app.set("view engine","ejs");
-app.set("views",path.join(__dirname,"/views"));
+app.set("views",path.join(__dirname,"views"));
 app.use(express.static(path.join(__dirname,"public")));
 let port="8080";
 const bodyParser = require('body-parser');
@@ -16,27 +16,34 @@ const expressError=require("./utility/expressError.js");
 const bcrypt=require("bcrypt");
 const college=require("./models/college.js");
 const collegeName=require("./models/collegeName.js");
-const collegeR=require("./routes/college.js")
-const teachers=require("./routes/teachers.js");
-const students=require("./routes/student.js");
-const changePassword=require("./routes/changePassword.js");
-const editStudent=require("./routes/editStudent.js");
-const addClass=require("./routes/newClass.js");
-const newStudent=require("./routes/newStudent.js");
-const markAttendance=require("./routes/markAttendance.js");
-const printAttendance=require("./routes/printAttendance.js");
-const deleteAccount=require("./routes/deleteAccount.js");
-const addToCollege=require("./routes/addToCollege.js");
-const editCollT=require("./routes/editCollT.js");
-const guide=require("./routes/guide.js");
-const deleteClass=require("./routes/deleteClass.js");
+const collegeLoginLogout=require("./routes/collegeRouter/loginSignup/collegeLoginLogout.js");
+const collegeSignUp=require("./routes/collegeRouter/loginSignup/collegeSignUp.js");
+const changeCollegePassword=require("./routes/collegeRouter/changePassword/changeCollegePassword.js");
+const teacherSignUp=require("./routes/teacherRouter/loginSignup/teacherSignUp.js");
+const teachersLoginLogout=require("./routes/teacherRouter/loginSignup/teachersLoginLogout.js");
+const students=require("./routes/studentRouter/student.js");
+const changeTeacherPassword=require("./routes/teacherRouter/editData/changeTeacherPassword.js");
+const editStudent=require("./routes/teacherRouter/editData/editStudent.js");
+const addNewClass=require("./routes/teacherRouter/addData/addNewClass.js");
+const teacherHomePage=require("./routes/teacherRouter/loginSignup/teacherHomePage.js");
+const addNewStudent=require("./routes/teacherRouter/addData/addNewStudent.js");
+const markAttendance=require("./routes/teacherRouter/attendance/markAttendance.js");
+const printAttendance=require("./routes/teacherRouter/attendance/printAttendance.js");
+const deleteTeacherAccount=require("./routes/teacherRouter/deleteData/deleteTeacherAccount.js");
+const searchTeacher=require("./routes/collegeRouter/addTeacher/searchTeacher.js");
+const addCollegeTeacher=require("./routes/collegeRouter/addTeacher/addCollegeTeacher.js");
+const editCollegeTeacher=require("./routes/collegeRouter/addTeacher/editCollegeTeacher.js");
+const deleteTeacherClass=require("./routes/teacherRouter/deleteData/deleteTeacherClass.js");
+const guide=require("./routes/userGuide/guide.js");
+
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 const flash = require('connect-flash');
 const session=require("express-session");
 const passport=require("passport");
 const LocalStrategy=require("passport-local");
-const User=require("./models/teachers.js");
+const Teacher=require("./models/teachers.js");
+const newCollege=require("./models/collegeReg.js");
 
 const sessionOption={
     secret:'attendancetracker',
@@ -44,28 +51,53 @@ const sessionOption={
     saveUninitialized:true,
     cookie:{
         expires:Date.now()+7*24*60*60*1000,
-        maxAge:7*24*60*60*1000,
+         maxAge:7*24*60*60*1000,
         httpOnly:true,
     },
 };
 
 app.use(session(sessionOption));
 app.use(flash());
-
 app.use(passport.initialize());
 app.use(passport.session());
-passport.use(new LocalStrategy(User.authenticate()));
 
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+passport.use('teacher', new LocalStrategy(Teacher.authenticate()));
+passport.use('college', new LocalStrategy(newCollege.authenticate()));
+
+passport.serializeUser(function(user, done) {
+    if (user instanceof Teacher) {
+        done(null, { type: 'teacher', id: user.id });
+    } else if (user instanceof newCollege) {
+        done(null, { type: 'college', id: user.id });
+    } else {
+        done(new Error('Unsupported user type'));
+    }
+});
+
+passport.deserializeUser(async function(obj, done) {
+    try {
+        if (obj.type === 'teacher') {
+            const teacher = await Teacher.findById(obj.id);
+            done(null, teacher);
+        } else if (obj.type === 'college') {
+            const college = await newCollege.findById(obj.id);
+            done(null, college);
+        } else {
+            done(new Error('Unsupported user type'));
+        }
+    } catch (error) {
+        done(error);
+    }
+});
 
 mongoose.connect('mongodb://127.0.0.1:27017/Attendance')
   .then(() => console.log('Connected!'));
 
-// Middleware for flash message...
+// Middleware for flash message and store current User...
 app.use((req,res,next)=>{
     res.locals.success=req.flash("success");
     res.locals.error=req.flash("error");
+    res.locals.currUsers=req.user;
     next();
 })  
 
@@ -88,25 +120,30 @@ app.use((req,res,next)=>{
 // Save college names...
 
 // All Routers...
-app.use("/Attendence-Tracker",collegeR);
-app.use("/Attendence-Tracker/:id",addToCollege);
-app.use("/Attendence-Tracker/:collId/:tecId",editCollT);
-app.use("/Attendence-Tracker",teachers);
+app.use("/Attendence-Tracker",collegeLoginLogout);
+app.use("/Attendence-Tracker/:id",addCollegeTeacher);
+app.use("/Attendence-Tracker",collegeSignUp);
+app.use("/Attendence-Tracker",changeCollegePassword);
+app.use("/Attendence-Tracker/:id",searchTeacher);
+app.use("/Attendence-Tracker/:collId/:tecId",editCollegeTeacher);
+app.use("/Attendence-Tracker",teacherSignUp);
+app.use("/Attendence-Tracker",teachersLoginLogout);
 app.use("/Attendence-Tracker",students);
-app.use("/Attendence-Tracker",changePassword);
+app.use("/Attendence-Tracker",changeTeacherPassword);
 app.use("/Attendence-Tracker/:techId/:classId/:stId",editStudent);
-app.use("/Attendence-Tracker/:id",addClass);
-app.use("/Attendence-Tracker/:idTeacher/:idClass",newStudent);
+app.use("/Attendence-Tracker/:id",addNewClass);
+app.use("/Attendence-Tracker/:id",teacherHomePage);
+app.use("/Attendence-Tracker/:idTeacher/:idClass",addNewStudent);
 app.use("/Attendence-Tracker",markAttendance);
 app.use("/Attendence-Tracker/:techId/:sub/:classId",printAttendance);
-app.use("/Attendence-Tracker/:techId/:classId",deleteClass);
-app.use("/Attendence-Tracker/:techId",deleteAccount);
+app.use("/Attendence-Tracker/:techId/:classId",deleteTeacherClass);
+app.use("/Attendence-Tracker/:techId",deleteTeacherAccount);
 app.use("/Attendence-Tracker",guide);
 // All Routers...
 
 // Home page...
 app.get("/",(req,res)=>{
-    res.render("home.ejs");
+    res.render("homePage/home");
 });
 
 app.all("*",(req,res,next)=>{
@@ -115,7 +152,7 @@ app.all("*",(req,res,next)=>{
 
 app.use((err,req,res,next)=>{
     let{statusCode=500,message="Something went wrong..."}=err;
-    res.status(statusCode).render("error.ejs",{message});
+    res.status(statusCode).render("errorAndGuide/error.ejs",{message});
 });
 
 app.listen(port,()=>{

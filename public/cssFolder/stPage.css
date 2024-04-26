@@ -19,7 +19,8 @@ body{
     font-weight: 600;
 }
 .top{
-    font-family: "Protest Revolution", sans-serif;
+    /* font-family: "Protest Revolution", sans-serif; */
+    font-family: "Charm", cursive;
     font-weight: 700;
     font-style: normal;
     font-size: 3.5rem;
@@ -34,7 +35,7 @@ body{
 }
 .backColor{
     background-color: transparent;
-    width: 70%;
+    width: 95%;
 }
 h5{
     padding-top: 6px;
@@ -47,7 +48,7 @@ h5{
     margin-top: 10px;
 }
 .subName{
-    width: 80px;
+    width: 100px;
     height: 30px;
     border: 2px solid black;
 }
@@ -73,18 +74,40 @@ h5{
     font-size: 1.15rem;
 }
 
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 8px;
+    text-align: center;
+  }
+  tr th{
+    background-color: rgb(197, 231, 243);
+  }
+
+  tr:nth-child(odd){background-color: #e0e0e0}
+
+
 @media only screen and (max-width: 768px) {
     .container {
         width: 90%;
     }
-
     .student-details {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
 }
 /* Student card style... */
-@media(min-width:300px) and (max-width:700px){
+@media(min-width:350px) and (max-width:700px){
    .top{
-    font-size: 2rem;
+    font-size: 2.4rem;
    }
 }
+@media(min-width:300px) and (max-width:350px){
+    .top{
+     font-size: 2.1rem;
+    }
+ }
