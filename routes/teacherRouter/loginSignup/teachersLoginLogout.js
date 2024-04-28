@@ -24,7 +24,7 @@ router.get("/Teacher-Log-Out",wrapAsync(async(req,res,next)=>{
             return next(err);
         }
         req.flash("success","You are logged out successfully.");
-        res.redirect("/Attendence-Tracker/Teacher-Login");
+        res.redirect("/");
     })
 }));
 

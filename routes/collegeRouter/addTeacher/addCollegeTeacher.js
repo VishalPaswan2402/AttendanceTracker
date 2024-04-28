@@ -41,7 +41,8 @@ router.get("/College-Page",wrapAsync(async(req,res,next)=>{
     let currCollege=await collegeAccount.findById(id);
     let allTeachers=await collegeTeacher.find({collegeId:id});
     let=teacherName=0;
-    res.render("college/collegePage.ejs",{currCollege,allTeachers,teacherName});
+    let searching="False";
+    res.render("college/collegePage.ejs",{currCollege,allTeachers,searching,teacherName});
 }));
 
 module.exports=router;

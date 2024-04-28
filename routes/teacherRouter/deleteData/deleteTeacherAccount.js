@@ -23,7 +23,7 @@ router.delete("/Delete-My-Account",isTeacLoggedIn,isOwner,passport.authenticate(
     let{techId}=req.params;
     let{username,tName,tEmail,collegeName,password}=req.body;
     let{user}=req;
-    if(user.username===username,user.teacherName===tName,user.teacherEmail===tEmail,user.collegeName===collegeName){
+    if(user.username===username && user.teacherName===tName && user.teacherEmail===tEmail && user.collegeName===collegeName){
         let currClass=await newClass.find({teacherId:techId});
             if(currClass.length>0){
                 for(let i=0;i<currClass.length;i++){

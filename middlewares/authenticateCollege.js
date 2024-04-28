@@ -6,7 +6,6 @@ module.exports.isCollLoggedIn=(req,res,next)=>{
     next();
 };
 
-
 module.exports.isCollegeOwner = async (req, res, next) => {
     const { id } = req.params;
     let{user}=req;

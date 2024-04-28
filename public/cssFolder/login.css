@@ -18,7 +18,7 @@ body{
     font-family: "Charm", cursive;
     font-weight: 700;
     font-style: normal;
-    font-size: 3.5rem;
+    font-size: 3.3rem;
     margin: 5px;
     text-align: center;
     color: blueviolet;
@@ -67,6 +67,22 @@ body{
     position: absolute;
     top: 33%;
     left: 40.5%;
+}
+
+#notMatch{
+    position: absolute;
+    top: 16.2rem;
+    left: 38rem;
+    z-index: 10000;
+    display: none;
+}
+#alertSt{
+    color: red;
+    font-size: 2.5rem;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-evenly;
 }
 
 @media(min-width:420px) and (max-width:500px){

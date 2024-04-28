@@ -7,14 +7,12 @@ module.exports.isTeacLoggedIn=(req,res,next)=>{
     next();
 };
 
-
 module.exports.saveRedirectUrl=(req,res,next)=>{
     if(req.session.redirectUrl){
         res.locals.redirectUrl=req.session.redirectUrl;
     }
     next();
 };
-
 
 module.exports.isOwner = async (req, res, next) => {
     const { techId } = req.params;

@@ -19,11 +19,10 @@ body{
     font-weight: 600;
 }
 .top{
-    /* font-family: "Protest Revolution", sans-serif; */
     font-family: "Charm", cursive;
     font-weight: 700;
     font-style: normal;
-    font-size: 3.5rem;
+    font-size: 3.3rem;
     margin: 5px;
     text-align: center;
     color: blueviolet;
@@ -52,6 +51,7 @@ h5{
     height: 30px;
     border: 2px solid black;
 }
+
 /* Student card Style... */
 .container {
     width: 80%;
@@ -101,6 +101,7 @@ table {
     }
 }
 /* Student card style... */
+
 @media(min-width:350px) and (max-width:700px){
    .top{
     font-size: 2.4rem;

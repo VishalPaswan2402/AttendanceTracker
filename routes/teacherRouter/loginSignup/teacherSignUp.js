@@ -7,6 +7,8 @@ const Teacher = require('../../../models/teachers.js');
 const allCollege=require("../../../models/college.js");
 const collegeTeacher = require('../../../models/collegeTeacher.js');
 const collegeAccount = require('../../../models/collegeAccount.js');
+const {otpSender}=require("../../../middlewares/otpSender.js");
+const {registerOtpMail}=require("../../../middlewares/registerOtpMail.js");
 
 const validateTeacher=(req,res,next)=>{
     let{error}=teachersSchema.validate(req.body);
@@ -30,9 +32,10 @@ router.get("/Teacher-SignUp",wrapAsync(async(req,res)=>{
 // Teacher signup...
 router.post("/Teacher-SignUp",validateTeacher,wrapAsync(async(req,res,next)=>{
     let{username,teacherName,teacherEmail,teacherId,collegeName,subject,password,cPassword}=req.body;
+    let subject1=subject;
     if(password!=cPassword){
         req.session.signupFormData = { username, teacherName, teacherEmail, teacherId, collegeName, subject };
-        req.flash("error","Password does not match.");
+        req.flash("error","Passwords do not match. Please make sure you enter the same password in both fields.");
         return res.redirect("/Attendence-Tracker/Teacher-SignUp");
     }
     let currCol=await collegeAccount.findOne({username:collegeName});
@@ -51,20 +54,17 @@ router.post("/Teacher-SignUp",validateTeacher,wrapAsync(async(req,res,next)=>{
             let allTech=await Teacher.findOne({username:username});
             if(allTech){
                 req.session.signupFormData = { username, teacherName, teacherEmail, teacherId, collegeName, subject };
-                req.flash("error","User with this username already exists.");
+                req.flash("error","A user with this username already exists. Please try another username.");
                 return res.redirect("/Attendence-Tracker/Teacher-SignUp");
             }
             else{
-                let newTeacher=new Teacher({username:username,teacherName,teacherId:teacherId,teacherEmail,collegeName,subject:subject.toUpperCase()});
-                let registerTeacher=await Teacher.register(newTeacher,password);
-                let id=newTeacher._id;
-                req.login(registerTeacher,(err)=>{
-                    if(err){
-                        return next(err);
-                    }
-                    req.flash("success","Account created successfully.");
-                    res.redirect(`/Attendence-Tracker/${id}/TeacherHome`);
-                })
+                let subject="Verification code for registration on Attendance Tracker.";
+                let genOtp=Math.floor(1000 + Math.random() * 9000);
+                let otp=otpSender(teacherEmail,subject," ",registerOtpMail(teacherName,genOtp));
+                console.log(genOtp);
+                let dataArray=[username,teacherName,teacherId,teacherEmail,collegeName,subject1,password,genOtp];
+                req.session.TechData = { username,teacherName,teacherId,teacherEmail,collegeName,subject1,password };
+                res.render("teacher/verifyTeacherEmail.ejs",{dataArray});
             }
         }
     }

@@ -26,7 +26,7 @@ router.get("/College-Log-Out",wrapAsync(async(req,res,next)=>{
             return next(err);
         }
         req.flash("success","You are logged out successfully.");
-        res.redirect("/Attendence-Tracker/College-Login");
+        res.redirect("/");
     })
 }));
 

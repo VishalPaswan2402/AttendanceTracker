@@ -24,7 +24,7 @@ module.exports.collegeAccountSchema=Joi.object({
     collegeName:Joi.string().required(),
     collegeType:Joi.string().required(),
     cLocation:Joi.string().required(),
-    eMail:Joi.string().required(),
+    // eMail:Joi.string().required(),
     password:Joi.string().required(),
     cPassword:Joi.string().required(),
 });

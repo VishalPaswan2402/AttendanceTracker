@@ -11,7 +11,7 @@ body{
     font-family: "Charm", cursive;
     font-weight: 700;
     font-style: normal;
-    font-size: 3.5rem;
+    font-size: 3.3rem;
     /* margin: 5px; */
     text-align: center;
     color: blueviolet;
@@ -40,18 +40,34 @@ body{
     text-align: center;
     justify-content: space-evenly;
 }
+.collegeName{
+    font-size: 1.7rem;
+    font-family: "Teko", sans-serif;
+    font-weight: 600;
+    color: brown;
+    text-align: center;
+}
 @media(min-width:430px) and (max-width:500px){
     .top{
-        font-size: 2.7rem;
+        font-size: 2.5rem;
+    }
+    .collegeName{
+        font-size: 1.4rem;
     }
 }
 @media(min-width:350px) and (max-width:430px){
     .top{
         font-size: 2.4rem;
     }
+    .collegeName{
+        font-size: 1.2rem;
+    }
 }
 @media(min-width:300px) and (max-width:350px){
     .top{
         font-size: 2.2rem;
+    }
+    .collegeName{
+        font-size: 1.1rem;
     }
 }

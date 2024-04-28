@@ -18,6 +18,7 @@ const college=require("./models/college.js");
 const collegeName=require("./models/collegeName.js");
 const collegeLoginLogout=require("./routes/collegeRouter/loginSignup/collegeLoginLogout.js");
 const collegeSignUp=require("./routes/collegeRouter/loginSignup/collegeSignUp.js");
+const sendVerifyCollegeOtp=require("./routes/collegeRouter/loginSignup/sendVerifyCollegeOtp.js");
 const changeCollegePassword=require("./routes/collegeRouter/changePassword/changeCollegePassword.js");
 const teacherSignUp=require("./routes/teacherRouter/loginSignup/teacherSignUp.js");
 const teachersLoginLogout=require("./routes/teacherRouter/loginSignup/teachersLoginLogout.js");
@@ -34,16 +35,15 @@ const searchTeacher=require("./routes/collegeRouter/addTeacher/searchTeacher.js"
 const addCollegeTeacher=require("./routes/collegeRouter/addTeacher/addCollegeTeacher.js");
 const editCollegeTeacher=require("./routes/collegeRouter/addTeacher/editCollegeTeacher.js");
 const deleteTeacherClass=require("./routes/teacherRouter/deleteData/deleteTeacherClass.js");
+const sendVerifyTeacherOtp=require("./routes/teacherRouter/loginSignup/sendVerifyTeacherOtp.js");
 const guide=require("./routes/userGuide/guide.js");
+// const saveAllColleges=require("./middlewares/saveCollegeName.js");
 
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 const flash = require('connect-flash');
 const session=require("express-session");
-const passport=require("passport");
-const LocalStrategy=require("passport-local");
-const Teacher=require("./models/teachers.js");
-const collegeAccount=require("./models/collegeAccount.js");
+const passport=require("./middlewares/passportConfig.js");
 
 const sessionOption={
     secret:'attendancetracker',
@@ -61,35 +61,6 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.use('teacher', new LocalStrategy(Teacher.authenticate()));
-passport.use('college', new LocalStrategy(collegeAccount.authenticate()));
-
-passport.serializeUser(function(user, done) {
-    if (user instanceof Teacher) {
-        done(null, { type: 'teacher', id: user.id });
-    } else if (user instanceof collegeAccount) {
-        done(null, { type: 'college', id: user.id });
-    } else {
-        done(new Error('Unsupported user type'));
-    }
-});
-
-passport.deserializeUser(async function(obj, done) {
-    try {
-        if (obj.type === 'teacher') {
-            const teacher = await Teacher.findById(obj.id);
-            done(null, teacher);
-        } else if (obj.type === 'college') {
-            const college = await collegeAccount.findById(obj.id);
-            done(null, college);
-        } else {
-            done(new Error('Unsupported user type'));
-        }
-    } catch (error) {
-        done(error);
-    }
-});
-
 mongoose.connect('mongodb://127.0.0.1:27017/Attendance')
   .then(() => console.log('Connected!'));
 
@@ -101,33 +72,16 @@ app.use((req,res,next)=>{
     next();
 })  
 
-
-// Save college names and email...
-
-// collegeName.forEach(College => {
-//     const newCollege = new college({
-//         colleges: College.college,
-//         email: College.email,
-//     });
-//     newCollege.save()
-//         .then(savedCollege => {
-//             console.log(`Saved ${savedCollege.colleges} to the database.`);
-//         })
-//         .catch(error => {
-//             console.error(`Error saving college: ${error}`);
-//         });
-// });
-
-// Save college names and email...
-
 // All Routers...
 app.use("/Attendence-Tracker",collegeLoginLogout);
 app.use("/Attendence-Tracker/:id",addCollegeTeacher);
 app.use("/Attendence-Tracker",collegeSignUp);
+app.use("/Attendence-Tracker",sendVerifyCollegeOtp);
 app.use("/Attendence-Tracker",changeCollegePassword);
 app.use("/Attendence-Tracker/:id",searchTeacher);
 app.use("/Attendence-Tracker/:collId/:tecId",editCollegeTeacher);
 app.use("/Attendence-Tracker",teacherSignUp);
+app.use("/Attendence-Tracker",sendVerifyTeacherOtp);
 app.use("/Attendence-Tracker",teachersLoginLogout);
 app.use("/Attendence-Tracker",students);
 app.use("/Attendence-Tracker",changeTeacherPassword);

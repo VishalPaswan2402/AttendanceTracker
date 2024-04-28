@@ -7,11 +7,10 @@ body{
     background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
 }
 .top{
-    /* font-family: "Protest Revolution", sans-serif; */
     font-family: "Charm", cursive;
     font-weight: 700;
     font-style: normal;
-    font-size: 3.5rem;
+    font-size: 3.3rem;
     margin: 5px;
     text-align: center;
     color: blueviolet;
