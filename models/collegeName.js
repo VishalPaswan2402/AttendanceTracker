@@ -1,7 +1,11 @@
 const collegeName=[
+    {
+      "college": "ABC Engineering College",
+      "email":"abc@gmail.com"
+    },
      {
       "college": "Anand Engineering College-Agra",
-      "email":"abc@gmail.com"
+      "email":"abcd@gmail.com"
     },
     {
       "college": "Faculty of Engineering & Technology-Agra College-Agra",
