@@ -1,11 +1,10 @@
 let express=require('express');
 const router=express.Router({mergeParams:true});
-const allStudent = require('../../../models/students.js');
-const Attendence = require("../../../models/attendence.js");
 const wrapAsync=require("../../../utility/wrapAsync.js");
 const expressError=require("../../../utility/expressError.js");
 const{studentSchema}=require("../../../middlewares/schema.js");
 const {isTeacLoggedIn,isOwner}=require("../../../middlewares/authenticateTeacher.js");
+const teacherControllerForEditData=require("../../../controllers/teacherControllers/editData/editStudents.js");
 
 // Validate student...
 const validateStudent=(req,res,next)=>{
@@ -20,28 +19,18 @@ const validateStudent=(req,res,next)=>{
 };
 
 // Student Edit Page...
-router.get("/Edit-Student-Page",isTeacLoggedIn,isOwner,wrapAsync(async(req,res,next)=>{
-    let{stId,techId,classId}=req.params;
-    let findStudent=await allStudent.findById(stId);
-    res.render("student/studentEdit.ejs",{findStudent,techId,classId});
-}));
+router.get("/Edit-Student-Page",isTeacLoggedIn,isOwner,wrapAsync(
+    teacherControllerForEditData.editStudentForm
+));
 
 //Student edit form...
-router.put("/Students-Edit",isTeacLoggedIn,isOwner,validateStudent,wrapAsync(async(req,res,next)=>{
-    let{techId,classId,stId}=req.params;
-    let{sName,sRollNo}=req.body;
-    let stEdit=await allStudent.findByIdAndUpdate(stId,({studentName:sName,studentRollNo:sRollNo}));
-    req.flash("success","Student data edited successfully.");
-    res.redirect(`/Attendence-Tracker/${techId}/${classId}/Attendence-Sheet`);
-}));
+router.put("/Students-Edit",isTeacLoggedIn,isOwner,validateStudent,wrapAsync(
+    teacherControllerForEditData.editStudentData
+));
 
 // Destroy Student...
-router.delete("/Students-Destroy",isTeacLoggedIn,isOwner,wrapAsync(async(req,res)=>{
-    let{techId,classId,stId}=req.params;
-    let destroyStudent=await allStudent.findByIdAndDelete(stId);
-    let destAtt=await Attendence.deleteMany({studentId:stId});
-    req.flash("success","Student data deleted successfully.");
-    res.redirect(`/Attendence-Tracker/${techId}/${classId}/Attendence-Sheet`);
-}));
+router.delete("/Students-Destroy",isTeacLoggedIn,isOwner,wrapAsync(
+    teacherControllerForEditData.destroyStudents
+));
 
 module.exports=router

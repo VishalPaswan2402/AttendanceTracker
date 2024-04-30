@@ -1,4 +1,4 @@
-const countdownTime = 0.5; // 2 minutes
+const countdownTime = 2; // 2 minutes
 const startTime = new Date().getTime();
 const countdownElement = document.getElementById('countdown');
 const timerInterval = setInterval(function() {

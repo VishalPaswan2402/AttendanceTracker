@@ -3,31 +3,23 @@ const router=express.Router();
 const passport=require("passport");
 const wrapAsync=require("../../../utility/wrapAsync.js");
 const expressError=require("../../../utility/expressError.js");
-const allCollege=require("../../../models/college.js");
+const collegeControllersforLoginSignup=require("../../../controllers/collegeControllers/loginSignup/collegeLoginLogout.js");
 
 // College Login Page...
-router.get("/College-Login",wrapAsync(async(req,res,next)=>{
-    let colleges=await allCollege.find();
-    res.render("college/collegeLogin.ejs",{colleges});
-}));
+router.get("/College-Login",wrapAsync(
+    collegeControllersforLoginSignup.loginPage
+));
 
 // College Login...
-router.post("/College-Login",passport.authenticate('college',{failureRedirect:'College-Login',failureFlash:true}),wrapAsync(async(req,res,next)=>{
-    let{user}=req;
-    let id=user._id;
-    req.flash("success","Welcome back to Attendance Tracker.");
-    res.redirect(`/Attendence-Tracker/${id}/College-Page`);
-}));
+router.post("/College-Login",passport.authenticate(
+    'college',{failureRedirect:'College-Login',failureFlash:true
+}),wrapAsync(
+    collegeControllersforLoginSignup.loginUser
+));
 
 // College logOut...
-router.get("/College-Log-Out",wrapAsync(async(req,res,next)=>{
-    req.logout((err)=>{
-        if(err){
-            return next(err);
-        }
-        req.flash("success","You are logged out successfully.");
-        res.redirect("/");
-    })
-}));
+router.get("/College-Log-Out",wrapAsync(
+    collegeControllersforLoginSignup.logOut
+));
 
 module.exports=router;

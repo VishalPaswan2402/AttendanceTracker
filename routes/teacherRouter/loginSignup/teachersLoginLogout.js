@@ -3,29 +3,21 @@ const router=express.Router();
 const wrapAsync=require("../../../utility/wrapAsync.js");
 const passport=require("passport");
 const expressError=require("../../../utility/expressError.js");
-const { saveRedirectUrl } = require('../../../middlewares/authenticateTeacher.js');
+// const { saveRedirectUrl } = require('../../../middlewares/authenticateTeacher.js');
+const teacherControllerForLoginSignup=require("../../../controllers/teacherControllers/loginSignup/teacherLoginLogout.js");
 
-router.get("/Teacher-Login",(req,res)=>{
-    res.render("teacher/teacherLogin.ejs");
-});
+router.get("/Teacher-Login",teacherControllerForLoginSignup.loginForm);
 
 // Teacher's login...
-router.post("/Teacher-Login",saveRedirectUrl,passport.authenticate('teacher',{failureRedirect:'Teacher-Login',failureFlash:true}),wrapAsync(async(req,res,next)=>{
-    let{user}=req;
-    let redirectUrl=res.locals.redirectUrl || `/Attendence-Tracker/${user._id}/TeacherHome`;
-    req.flash("success","Welcome back to Attendance Tracker.");
-    res.redirect(redirectUrl);
-}));
+router.post("/Teacher-Login",passport.authenticate(
+    'teacher',{failureRedirect:'Teacher-Login',failureFlash:true
+}),wrapAsync(
+    teacherControllerForLoginSignup.loginUser
+));
 
 // Teachers Logout...
-router.get("/Teacher-Log-Out",wrapAsync(async(req,res,next)=>{
-    req.logout((err)=>{
-        if(err){
-            return next(err);
-        }
-        req.flash("success","You are logged out successfully.");
-        res.redirect("/");
-    })
-}));
+router.get("/Teacher-Log-Out",wrapAsync(
+    teacherControllerForLoginSignup.logOut
+));
 
 module.exports=router;

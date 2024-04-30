@@ -1,28 +1,10 @@
-let express=require('express');
-const router=express.Router({mergeParams:true});
-const wrapAsync=require("../../../utility/wrapAsync.js");
 const expressError=require("../../../utility/expressError.js");
-const{studentSchema}=require("../../../middlewares/schema.js");
 const newClass = require('../../../models/class.js');
 const Teacher = require('../../../models/teachers.js');
 const allStudent = require('../../../models/students.js');
 const Attendence = require("../../../models/attendence.js");
-const {isTeacLoggedIn,isOwner}=require("../../../middlewares/authenticateTeacher.js");
 
-// Validate student...
-const validateStudent=(req,res,next)=>{
-    let{error}=studentSchema.validate(req.body);
-    if(error){
-        let errMsg=error.details.map((el)=>el.message).join(",");
-        throw new expressError(400,errMsg);
-    }
-    else{
-        next();
-    }
-};
-
-//To add new student...
-router.post("/New-Student",isTeacLoggedIn,isOwner,validateStudent,wrapAsync(async(req,res,next)=>{
+module.exports.addNewStudent=async(req,res,next)=>{
     let{idTeacher,idClass}=req.params;
     let{studentName,studentRollNo}=req.body;
     let currClass=await newClass.findById(idClass);
@@ -71,16 +53,13 @@ router.post("/New-Student",isTeacLoggedIn,isOwner,validateStudent,wrapAsync(asyn
         req.flash("error","A student with the same roll number has already been added to the sheet.");
         res.redirect(`/Attendence-Tracker/${idTeacher}/${idClass}/Attendence-Sheet`);
     }
-}));
+};
 
-//Teachers attendence sheet page...
-router.get("/Attendence-Sheet",isTeacLoggedIn,isOwner,wrapAsync(async(req,res,next)=>{
+module.exports.teacherSheet=async(req,res,next)=>{
     let{idTeacher,idClass}=req.params;
     let classTech=await Teacher.findById(idTeacher);
     let allClass=await newClass.findById(idClass);
     let students=await allStudent.find({studentSemester:allClass.semester,studentSection:allClass.section,college:allClass.college});
     let studentAttendence=await Attendence.find({teacherId:idTeacher,classId:idClass}); 
     res.render("teacher/teacherPage.ejs",{classTech,students,allClass,studentAttendence});
-}));
-
-module.exports=router;
+};
