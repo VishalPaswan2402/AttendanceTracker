@@ -106,7 +106,7 @@
       <div class="card-body">
         <i class="fa-solid fa-triangle-exclamation" id="alertSt"></i>
         <h4 class="card-subtitle mb-2 text-body-secondary" style="margin-top: 5px;text-align: center;" >Are You Sure ?</h4>
-        <p class="card-text" style="margin-top: 5px;text-align: center;">It will delete data only from the college database, and the teacher won't be able to access their account.</p>
+        <p class="card-text" style="margin-top: 5px;text-align: center;">It will delete all data related to <strong><%=tecData.teacherName%></strong> , ID No. <strong><%=tecData.idNo%></strong> , and the deleted data can't be restored.</p>
         <div style="display: flex; align-items: center; justify-content: space-evenly;">
           <form action="/Attendence-Tracker/<%=collId%>/<%=tecId%>/collegeTeacher-Destroy?_method=Delete" method="post">
               <a href="#" class="card-link"><button type="submit" class="btn btn-danger">Delete it</button></a>

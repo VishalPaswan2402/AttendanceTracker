@@ -164,10 +164,10 @@
     <%if(currUsers && currUsers._id.equals(classTech._id)){%>
     <div id="downl">
         <button class="new mar studentNew">Add New Student</button>
-        <a href="/Attendence-Tracker/<%=classTech._id%>/<%=classTech.subject%>/<%=allClass._id%>/Print-All-Attendence-sheet"><button class="new mar">Attendence Sheet</button></a>
+        <a href="/Attendence-Tracker/<%=classTech._id%>/<%=classTech.subject%>/<%=allClass._id%>/Print-All-Attendence-sheet"><button class="new mar">Attendance Sheet</button></a>
         <a href="/Attendence-Tracker/<%=classTech._id%>/<%=classTech.subject%>/<%=allClass._id%>/Print-Detained-Attendence-sheet"><button class="new mar">Detained Students</button></a>
         <%if(students.length>0){%>
-          <button class="new mar" id="subAttendence" >Submit Attendence</button>
+          <button class="new mar" id="subAttendence" >Submit Attendance</button>
         <%}%>
     </div>
     <%}%>

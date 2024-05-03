@@ -13,7 +13,7 @@ module.exports.addNewClass=async(req,res,next)=>{
     let subject=newTeacher.subject;
     let findClass=await newClass.find({semester:semester,section:section.toUpperCase(),subject:subject,college:college});
     if(findClass.length<1){
-        let addClass=new newClass({teacherId,semester,section:section.toUpperCase(),subject,college});
+        let addClass=new newClass({teacherId,idNo:newTeacher.teacherId,semester,section:section.toUpperCase(),subject,college});
         await addClass.save();
         let classId=addClass._id;
         let totalStudent=await allStudent.find({studentSemester:semester,studentSection:section.toUpperCase(),college:college});

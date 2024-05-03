@@ -7,6 +7,10 @@ const newClassSchema = new Schema({
         type: String,
         required:true,
     },
+    idNo:{
+        type: String,
+        required:true,
+    },
     semester: {
         type: String,
         required:true,

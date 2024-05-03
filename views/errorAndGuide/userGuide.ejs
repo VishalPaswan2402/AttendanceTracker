@@ -43,16 +43,22 @@
 
       <div class="top">User Guide</div>
 
-      <div class="manualBox">
-        <div class="card" style="width: 40rem;">
-            <div class="card-body">
-              <h1>For Teacher's</h1>
+      <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button buttonColor1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <h2>For Teacher's</h2>
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
               <h5>If you're new to our Attendance Tracker website, follow these steps to get started :</h5>
               <ol>
-                  <li>Create an account by clicking on the "Sign Up" button.</li>
-                  <li>After creating an account, log in with your credentials.</li>
-                  <li>Once logged in, you'll have access to all features of our website.</li>
-              </ol>           
+                <li>Create an account by clicking on the "Sign Up" button.</li>
+                <li>We will send a 4 digit code to verify your account.</li>
+                <li>After creating an account, log in with your credentials.</li>
+                <li>Once logged in, you'll have access to all features of our website.</li>
+              </ol> 
               <h5>Key Features :</h5>
               <p>Our Attendance Tracker website offers the following features :</p>
               <ul>
@@ -62,13 +68,18 @@
               </ul> 
               <h5>Note : </h5>  
               <p>Write your subject name in short form ( example. if Cyber Security Lab then use CSL ).You can manage the attendence of single subject from a single account. If you are teaching two or more subject then you have to create more account as your subject.</p>
-              <a href="/Attendence-Tracker/Teacher-SignUp" class="btn btn-primary">Sign Up Page</a>
+              <a href="/Attendence-Tracker/Teacher-SignUp" class="btn btn-primary">Sign Up Page</a> 
             </div>
           </div>
-
-          <div class="card" style="width: 40rem;">
-            <div class="card-body">
-              <h1>For Student's</h1>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed buttonColor1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              <h2>For Student's</h2>
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
               <h5>If you're new to our Attendance Tracker website, follow these steps to find your attendence details :</h5>
               <ol>
                   <li>Go to student Login page.</li>
@@ -85,10 +96,45 @@
               </ul> 
               <h5>Note : </h5>  
               <p>Enter data same as your teacher's entered into there attendence sheet to view your attendence.Mind capital and small letter even space also.</p>
-              <a href="/Attendence-Tracker/Students-Login" class="btn btn-primary">Log In Page</a>
+              <a href="/Attendence-Tracker/Students-Login" class="btn btn-primary">Log In Page</a>            
             </div>
           </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed buttonColor1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              <h2>For Colleges</h2>
+            </button>
+          </h2>
+          <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <h5>If you're new to our Attendance Tracker website, follow these steps to create your college account :</h5>
+              <ol>
+                  <li>Go to college Login page.</li>
+                  <li>Enter the required data in the form.</li>
+                  <li>We will send a 4 digit code through email which we found from your college website.</li>
+                  <li>Enter that code to complete your registration process.</li>
+              </ol> 
+              <h5>To add teacher's ID into your college account :</h5>
+              <ol>
+                  <li>Click on add new option.</li>
+                  <li>Enter teacher name , ID number and gender of teacher then submit the form.</li>
+                  <li>Teacher added to your account now by using that ID teacher can create there own account to manage attendance of any class.</li>
+              </ol>           
+              <h5>Key Features :</h5>
+              <p>Our Attendance Tracker website offers the following features :</p>
+              <ul>
+                  <li><strong>Feature 1 :</strong> You can edit teacher data any time just by logging to the account.</li>
+                  <li><strong>Feature 2 :</strong> If you delete any teacher data from your account then after that teacher cant able to access his account.</li>
+              </ul> 
+              <h5>Note : </h5>  
+              <p>If you can't add teacher then that particular teacher can't able to create his/her account.</p>
+              <a href="/Attendence-Tracker/College-SignUp" class="btn btn-primary">Sign Up Page</a>             
+            </div>
+          </div>
+        </div>
       </div>
+      
       
       <div id="foot">
         <div class="icons">

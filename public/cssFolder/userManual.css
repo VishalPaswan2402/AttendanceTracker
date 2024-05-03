@@ -16,21 +16,13 @@ body{
     color: blueviolet;
 }
 ul li,ol li,p{
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: rgb(96, 96, 96);
-}
-.manualBox{
-    display: flex; 
-    flex-wrap: wrap; 
-    justify-content: space-evenly;
-}
-.card{
-    margin-top: 10px !important;
-}
-h1{
-    color: rgb(0, 169, 158);
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 h5{
     color: rgb(46, 140, 168);
+}
+.buttonColor1{
+    background-image: linear-gradient(-20deg, #ddd6f3 0%, #faaca8 100%, #faaca8 100%);
+    color: rgb(131, 131, 21);
 }

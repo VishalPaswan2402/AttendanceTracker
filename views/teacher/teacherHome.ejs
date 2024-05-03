@@ -73,11 +73,11 @@
         <img src="/imageFolder/abc.png" class="card-img-top" alt="...">
         <div class="card-body">
           <h4 class="card-title" style="color: rgb(255, 132, 0);"><%=newTeacher.teacherName%> <%=gender==="Male"?"Sir":"Ma'am"%> !</h4>
-          <h5 class="card-title">Manage Your All Attendence Records Here...</h5>
+          <h5 class="card-title">Manage Your All Attendance Records Here...</h5>
           <p class="card-text"></p>
           <%if(currUsers && currUsers._id.equals(newTeacher._id)){%>
           <%for(classe of allClass){%>
-            <a href="/Attendence-Tracker/<%=newTeacher._id%>/<%=classe._id%>/Attendence-Sheet" class="btn btn-primary allBtns"><%=classe.semester%> Attendence Sheet For Section <%=classe.section%> </a>
+            <a href="/Attendence-Tracker/<%=newTeacher._id%>/<%=classe._id%>/Attendence-Sheet" class="btn btn-primary allBtns"><%=classe.semester%> Attendance Sheet For Section <%=classe.section%> </a>
             <%}%>
             <a class="btn btn-primary allBtns" id="createNewClass">Create New Class</a>
           <%}%>  
