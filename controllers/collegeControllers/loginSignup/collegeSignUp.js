@@ -8,7 +8,7 @@ module.exports.signUpPage=async(req,res,next)=>{
     let colleges=await allCollege.find();
     const collegeData=req.session.CollData || {};
     delete req.session.CollData;
-    res.render("college/collegeSignUp.ejs",{colleges,collegeData});
+    return res.render("college/collegeSignUp.ejs",{colleges,collegeData});
 };
 
 module.exports.signUpUser=async(req,res,next)=>{
@@ -16,13 +16,13 @@ module.exports.signUpUser=async(req,res,next)=>{
     if(password!=cPassword){
         req.session.CollData={collegeName,collegeType,cLocation};
         req.flash("error","Passwords do not match. Please make sure you enter the same password in both fields.");
-        res.redirect("/Attendence-Tracker/College-SignUp");
+        return res.redirect("/Attendence-Tracker/College-SignUp");
     }
     else{
         let findColl=await collegeAccount.findOne({username:collegeName});
         if(findColl){
             req.flash("error","College account already exist. Please Login to your account.");
-            res.redirect("/Attendence-Tracker/College-Login")
+            return res.redirect("/Attendence-Tracker/College-Login")
         }
         else{
             let totalCollege=await allCollege.findOne({colleges:collegeName});
@@ -34,7 +34,7 @@ module.exports.signUpUser=async(req,res,next)=>{
             console.log(genOtp);
             let dataArray=[collegeName,collegeType,cLocation,toEmail,password,genOtp];
             req.session.CollData = { collegeName, collegeType, cLocation, toEmail, password };
-            res.render("college/verifyCollegeEmail.ejs",{dataArray});
+            return res.render("college/verifyCollegeEmail.ejs",{dataArray});
         }
     }
 };

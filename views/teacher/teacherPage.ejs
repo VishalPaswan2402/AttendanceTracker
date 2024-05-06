@@ -165,7 +165,7 @@
     <div id="downl">
         <button class="new mar studentNew">Add New Student</button>
         <a href="/Attendence-Tracker/<%=classTech._id%>/<%=classTech.subject%>/<%=allClass._id%>/Print-All-Attendence-sheet"><button class="new mar">Attendance Sheet</button></a>
-        <a href="/Attendence-Tracker/<%=classTech._id%>/<%=classTech.subject%>/<%=allClass._id%>/Print-Detained-Attendence-sheet"><button class="new mar">Detained Students</button></a>
+        <button class="new mar" id="filterStudent">Filter Students</button>
         <%if(students.length>0){%>
           <button class="new mar" id="subAttendence" >Submit Attendance</button>
         <%}%>
@@ -247,6 +247,24 @@
       </div>
     </div>
     <!-- Attendance not marked -->
+
+    <!-- FORM for filter Students -->
+    <div class="card formCard" style="width: 22rem;" id="filterStudentForm">
+      <div class="card-body">
+        <h5 class="card-title">Filter Student</h5>
+        <form method="get" action="/Attendence-Tracker/<%=classTech._id%>/<%=classTech.subject%>/<%=allClass._id%>/Print-Detained-Attendence-sheet" class="needs-validation" novalidate>
+          <div class="form-floating mb-3 mt-3">
+              <input type="number" name="percentage" min="0" class="form-control" id="floatingp" placeholder="Enter percentage to filter student" required>
+              <label for="floatingp">Enter percentage to filter student</label>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-evenly; margin-top: 20px;">
+              <button type="submit" class="btn btn-primary">Filter Data</button>
+              <button type="button" class="btn btn-danger filterCancle">Cancle Data</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  <!-- FORM for filter Students -->
 
   <script src="/scriptFolder/inputData.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

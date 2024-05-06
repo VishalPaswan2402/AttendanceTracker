@@ -7,14 +7,14 @@ const {passwordOtpMail}=require("../../../middlewares/passwordOtpMail.js");
 
 module.exports.forgetPage=async(req,res,next)=>{
     let colleges=await allCollege.find();
-    res.render("editCollege/forgetCollegePassword.ejs",{colleges});
+    return res.render("editCollege/forgetCollegePassword.ejs",{colleges});
 };
 
 module.exports.forgetFormData=async(req,res,next)=>{
     let{college,collegeType}=req.body;
     let currCollege=await collegeAccount.findOne({username:college,collegeType:collegeType});
     if(!currCollege){
-        next(new expressError(404,"College Not Found !"));
+        return next(new expressError(404,"College Not Found !"));
     }
     else{
         let toEmail=currCollege.eMail;
@@ -23,7 +23,7 @@ module.exports.forgetFormData=async(req,res,next)=>{
         let genOtp=Math.floor(1000 + Math.random() * 9000);
         let otp=otpSender(toEmail,subject," ",passwordOtpMail(userName,genOtp));
         console.log(genOtp);
-        res.render("editCollege/verifyCollegeCode.ejs",{currCollege,genOtp});
+        return res.render("editCollege/verifyCollegeCode.ejs",{currCollege,genOtp});
     }
 };
 
@@ -32,11 +32,11 @@ module.exports.verifyEmail=async(req,res,next)=>{
     let{code}=req.body;
     if(code===pin){
         let currCollege=await collegeAccount.findById(id);
-        res.render("editCollege/changeCollegePassword.ejs",{currCollege});
+        return res.render("editCollege/changeCollegePassword.ejs",{currCollege});
     }
     else{
         req.flash("error","You have entered incorrect code. Please try again later.");
-        res.redirect("/Attendence-Tracker/Forget-college-Password");
+        return res.redirect("/Attendence-Tracker/Forget-college-Password");
     }
 };
 
@@ -47,5 +47,5 @@ module.exports.changePassword=async(req,res,next)=>{
     await currCollege.setPassword(password);
     await currCollege.save();
     req.flash("success","Password changed successfully. You can now log in with your new password.");
-    res.redirect("/Attendence-Tracker/College-Login");
+    return res.redirect("/Attendence-Tracker/College-Login");
 };

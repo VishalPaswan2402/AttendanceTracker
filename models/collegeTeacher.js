@@ -19,6 +19,10 @@ const collegeTeacherSchema=new Schema({
         type:String,
         required:true,
     },
+    collegeName:{
+        type:String,
+        required:true,
+    },
 });
 
 const collegeTeacher=mongoose.model("collegeTeacher",collegeTeacherSchema);

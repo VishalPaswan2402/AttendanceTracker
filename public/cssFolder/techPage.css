@@ -193,6 +193,13 @@ body{
     z-index: 10000;
     display: none;
 }
+#filterStudentForm{
+    position: absolute;
+    top: 39%;
+    left: 38%;
+    z-index: 10000;
+    display: none;
+}
 
 @media(min-width:1150px) and (max-width:1250px){
     .prof{

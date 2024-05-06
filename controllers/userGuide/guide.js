@@ -1,3 +1,3 @@
 module.exports.userGuide=(req,res)=>{
-    res.render("errorAndGuide/userGuide.ejs");
+    return res.render("errorAndGuide/userGuide.ejs");
 };

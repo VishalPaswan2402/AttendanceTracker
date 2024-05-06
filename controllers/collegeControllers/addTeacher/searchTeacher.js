@@ -8,5 +8,5 @@ module.exports.searchTeacher=async(req,res,next)=>{
     let currCollege=await collegeAccount.findById(id);
     let allTeachers=await collegeTeacher.find({teacherName:teacherName});
     let searching="True";
-    res.render("college/collegePage.ejs",{currCollege,allTeachers,searching,teacherName});
+    return res.render("college/collegePage.ejs",{currCollege,allTeachers,searching,teacherName});
 };

@@ -135,12 +135,25 @@ let cancleSubF=document.querySelector("#cancleSub");
 cancleSubF.addEventListener("click",function(){
     document.getElementById("overlay").style.display = "none";
     subBox.style.display="none";
-})
+});
 
 let notMarkedOk=document.querySelector("#notMarkedOk");
 notMarkedOk.addEventListener("click",function(){
     document.getElementById("overlay").style.display = "none";
     document.getElementById("notMarkedAtt").style.display = "none";
     document.getElementById("SubAttend").style.display = "none";
-})
+});
 
+let filterStudent=document.querySelector("#filterStudent");
+let filterStudentForm=document.querySelector("#filterStudentForm");
+filterStudent.addEventListener("click",function(){
+    document.getElementById("overlay").style.display = "block";
+    filterStudentForm.style.display="block";
+});
+
+let filterCancle=document.querySelector(".filterCancle");
+filterCancle.addEventListener("click",function(){
+    console.log("Cancle");
+    document.getElementById("overlay").style.display = "none";
+    filterStudentForm.style.display="none";
+});

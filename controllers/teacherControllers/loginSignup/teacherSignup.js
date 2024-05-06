@@ -10,7 +10,7 @@ module.exports.sigupForm=async(req,res)=>{
     let colleges=await allCollege.find();
     const formData = req.session.signupFormData || {};
     delete req.session.signupFormData;
-    res.render("teacher/teacherSignup.ejs",{colleges,formData});
+    return res.render("teacher/teacherSignup.ejs",{colleges,formData});
 };
 
 module.exports.saveTeacherData=async(req,res,next)=>{
@@ -41,13 +41,20 @@ module.exports.saveTeacherData=async(req,res,next)=>{
                 return res.redirect("/Attendence-Tracker/Teacher-SignUp");
             }
             else{
-                let subject="Verification code for registration on Attendance Tracker.";
-                let genOtp=Math.floor(1000 + Math.random() * 9000);
-                let otp=otpSender(teacherEmail,subject," ",registerOtpMail(teacherName,genOtp));
-                console.log(genOtp);
-                let dataArray=[username,teacherName,teacherId,teacherEmail,collegeName,subject1,password,genOtp];
-                req.session.TechData = { username,teacherName,teacherId,teacherEmail,collegeName,subject1,password };
-                res.render("teacher/verifyTeacherEmail.ejs",{dataArray});
+                let sameSubject= await Teacher.findOne({teacherId:teacherId,collegeName:currCol.username,subject:subject1.toUpperCase()});
+                if(sameSubject){
+                    req.flash("error","You already have an existing account for this subject. Please login here.");
+                    return res.redirect("/Attendence-Tracker/Teacher-Login");
+                }
+                else{
+                    let subject="Verification code for registration on Attendance Tracker.";
+                    let genOtp=Math.floor(1000 + Math.random() * 9000);
+                    let otp=otpSender(teacherEmail,subject," ",registerOtpMail(teacherName,genOtp));
+                    console.log(genOtp);
+                    let dataArray=[username,teacherName,teacherId,teacherEmail,collegeName,subject1,password,genOtp];
+                    req.session.TechData = { username,teacherName,teacherId,teacherEmail,collegeName,subject1,password };
+                    return res.render("teacher/verifyTeacherEmail.ejs",{dataArray});
+                }
             }
         }
     }

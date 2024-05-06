@@ -7,14 +7,14 @@ const {passwordOtpMail}=require("../../../middlewares/passwordOtpMail.js");
 
 module.exports.forgetPasswordPage=async(req,res,next)=>{
     let colleges=await allCollege.find();
-    res.render("editTeacher/forgetTeacherPassword.ejs",{colleges});
+    return res.render("editTeacher/forgetTeacherPassword.ejs",{colleges});
 };
 
 module.exports.forgetPasswordForm=async(req,res,next)=>{
     let{username,tEmail,college}=req.query;
     let findTech=await Teacher.findOne({username:username,teacherEmail:tEmail,collegeName:college});
     if(!findTech){
-        next(new expressError(404,"Teacher Not Found !"));
+        return next(new expressError(404,"Teacher Not Found !"));
     }
     else{
         let toEmail=findTech.teacherEmail;
@@ -23,7 +23,7 @@ module.exports.forgetPasswordForm=async(req,res,next)=>{
         let genOtp=Math.floor(1000 + Math.random() * 9000);
         let otp=otpSender(toEmail,subject," ",passwordOtpMail(userName,genOtp));
         console.log(genOtp);
-        res.render("editTeacher/verifyTeacherCode.ejs",{findTech,genOtp});
+        return res.render("editTeacher/verifyTeacherCode.ejs",{findTech,genOtp});
     }
 };
 
@@ -32,11 +32,11 @@ module.exports.verifyOTP=async(req,res,next)=>{
     let{code}=req.body;
     if(code===pin){
         let findTech=await Teacher.findById(id);
-        res.render("editTeacher/changeTeacherPassword.ejs",{findTech});
+        return res.render("editTeacher/changeTeacherPassword.ejs",{findTech});
     }
     else{
         req.flash("error","You have entered incorrect code. Please try again later.");
-        res.redirect("/Attendence-Tracker/Forgot-Teacher-Password");
+        return res.redirect("/Attendence-Tracker/Forgot-Teacher-Password");
     }
 };
 
@@ -47,5 +47,5 @@ module.exports.changePassword=async(req,res,next)=>{
     await currTech.setPassword(password);
     await currTech.save();
     req.flash("success","Password changed successfully. You can now log in with your new password.");
-    res.redirect("/Attendence-Tracker/Teacher-Login");
+    return res.redirect("/Attendence-Tracker/Teacher-Login");
 };

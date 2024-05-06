@@ -9,7 +9,7 @@ module.exports.destroyPage=async(req,res,next)=>{
     let{techId}=req.params;
     let currTech=await Teacher.findById(techId);
     let colleges=await allCollege.find();
-    res.render("editTeacher/deleteTeacherAccount.ejs",{colleges,currTech});
+    return res.render("editTeacher/deleteTeacherAccount.ejs",{colleges,currTech});
 };
 
 module.exports.destroyTeacherAccount=async(req,res,next)=>{
@@ -45,10 +45,10 @@ module.exports.destroyTeacherAccount=async(req,res,next)=>{
             let destroyClass=await newClass.deleteMany({teacherId:techId});
             let destroyTeacher=await Teacher.findByIdAndDelete(techId);
             req.flash("success","Your account has been deleted successfully.");
-            res.redirect("/");
+            return res.redirect("/");
     }
     else{
         req.flash("error","Please enter all data correctly to delete your account.");
-        res.redirect(`/Attendence-Tracker/${techId}/Delete-Account`);
+        return res.redirect(`/Attendence-Tracker/${techId}/Delete-Account`);
     }
 };

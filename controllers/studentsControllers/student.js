@@ -5,7 +5,7 @@ const allStudent = require('../../models/students.js');
 
 module.exports.loginPage=async(req,res)=>{
     let colleges=await allCollege.find();
-    res.render("student/studentLogin.ejs",{colleges});
+    return res.render("student/studentLogin.ejs",{colleges});
 };
 
 module.exports.studentPage=async(req,res,next)=>{
@@ -17,11 +17,11 @@ module.exports.studentPage=async(req,res,next)=>{
     }
     const originalString = sName;
     const capitalizedString = capitalizeWords(originalString);
-    let findStudent=await allStudent.findOne({studentName:capitalizedString,studentRollNo:sRollNo,studentSemester:semester,studentSection:section.toUpperCase(),college:collegeName});
+    let findStudent=await allStudent.findOne({studentName:capitalizedString,studentRollNo:sRollNo.toUpperCase(),studentSemester:semester,studentSection:section.toUpperCase(),college:collegeName});
     if(!findStudent){
-        next(new expressError(404,"Student Not Found !"));
+        return next(new expressError(404,"Student Not Found !"));
     }
     else{
-        res.render("student/studentPage.ejs",{findStudent});
+        return res.render("student/studentPage.ejs",{findStudent});
     }
 };

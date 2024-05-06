@@ -21,9 +21,9 @@ module.exports.addNewStudent=async(req,res,next)=>{
     const originalString = studentName;
     const capitalizedString = capitalizeWords(originalString);
     let newTeacher=await Teacher.findById(teacherId);
-    let findStudent=await allStudent.findOne({studentRollNo:studentRollNo,studentSemester:studentSemester,studentSection:studentSection,college:college});
+    let findStudent=await allStudent.findOne({studentRollNo:studentRollNo.toUpperCase(),studentSemester:studentSemester,studentSection:studentSection,college:college});
     if(!findStudent){
-        let newStudent= new allStudent({studentName:capitalizedString,studentRollNo:studentRollNo,studentSemester:studentSemester,studentSection:studentSection,teacherId:teacherId,classId:classId,college:college});
+        let newStudent= new allStudent({studentName:capitalizedString,studentRollNo:studentRollNo.toUpperCase(),studentSemester:studentSemester,studentSection:studentSection,teacherId:teacherId,classId:classId,college:college});
         await newStudent.save();
         let studentId=newStudent._id;
         let subject=newTeacher.subject;
@@ -47,11 +47,11 @@ module.exports.addNewStudent=async(req,res,next)=>{
             }
         }
         req.flash("success","Student added to your class successfully.");
-        res.redirect(`/Attendence-Tracker/${idTeacher}/${idClass}/Attendence-Sheet`);
+        return res.redirect(`/Attendence-Tracker/${idTeacher}/${idClass}/Attendence-Sheet`);
     }
     else{
         req.flash("error","A student with the same roll number has already been added to the sheet.");
-        res.redirect(`/Attendence-Tracker/${idTeacher}/${idClass}/Attendence-Sheet`);
+        return res.redirect(`/Attendence-Tracker/${idTeacher}/${idClass}/Attendence-Sheet`);
     }
 };
 
@@ -61,5 +61,5 @@ module.exports.teacherSheet=async(req,res,next)=>{
     let allClass=await newClass.findById(idClass);
     let students=await allStudent.find({studentSemester:allClass.semester,studentSection:allClass.section,college:allClass.college});
     let studentAttendence=await Attendence.find({teacherId:idTeacher,classId:idClass}); 
-    res.render("teacher/teacherPage.ejs",{classTech,students,allClass,studentAttendence});
+    return res.render("teacher/teacherPage.ejs",{classTech,students,allClass,studentAttendence});
 };

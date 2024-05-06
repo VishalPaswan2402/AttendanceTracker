@@ -11,7 +11,7 @@ module.exports.resendOtpMail=async (req, res) => {
     console.log(genOtp);
     let dataArray=[collegeName,collegeType,cLocation,toEmail,password,genOtp];
     req.flash("success","Verification mail sent successfully.");
-    res.render("college/verifyCollegeEmail.ejs",{dataArray});
+    return res.render("college/verifyCollegeEmail.ejs",{dataArray});
 };
 
 module.exports.verifyOTP=async(req,res,next)=>{
@@ -29,11 +29,11 @@ module.exports.verifyOTP=async(req,res,next)=>{
                 return next(err);
             }
             req.flash("success","Account created successfully.");
-            res.redirect(`/Attendence-Tracker/${id}/College-Page`);
+            return res.redirect(`/Attendence-Tracker/${id}/College-Page`);
         })
     }
     else{
         req.flash("error","You have entered incorrect verification code. Please try again later.");
-        res.redirect("/");
+        return res.redirect("/");
     }
 };

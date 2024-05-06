@@ -10,6 +10,6 @@ module.exports.teacherHomePage=async(req,res,next)=>{
         let techerGender=await collegeTeacher.findOne({idNo:newTeacher.teacherId});
         let gender=techerGender.gender;
         let allClass=await newClass.find({teacherId:newTeacher._id});
-        res.render("teacher/teacherHome.ejs",{newTeacher,allClass,gender});
+        return res.render("teacher/teacherHome.ejs",{newTeacher,allClass,gender});
     }
 };

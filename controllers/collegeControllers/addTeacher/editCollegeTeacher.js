@@ -8,29 +8,44 @@ const Attendence = require("../../../models/attendence.js");
 module.exports.editTeacherPage=async(req,res,next)=>{
     let{collId,tecId}=req.params;
     let tecData=await collegeTeacher.findOne({collegeId:collId,_id:tecId});
-    res.render("editCollege/editCollegeTeacher.ejs",{collId,tecId,tecData});
+    return res.render("editCollege/editCollegeTeacher.ejs",{collId,tecId,tecData});
 };
 
 module.exports.editTeacherForm=async(req,res,next)=>{
     let{collId,tecId}=req.params;
     let{tName,tGender,tId}=req.body;
-    let techerId=await collegeTeacher.findOne({idNo:tId});
+    let oldTech=await collegeTeacher.findById(tecId);
+    let oldId=oldTech.idNo;
+    let techerId=await collegeTeacher.findOne({idNo:tId,collegeName:oldTech.collegeName});
     if(!techerId){
         let curTeac=await collegeTeacher.findByIdAndUpdate(tecId,{teacherName:tName,gender:tGender,idNo:tId});
+        let techAccount=await teacher.find({teacherId:oldId,collegeName:oldTech.collegeName});
+        if(techAccount.length>0){
+            for(let i=0;i<techAccount.length;i++){
+                let newTechId=techAccount[i]._id;
+                let updatedTeacher=await teacher.findByIdAndUpdate(newTechId,{teacherId:tId});
+                let teacherClass=await newClass.find({teacherId:newTechId});
+                if(teacherClass.length>0){
+                    for(let j=0;j<teacherClass.length;j++){
+                        let updatedTeacherClass=await newClass.findByIdAndUpdate(teacherClass[j]._id,{idNo:tId});
+                    }
+                }
+            }
+        }
         req.flash("success","Teacher data updated successfully.");
-        res.redirect(`/Attendence-Tracker/${collId}/College-Page`);
+        return res.redirect(`/Attendence-Tracker/${collId}/College-Page`);
     }
     else{
         let curTeac=await collegeTeacher.findByIdAndUpdate(tecId,{teacherName:tName,gender:tGender});
         req.flash("success","Teacher's data updated except ID.");
-        res.redirect(`/Attendence-Tracker/${collId}/College-Page`);
+        return res.redirect(`/Attendence-Tracker/${collId}/College-Page`);
     }
 };
 
 module.exports.destroyTeacher=async(req,res,next)=>{
     let{collId,tecId}=req.params;
     let currCollegeTech=await collegeTeacher.findById(tecId);
-    let currTech=await teacher.find({teacherId:currCollegeTech.idNo});
+    let currTech=await teacher.find({teacherId:currCollegeTech.idNo,collegeName:currCollegeTech.collegeName});
     if(currTech.length>0){
         for(let m=0;m<currTech.length;m++){
         let currClass=await newClass.find({teacherId:currTech[m]._id});
@@ -64,5 +79,5 @@ module.exports.destroyTeacher=async(req,res,next)=>{
     }
     let destroyCollegeTeacher=await collegeTeacher.findByIdAndDelete(tecId); 
     req.flash("success","Teacher's data deleted successfully.");
-    res.redirect(`/Attendence-Tracker/${collId}/College-Page`);
+    return res.redirect(`/Attendence-Tracker/${collId}/College-Page`);
 };

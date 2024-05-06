@@ -1,4 +1,4 @@
-# This is a Attendance Tracker website use to view attencence of your class.
+# This is a Attendance Tracker website use to view attendance of your class.
 ## This is only for college use.
 ##### This website contain student login page, teacher's login and teacher's signup page,student attendence details page and teacher attendence page where they mark present or absent for every students.
 <br>

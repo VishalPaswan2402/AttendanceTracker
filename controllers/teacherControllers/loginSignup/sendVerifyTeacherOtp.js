@@ -10,8 +10,8 @@ module.exports.resendMail=async (req, res) => {
     req.session.genOtp = genOtp;
     console.log(genOtp);
     let dataArray=[username,teacherName,teacherId,teacherEmail,collegeName,subject1,password,genOtp];
-    req.flash("success","Verification code sent successfully.");
-    res.render("teacher/verifyTeacherEmail.ejs",{dataArray});
+    req.flash("success","Verification code sent successfully");
+    return res.render("teacher/verifyTeacherEmail.ejs",{dataArray});
 };
 
 module.exports.verifyTeacher=async(req,res,next)=>{
@@ -33,14 +33,14 @@ module.exports.verifyTeacher=async(req,res,next)=>{
         let id=newTeacher._id;
         req.login(registerTeacher,(err)=>{
         if(err){
-             return next(err);
+            return next(err);
         }
         req.flash("success","Account created successfully.");
-        res.redirect(`/Attendence-Tracker/${id}/TeacherHome`);
+        return res.redirect(`/Attendence-Tracker/${id}/TeacherHome`);
         })
     }
     else{
         req.flash("error","You have entered incorrect verification code. Please try again later.");
-        res.redirect("/");
+        return res.redirect("/");
     }
 };

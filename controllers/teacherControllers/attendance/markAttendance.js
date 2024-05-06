@@ -85,5 +85,5 @@ module.exports.markAttendanceOfStudents=async (req, res,next) => {
         }
     }
     req.flash("success","Attendance saved successfully.");
-    res.redirect(`/Attendence-Tracker/${techId}/${claId}/Attendence-Sheet`);       
+    return res.redirect(`/Attendence-Tracker/${techId}/${claId}/Attendence-Sheet`);       
 };
