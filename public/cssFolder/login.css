@@ -96,7 +96,7 @@ body{
         font-size: 1.1rem;
     }
 }
-@media(min-width:320px) and (max-width:420px){
+@media(min-width:360px) and (max-width:420px){
     .top{
         font-size: 2.2rem;
     }
@@ -104,6 +104,17 @@ body{
         font-size: 0.9rem;
     }
     .formCard{
-        width: 20rem;
+        width: 22rem;
+    }
+}
+@media(min-width:300px) and (max-width:360px){
+    .top{
+        font-size: 2.2rem;
+    }
+    .teach{
+        font-size: 0.9rem;
+    }
+    .formCard{
+        width: 18.5rem;
     }
 }

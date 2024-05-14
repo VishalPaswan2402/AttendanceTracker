@@ -17,8 +17,15 @@ module.exports.editTeacherForm=async(req,res,next)=>{
     let oldTech=await collegeTeacher.findById(tecId);
     let oldId=oldTech.idNo;
     let techerId=await collegeTeacher.findOne({idNo:tId,collegeName:oldTech.collegeName});
+    function capitalizeWords(str) {
+        return str.toLowerCase().replace(/(^|\s)\S/g, function (match) {
+            return match.toUpperCase();
+        });
+    }
+    const originalString = tName;
+    const capitalizedString = capitalizeWords(originalString);
     if(!techerId){
-        let curTeac=await collegeTeacher.findByIdAndUpdate(tecId,{teacherName:tName,gender:tGender,idNo:tId});
+        let curTeac=await collegeTeacher.findByIdAndUpdate(tecId,{teacherName:capitalizedString,gender:tGender,idNo:tId});
         let techAccount=await teacher.find({teacherId:oldId,collegeName:oldTech.collegeName});
         if(techAccount.length>0){
             for(let i=0;i<techAccount.length;i++){
@@ -36,7 +43,7 @@ module.exports.editTeacherForm=async(req,res,next)=>{
         return res.redirect(`/Attendence-Tracker/${collId}/College-Page`);
     }
     else{
-        let curTeac=await collegeTeacher.findByIdAndUpdate(tecId,{teacherName:tName,gender:tGender});
+        let curTeac=await collegeTeacher.findByIdAndUpdate(tecId,{teacherName:capitalizedString,gender:tGender});
         req.flash("success","Teacher's data updated except ID.");
         return res.redirect(`/Attendence-Tracker/${collId}/College-Page`);
     }

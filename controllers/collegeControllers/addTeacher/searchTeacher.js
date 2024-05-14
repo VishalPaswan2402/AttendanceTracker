@@ -6,7 +6,7 @@ module.exports.searchTeacher=async(req,res,next)=>{
     let{teacherName}=req.query;
     let{id}=req.params;
     let currCollege=await collegeAccount.findById(id);
-    let allTeachers=await collegeTeacher.find({teacherName:teacherName});
+    let allTeachers=await collegeTeacher.find({teacherName:teacherName,collegeName:currCollege.username});
     let searching="True";
     return res.render("college/collegePage.ejs",{currCollege,allTeachers,searching,teacherName});
 };

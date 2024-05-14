@@ -28,7 +28,7 @@ module.exports.verifyTeacher=async(req,res,next)=>{
         }
         const originalString = dataArray[1];
         const capitalizedString = capitalizeWords(originalString);
-        let newTeacher=new Teacher({username:dataArray[0],teacherName:capitalizedString,teacherId:dataArray[2],teacherEmail:dataArray[3],collegeName:dataArray[4],subject:dataArray[5].toUpperCase()});        
+        let newTeacher=new Teacher({username:dataArray[0],teacherName:capitalizedString,teacherId:dataArray[2],teacherEmail:dataArray[3],collegeName:dataArray[4],subject:dataArray[5]});        
         let registerTeacher=await Teacher.register(newTeacher,password);
         let id=newTeacher._id;
         req.login(registerTeacher,(err)=>{

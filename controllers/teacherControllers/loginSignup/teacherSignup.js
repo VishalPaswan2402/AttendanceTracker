@@ -15,9 +15,9 @@ module.exports.sigupForm=async(req,res)=>{
 
 module.exports.saveTeacherData=async(req,res,next)=>{
     let{username,teacherName,teacherEmail,teacherId,collegeName,subject,password,cPassword}=req.body;
-    let subject1=subject;
+    let subject1=subject.toUpperCase();
     if(password!=cPassword){
-        req.session.signupFormData = { username, teacherName, teacherEmail, teacherId, collegeName, subject };
+        req.session.signupFormData = { username, teacherName, teacherEmail, teacherId, collegeName, subject1 };
         req.flash("error","Passwords do not match. Please make sure you enter the same password in both fields.");
         return res.redirect("/Attendence-Tracker/Teacher-SignUp");
     }
@@ -29,19 +29,19 @@ module.exports.saveTeacherData=async(req,res,next)=>{
     else{
         let collTid=await collegeTeacher.findOne({collegeId:currCol._id,idNo:teacherId});
         if(!collTid){
-            req.session.signupFormData = { username, teacherName, teacherEmail, teacherId, collegeName, subject };
-            req.flash("error","Your ID does not exist in the college database.");
+            req.session.signupFormData = { username, teacherName, teacherEmail, teacherId, collegeName, subject1 };
+            req.flash("error","Your ID was not found in the college database. Please ask your college registrar to add it");
             return res.redirect("/Attendence-Tracker/Teacher-SignUp");
         }
         else{
             let allTech=await Teacher.findOne({username:username});
             if(allTech){
                 req.session.signupFormData = { username, teacherName, teacherEmail, teacherId, collegeName, subject };
-                req.flash("error","A user with this username already exists. Please try another username.");
+                req.flash("error","A user with this username already exists. Please try with another username.");
                 return res.redirect("/Attendence-Tracker/Teacher-SignUp");
             }
             else{
-                let sameSubject= await Teacher.findOne({teacherId:teacherId,collegeName:currCol.username,subject:subject1.toUpperCase()});
+                let sameSubject= await Teacher.findOne({teacherId:teacherId,collegeName:currCol.username,subject:subject1});
                 if(sameSubject){
                     req.flash("error","You already have an existing account for this subject. Please login here.");
                     return res.redirect("/Attendence-Tracker/Teacher-Login");

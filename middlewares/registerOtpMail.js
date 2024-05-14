@@ -50,11 +50,11 @@ module.exports.registerOtpMail = (username, otp) => {
   </style>
 </head>
 <body>
-    <div class="card" style="width: 19rem;">
+    <div class="card" style="width: 17rem;">
         <div class="card-body">
             <div class="top">Attendance Tracker</div>
             <div class="data">
-                <h3 class="card-title paddings">Hey ${username}! I hope you're doing well.</h3>
+                <h3 class="card-title paddings">Hey ${username} ! we hope you're doing well.</h3>
             </div>
             <div class="otpDiv">
                 <h2 class="card-title">Verification Code : ${otp}</h2>

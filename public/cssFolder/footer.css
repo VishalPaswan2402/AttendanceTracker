@@ -1,6 +1,6 @@
 #foot{
-    height: 60px;
-    width: 90%;
+    height: 65px;
+    width: 95%;
     background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
     display: table;
     align-items: center;
@@ -21,7 +21,8 @@
     width: 180px;
     justify-content: space-evenly;
    /* background-color: blue; */
-   margin:3px auto;
+   padding-top: 2px;
+   margin: 4px auto;
 }
 .icons a{
     text-decoration: none;

@@ -7,8 +7,15 @@ module.exports.addCollegeTeacher=async(req,res)=>{
     let{teacherName,gender,idNo}=req.body;
     let currColl=await collegeAccount.findById(id);
     let findTech=await collegeTeacher.findOne({collegeId:id,idNo:idNo});
+    function capitalizeWords(str) {
+        return str.toLowerCase().replace(/(^|\s)\S/g, function (match) {
+            return match.toUpperCase();
+        });
+    }
+    const originalString = teacherName;
+    const capitalizedString = capitalizeWords(originalString);
     if(!findTech){
-        let addTech= new collegeTeacher({collegeId:id,teacherName:teacherName,gender:gender,idNo:idNo,collegeName:currColl.username});
+        let addTech= new collegeTeacher({collegeId:id,teacherName:capitalizedString,gender:gender,idNo:idNo,collegeName:currColl.username});
         await addTech.save();
         req.flash("success","New teacher added successfully.");
         return res.redirect(`/Attendence-Tracker/${id}/College-Page`);
