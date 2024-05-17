@@ -33,9 +33,9 @@ const attendenceSchema = new Schema({
     },
     classPrevious: {
         type: String,
-        default:"No",
+        default:"-",
     },
-    previousMark: {
+    markedOn: {
         type: String,
         default:"-",
     },

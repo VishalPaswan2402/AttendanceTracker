@@ -70,6 +70,7 @@
         <th>Attended</th>
         <th>Percentage</th>
         <th>Previous Class</th>
+        <th>Marked As</th>
       </tr>
       <%for(attend of findStudent.allAttendence){%>
       <tr>
@@ -77,7 +78,8 @@
         <td><%=attend.totalClass%></td>
         <td><%=attend.attendenClass%></td>
         <td><%=attend.classPercent%> %</td>
-        <td><%=attend.previousMark%></td>
+        <td><%=attend. markedOn%></td>
+        <td><%=attend.classPrevious%></td>
       </tr>
       <%}%>
     </table>

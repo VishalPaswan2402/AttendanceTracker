@@ -51,6 +51,14 @@
             <label for="floatingr">Enter Student's Roll No.</label>
           </div>
           <div class="form-floating mb-3">
+            <select class="form-select" name="currAttend" id="floatingSelectc" aria-label="Floating label select example">
+              <option value="" disabled selected>Previous Attendance</option>
+              <option value="Present" <%= prevAttend === "Present" ? 'selected' : '' %> >Present</option>
+              <option value="Absent" <%= prevAttend === "Absent" ? 'selected' : '' %>>Absent</option>
+            </select>
+            <label for="floatingSelectc">Previous Attendance</label>
+          </div>
+          <div class="form-floating mb-3">
             <input type="text" name="semester" class="form-control " id="floatings" placeholder="Student's Semester" value="<%=findStudent.studentSemester%>" readonly required>
             <label for="floatings">Student's Semester</label>
           </div>

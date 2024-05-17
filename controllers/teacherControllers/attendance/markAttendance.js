@@ -30,8 +30,7 @@ module.exports.markAttendanceOfStudents=async (req, res,next) => {
             let a = attendData.totalClass + 1;
             let b = attendData.attendenClass + 1;
             let c = ((b / a) * 100).toFixed(1);
-            let TodayMarkPre=(formattedDate + '  [ Present ]');
-            let saveAttendence = await Attendence.findByIdAndUpdate(id, { totalClass: a, attendenClass: b, classPercent: c, classPrevious: previous,previousMark:TodayMarkPre });
+            let saveAttendence = await Attendence.findByIdAndUpdate(id, { totalClass: a, attendenClass: b, classPercent: c, classPrevious: previous,markedOn: formattedDate });
             let allStudGroup = await allStudent.find();
             if (allStudGroup.length > 0) {
                 for (let i = 0; i < allStudGroup.length; i++) {
@@ -43,7 +42,7 @@ module.exports.markAttendanceOfStudents=async (req, res,next) => {
                                 newSub[j].attendenClass = b;
                                 newSub[j].classPercent = c;
                                 newSub[j].classPrevious = previous;
-                                newSub[j].previousMark = TodayMarkPre;
+                                newSub[j].markedOn = formattedDate;
                                 await allStudGroup[i].save();
                             }
                         }
@@ -51,7 +50,6 @@ module.exports.markAttendanceOfStudents=async (req, res,next) => {
                 }
             }
         }
-
     }
     if(absentIdsLength>0){
         for (let id of absentIds) {
@@ -62,8 +60,8 @@ module.exports.markAttendanceOfStudents=async (req, res,next) => {
             let a = attendData.totalClass + 1;
             let b = attendData.attendenClass;
             let c = ((b / a) * 100).toFixed(1);
-            let TodayMarkAbs=(formattedDate + '  [ Absent ]');
-            let saveAttendence = await Attendence.findByIdAndUpdate(id, { totalClass: a, attendenClass: b, classPercent: c, classPrevious: previous,previousMark:TodayMarkAbs });
+            // let TodayMarkAbs=(formattedDate + '  [ Absent ]');
+            let saveAttendence = await Attendence.findByIdAndUpdate(id, { totalClass: a, attendenClass: b, classPercent: c, classPrevious: previous,markedOn:formattedDate });
             let allStudGroup = await allStudent.find();
             if (allStudGroup.length > 0) {
                 for (let i = 0; i < allStudGroup.length; i++) {
@@ -75,7 +73,7 @@ module.exports.markAttendanceOfStudents=async (req, res,next) => {
                                 newSub[j].attendenClass = b;
                                 newSub[j].classPercent = c;
                                 newSub[j].classPrevious = previous;
-                                newSub[j].previousMark = TodayMarkAbs;
+                                newSub[j].markedOn = formattedDate;
                                 await allStudGroup[i].save();
                             }
                         }
