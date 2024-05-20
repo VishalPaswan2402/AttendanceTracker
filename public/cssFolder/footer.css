@@ -1,14 +1,8 @@
 #foot{
-    height: 65px;
-    width: 95%;
-    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
-    display: table;
-    align-items: center;
-    justify-content: center;
+    width: 100%;
+    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"%3E%3Cpath fill="%23cda4ca5f" fill-opacity="1" d="M0,160L24,170.7C48,181,96,203,144,197.3C192,192,240,160,288,170.7C336,181,384,235,432,261.3C480,288,528,288,576,261.3C624,235,672,181,720,149.3C768,117,816,107,864,128C912,149,960,203,1008,202.7C1056,203,1104,149,1152,128C1200,107,1248,117,1296,128C1344,139,1392,149,1416,154.7L1440,160L1440,320L1416,320C1392,320,1344,320,1296,320C1248,320,1200,320,1152,320C1104,320,1056,320,1008,320C960,320,912,320,864,320C816,320,768,320,720,320C672,320,624,320,576,320C528,320,480,320,432,320C384,320,336,320,288,320C240,320,192,320,144,320C96,320,48,320,24,320L0,320Z"%3E%3C/path%3E%3C/svg%3E');    
     text-align: center;
     margin: 25px auto;
-    border-radius: 10px;
-    box-shadow: 1px 1px 5px gray;
     align-items: center;
     text-align: center;
     font-size: 1rem;
@@ -20,18 +14,17 @@
     height: 30px;
     width: 180px;
     justify-content: space-evenly;
-   /* background-color: blue; */
-   padding-top: 2px;
-   margin: 4px auto;
+    padding-top: 2px;
+    margin: 4px auto;
 }
 .icons a{
     text-decoration: none;
 }
 .iconbox{
-    height: 30px;
-    width: 30px;
+    height: 33px;
+    width: 33px;
     border-radius: 50%;
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(119, 121, 122);
     align-items: center;
     font-size: 1.2rem;
     display: flex;
@@ -40,11 +33,12 @@
     justify-content: space-evenly;
     color: white;
     transition: 1s;
-    border: 1px solid blue;
+    border: 2px solid rgb(247, 191, 247);
 }
 .iconbox:hover{
     background-color: #a8edea;
-    color: black;
+    color: rgb(119, 121, 122);
+    border: 2px solid rgb(0, 44, 154);
 }
 
 .cardLog{
@@ -123,5 +117,20 @@ input[type="text"] {
     }
     100% {
         width: 0%;
+    }
+}
+@media(min-width:350px) and (max-width:400px){
+    #foot{
+        font-size: 0.85rem;
+    }
+}
+@media(min-width:300px) and (max-width:350px){
+    #foot{
+        font-size: 0.75rem;
+    }
+}
+@media print {
+    .icons{
+        display: none;
     }
 }

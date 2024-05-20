@@ -20,8 +20,15 @@ module.exports.verifyOTP=async(req,res,next)=>{
     const dataArray = data.split(',');
     const password = dataArray[4];
     const codeValue = dataArray[5];
+    function capitalizeWords(str) {
+        return str.toLowerCase().replace(/(^|\s)\S/g, function (match) {
+            return match.toUpperCase();
+        });
+    }
+    const originalString = dataArray[2];
+    const capitalizedString = capitalizeWords(originalString);
     if(code===codeValue){
-        let newCollege=new collegeAccount({username:dataArray[0],collegeType:dataArray[1],location:dataArray[2],eMail:dataArray[3]});
+        let newCollege=new collegeAccount({username:dataArray[0],collegeType:dataArray[1],location:capitalizedString,eMail:dataArray[3]});
         let registerCollege=await collegeAccount.register(newCollege,password)
         let id=registerCollege._id;
         req.login(registerCollege,(err)=>{

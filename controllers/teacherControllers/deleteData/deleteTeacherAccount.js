@@ -4,6 +4,7 @@ const Teacher = require('../../../models/teachers.js');
 const allStudent = require('../../../models/students.js');
 const Attendence = require("../../../models/attendence.js");
 const allCollege=require("../../../models/college.js");
+const collegeTeacher=require("../../../models/collegeTeacher.js");
 
 module.exports.destroyPage=async(req,res,next)=>{
     let{techId}=req.params;
@@ -14,9 +15,19 @@ module.exports.destroyPage=async(req,res,next)=>{
 
 module.exports.destroyTeacherAccount=async(req,res,next)=>{
     let{techId}=req.params;
+    let delT=await Teacher.findById(techId);
     let{username,tName,tEmail,collegeName,password}=req.body;
+
+    function capitalizeWords(str) {
+        return str.toLowerCase().replace(/(^|\s)\S/g, function (match) {
+            return match.toUpperCase();
+        });
+    }
+    const originalString = tName;
+    const capitalizedString = capitalizeWords(originalString);
+
     let{user}=req;
-    if(user.username===username && user.teacherName===tName && user.teacherEmail===tEmail && user.collegeName===collegeName){
+    if(user.username===username && user.teacherName===capitalizedString && user.teacherEmail===tEmail && user.collegeName===collegeName){
         let currClass=await newClass.find({teacherId:techId});
             if(currClass.length>0){
                 for(let i=0;i<currClass.length;i++){
@@ -44,6 +55,10 @@ module.exports.destroyTeacherAccount=async(req,res,next)=>{
             }
             let destroyClass=await newClass.deleteMany({teacherId:techId});
             let destroyTeacher=await Teacher.findByIdAndDelete(techId);
+            let findAccount=await collegeTeacher.findOne({idNo:delT.teacherId,collegeName:delT.collegeName});
+            let delTid=findAccount._id;
+            let delAcc=findAccount.totalAccount-1;
+            let destroyAcc=await collegeTeacher.findByIdAndUpdate(delTid,{totalAccount:delAcc});
             req.flash("success","Your account has been deleted successfully.");
             return res.redirect("/");
     }

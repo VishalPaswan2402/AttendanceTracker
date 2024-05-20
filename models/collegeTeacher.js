@@ -1,4 +1,4 @@
-const { required, string } = require("joi");
+const { required, string, number } = require("joi");
 const mongoose=require("mongoose");
 const Schema=mongoose.Schema;
 
@@ -22,6 +22,10 @@ const collegeTeacherSchema=new Schema({
     collegeName:{
         type:String,
         required:true,
+    },
+    totalAccount:{
+        type:Number,
+        default:0,
     },
 });
 

@@ -38,4 +38,7 @@ h5,h4,h3{
 .printLink {
     display: none;
 }
+thead {
+    display: table-header-group;
+}
 }

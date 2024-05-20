@@ -1,5 +1,6 @@
 const expressError=require("../../../utility/expressError.js");
 const Teacher = require('../../../models/teachers.js');
+const collegeTeacher=require("../../../models/collegeTeacher.js");
 const {otpSender}=require("../../../middlewares/otpSender.js");
 const {registerOtpMail}=require("../../../middlewares/registerOtpMail.js");
 
@@ -30,6 +31,9 @@ module.exports.verifyTeacher=async(req,res,next)=>{
         const capitalizedString = capitalizeWords(originalString);
         let newTeacher=new Teacher({username:dataArray[0],teacherName:capitalizedString,teacherId:dataArray[2],teacherEmail:dataArray[3],collegeName:dataArray[4],subject:dataArray[5]});        
         let registerTeacher=await Teacher.register(newTeacher,password);
+        let findAccount= await collegeTeacher.findOne({idNo:dataArray[2],collegeName:dataArray[4]});
+        let newAccount=findAccount.totalAccount+1;
+        let totalAcc=await collegeTeacher.findByIdAndUpdate(findAccount._id,{totalAccount:newAccount});
         let id=newTeacher._id;
         req.login(registerTeacher,(err)=>{
         if(err){

@@ -97,6 +97,7 @@
                   <h5 class="card-title"><%=teacher.teacherName%></h5>
                   <h6 class="card-title">Gender : <%=teacher.gender%></h6>
                   <h6 class="card-title">ID No.&nbsp;&nbsp;: <%=teacher.idNo%></h6>
+                  <h6 class="card-title">Accounts&nbsp;&nbsp;: <%=teacher.totalAccount%></h6>
                   <%if(currUsers && currUsers._id.equals(currCollege._id)){%>
                     <div style="display: flex; justify-content: center;">
                       <a href="/Attendence-Tracker/<%=currCollege._id%>/<%=teacher._id%>/Edit-Teacher" class="btn btn-outline-primary" style="width: 12rem;">Edit Teacher's Data</a>
@@ -145,6 +146,7 @@
             <a href="#"><div class="iconbox"><i class="fa-brands fa-git"></i></div></a>
             <a href="#"><div class="iconbox"><i class="fa-brands fa-instagram"></i></div></a>
          </div>
+         Designed And Created By Vishal Paswan.<br>
         <i class="fa-regular fa-copyright"></i> 2024
         Attendance Tracker India, All Rights Reserved.
      </div>

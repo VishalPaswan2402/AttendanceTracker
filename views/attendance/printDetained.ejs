@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Acme&family=Charm:wght@400;700&family=Comic+Neue:wght@700&family=DM+Serif+Display&family=Edu+NSW+ACT+Foundation:wght@400..700&family=Exo:ital,wght@0,100..900;1,100..900&family=Gochi+Hand&family=Jersey+25&family=Kalam:wght@300;400;700&family=Lora:ital,wght@0,400..700;1,400..700&family=Lugrasimo&family=Macondo&family=Monoton&family=Oleo+Script:wght@400;700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Protest+Revolution&family=Protest+Riot&family=Roboto+Slab:wght@100..900&family=Satisfy&family=Sedgwick+Ave+Display&family=Song+Myung&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=DM+Serif+Display&family=Lora:ital,wght@0,400..700;1,400..700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Protest+Revolution&family=Roboto+Slab:wght@100..900&family=Song+Myung&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/cssFolder/print.css">
+  <link rel="stylesheet" href="/cssFolder/footer.css">
 </head>
 <body>
     <div class="top">Attendance Tracker</div>
@@ -19,22 +20,22 @@
         <h4>Student's whose attendance percentage is less than <%=percentage%>.</h4>
         <%if(totalStudents.length>0){%>
         <h5><%=currTech.collegeName%></h5>
-        <h5>Teacher : <%=currTech.teacherName%></h5>
-        <h5>Semester : <%=currClass.semester%></h5>
-        <h5>Section || Subject : <%=currClass.section%> || <%=currTech.subject%></h5>
+        <h5><%=currClass.semester%> || <%=currClass.section%> || <%=currTech.subject%></h5>
         <%if(currAttend){%>
-        <h5>Total Class : <%=currAttend.totalClass%> </h5>
+        <h5>Total class held : <%=currAttend.totalClass%> </h5>
         <%}%>
         <%}%>
     
     <table id="attendenceTable">
         <%if(currAttend.totalClass){%>
-        <tr>
-            <th>Student's Name</th>
-            <th>Roll No.</th>
-            <th>Attended</th>
-            <th>Percentage</th>
-        </tr>
+            <thead>
+                <tr>
+                    <th>Student's Name</th>
+                    <th>Roll No.</th>
+                    <th>Attended</th>
+                    <th>Percentage</th>
+                </tr>
+            </thead>
         <%}else{%>
             <br>
             <h3>No classes held for this subject.</h3>
@@ -51,7 +52,7 @@
                         <td><%=student.studentName%></td>
                         <td><%=student.studentRollNo%></td>
                         <td><%=attendanceRecord.attendenClass%></td>
-                        <td><%=attendanceRecord.classPercent%></td>
+                        <td><%=attendanceRecord.classPercent%> %</td>
                     </tr>
                 <%}%>
             <%}%>
@@ -59,6 +60,18 @@
         <%}%>
         <%}%>
     </table>
+
+    <div id="foot">
+        <div class="icons">
+            <a href="#"><div class="iconbox"><i class="fa-brands fa-linkedin-in"></i></div></a>
+            <a href="#"><div class="iconbox"><i class="fa-brands fa-twitter"></i></div></a>
+            <a href="#"><div class="iconbox"><i class="fa-brands fa-git"></i></div></a>
+            <a href="#"><div class="iconbox"><i class="fa-brands fa-instagram"></i></div></a>
+        </div>
+        Designed And Created By Vishal Paswan.<br>
+        <i class="fa-regular fa-copyright"></i> 2024
+        Attendance Tracker India, All Rights Reserved.
+    </div>
 
     <script>
         document.getElementById('printAttendance').addEventListener('click', function() {
