@@ -15,6 +15,13 @@ body{
     text-align: center;
     color: blueviolet;
 }
+.guide{
+    /* background-color: red; */
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 700;
+    color: rgb(90, 88, 237);
+}
 ul li,ol li,p{
     font-size: 1rem;
     color: rgb(96, 96, 96);
@@ -22,8 +29,12 @@ ul li,ol li,p{
 h5{
     color: rgb(46, 140, 168);
 }
+.backBody{
+    background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
+}
 .buttonColor1{
-    background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+    /* background-image: linear-gradient(to top, #d4e9f6 0%, #dbf0fc 100%); */
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
     color: rgb(131, 131, 21);
 }
 @media(min-width:500px) and (max-width:700px){

@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const studentId = prevElement.dataset.studentId;
         const isPresent = prevElement.textContent.trim().toLowerCase() === 'absent';
         if (isPresent) {
-            prevElement.style.backgroundColor = 'rgb(253, 200, 208)';
+            prevElement.style.backgroundColor ="#ffb00564";
         }
     });
 });
