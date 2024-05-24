@@ -67,7 +67,7 @@
     <div class="top">Attendance Tracker</div>
 
   <div class="prof">
-    <div class="about">
+    <div class="about mobHide">
         <p>Teacher's Name || ID's : <span style="color: rgb(0, 83, 207);"> <%=classTech.teacherName%> || <%=classTech.teacherId%></span></p>
     </div>
     <div class="about">
@@ -76,7 +76,7 @@
     <div class="about">
         <p>Subject Name : <span style="color: rgb(0, 83, 207);"> <%=classTech.subject%></span></p>
     </div>
-    <div class="about">
+    <div class="about colName">
         <p>College : <span style="color: rgb(0, 83, 207);"> <%=classTech.collegeName%></span></p>
     </div>
 </div>
@@ -86,52 +86,52 @@
         <div id="stcol">
             <div class="topBar margin">
               <%if(currUsers && currUsers._id.equals(classTech._id)){%>
-                <div class="stName stColorTop centerItems" style="width: 3%;"> Edit</div>
+                <div class="stName stColorTop centerItems tabHide tabHide1" style="width: 3%;"> Edit</div>
               <%}%>
-                <div class="stName stColorTop centerItems" style="width: 25%;"> Student's Name</div>
-                <div class="stRoll stColorTop centerItems" style="width: 17%;"> Student's Roll No.</div>
-                <div class="stTotal stColorTop centerItems" style="width: 8%;">Total Class</div>
-                <div class="stAttend stColorTop centerItems" style="width: 8%;">Attended</div>
-                <div class="stPer stColorTop centerItems" style="width: 8%;">Percentage</div>
-                <div class="stPrev stColorTop centerItems" style="width: 10%;">Previous Day</div>
-                <div class="stTod stColorTop centerItems" id="todayClass" style="width: 10%;">Today's Class</div>
+                <div class="stName stColorTop centerItems tabHide norWidth2 studName"> Student's Name</div>
+                <div class="stRoll stColorTop centerItems norWidth1"> Student's Roll No.</div>
+                <div class="stTotal stColorTop centerItems norWidth mobHide ">Total</div>
+                <div class="stAttend stColorTop centerItems norWidth mobHide">Attended</div>
+                <div class="stPer stColorTop centerItems norWidth">Percentage</div>
+                <div class="stPrev stColorTop centerItems norWidth3 mobHide tabHide1">Previous Day</div>
+                <div class="stTod stColorTop centerItems norWidth3" id="todayClass">Today's Class</div>
             </div>
             <%if(students.length>0){%>
             <%for(student of students){%>
             <div class="box2 margin">
               <%if(currUsers && currUsers._id.equals(classTech._id)){%>
-                <a href="/Attendence-Tracker/<%=classTech._id%>/<%=allClass._id%>/<%=student._id%>/Edit-Student-Page" class="editAttSt "><div class=" data stColor" style="width: 3%; background-color: transparent;"><i class="fa-solid fa-keyboard" id="editIcons"></i></div></a>
+                <a href="/Attendence-Tracker/<%=classTech._id%>/<%=allClass._id%>/<%=student._id%>/Edit-Student-Page" class="editAttSt tabHide tabHide1"><div class=" data stColor" style="width: 3%; background-color: transparent;"><i class="fa-solid fa-keyboard" id="editIcons"></i></div></a>
                 <%}%>
-                <div class="stName stColor" style="width: 25%;">
+                <div class="stName stColor tabHide studName">
                     <div class="data margin student"><%=student.studentName%></div>
                 </div>
-                <div class="stRoll stColor" style="width: 17%;">
+                <div class="stRoll stColor norWidth1">
                     <div class="data margin"><%=student.studentRollNo%></div>
                 </div>
                     <%for(attend of studentAttendence){%>
                         <%if(attend.studentId.toString()===student._id.toString()){%>
-                            <div class="stTotal stColor" style="width: 8%;">
+                            <div class="stTotal stColor norWidth mobHide">
                                 <%if(attend.totalClass>0){%>
                                     <div class="data margin to1" data-student-id="<%=attend._id%>"><%=attend.totalClass%></div>
                                 <%}%>    
                             </div>
-                            <div class="stAttend stColor" style="width: 8%;">
+                            <div class="stAttend stColor norWidth mobHide">
                                 <%if(attend.totalClass>0){%>
                                     <div class="data margin at1" data-student-id="<%=attend._id%>"><%=attend.attendenClass%></div>
                                 <%}%>    
                             </div>
-                            <div class="stPer stColor" style="width: 8%;">
+                            <div class="stPer stColor norWidth">
                                 <%if(attend.totalClass>0){%>
                                     <div class="data margin per1" data-student-id="<%=attend._id%>"><%=attend.classPercent%> %</div>
                                 <%}%>
                             </div>
-                            <div class="stPrev stColor" style="width: 10%;">
+                            <div class="stPrev stColor norWidth3 mobHide tabHide1">
                                 <%if(attend.totalClass>0){%>
                                 <div class="data margin" data-student-id="<%=attend._id%>"><%=attend.classPrevious%></div>
                                 <%}%>
                             </div>
                             <!-- For Marking present and absent... -->
-                            <div class="stTod stColor" style="width: 10%;">
+                            <div class="stTod stColor norWidth3">
                                 <div class="data margin preColor" id="buttonContainer">
                                     <div><button type="submit" data-student-id="<%=attend._id%>" class="present preP">Pre.</button></div>
                                     <div><button type="submit" data-student-id="<%=attend._id%>" class="present absA absent">Abs.</button></div>
@@ -163,9 +163,9 @@
 
     <%if(currUsers && currUsers._id.equals(classTech._id)){%>
     <div id="downl">
-        <button class="new mar studentNew">Add New Student</button>
-        <a href="/Attendence-Tracker/<%=classTech._id%>/<%=classTech.subject%>/<%=allClass._id%>/Print-All-Attendence-sheet"><button class="new mar">Attendance Sheet</button></a>
-        <button class="new mar" id="filterStudent">Filter Students</button>
+        <button class="new mar studentNew tabHide">Add New Student</button>
+        <a href="/Attendence-Tracker/<%=classTech._id%>/<%=classTech.subject%>/<%=allClass._id%>/Print-All-Attendence-sheet"><button class="new mar tabHide">Attendance Sheet</button></a>
+        <button class="new mar tabHide" id="filterStudent">Filter Students</button>
         <%if(students.length>0){%>
           <button class="new mar" id="subAttendence" >Submit Attendance</button>
         <%}%>

@@ -35,10 +35,10 @@ h5,h4,h3{
     font-weight: 600;
 }
 @media print {
-.printLink {
-    display: none;
-}
-thead {
-    display: table-header-group;
-}
+    .printLink {
+        display: none;
+    }
+    thead {
+        display: table-header-group;
+    }
 }

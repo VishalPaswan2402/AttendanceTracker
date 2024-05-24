@@ -51,7 +51,6 @@ h5{
     height: 30px;
     border: 2px solid black;
 }
-
 /* Student card Style... */
 .container {
     width: 80%;
@@ -73,24 +72,20 @@ h5{
 .student-card p{
     font-size: 1.15rem;
 }
-
 table {
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%;
-  }
-  
-  th, td {
+}
+th, td {
     text-align: left;
     padding: 8px;
     text-align: center;
-  }
-  tr th{
+}
+tr th{
     background-color: rgb(197, 231, 243);
-  }
-
-  tr:nth-child(odd){background-color: #e0e0e0}
-
+}
+tr:nth-child(odd){background-color: #e0e0e0}
 
 @media only screen and (max-width: 768px) {
     .container {
@@ -101,10 +96,9 @@ table {
     }
 }
 /* Student card style... */
-
-@media(min-width:350px) and (max-width:700px){
+@media(min-width:350px) and (max-width:980px){
    .top{
-    font-size: 2.4rem;
+    font-size: 2.5rem;
    }
 }
 @media(min-width:300px) and (max-width:350px){

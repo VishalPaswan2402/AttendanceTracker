@@ -80,11 +80,10 @@
             <label for="floatingn">Teacher's Name</label>
           </div>
           <div class="form-floating mb-3">
-            <select class="form-select" name="tGender" id="floatingSelectG" aria-label="Floating label select example" required>
-              <option value="" disabled selected>Teacher's Gender</option>
+            <select disabled class="form-select" name="tGender" id="floatingSelectG" aria-label="Floating label select example" required>
+              <option value="" disabled selected >Teacher's Gender</option>
                 <option <%=tecData.gender ==="Male" ? 'selected' :''%>>Male</option>
                 <option <%=tecData.gender ==="Female" ? 'selected' :''%>>Female</option>
-                <option <%=tecData.gender ==="Others" ? 'selected' :''%>>Others</option>
             </select>
             <label for="floatingSelectG">Teacher's Gender</label>
           </div>
@@ -93,10 +92,10 @@
             <label for="floatingnId">Teacher's ID</label>
           </div>
         </div>
-        <div class="logins mb-3" style="display: flex; justify-content: space-around;">
-            <button type="button" style="width: 8rem;" class="btn btn-danger mb-3" id="deleteCurrTech">Delete Data</button>
-            <button type="submit" style="width: 8rem;" class="btn btn-primary mb-3">Update Data</button>
-            <a href="/Attendence-Tracker/<%=collId%>/College-Page"><button type="button" style="width: 8rem;" class="btn btn-success mb-3">Cancle Form</button></a>      
+        <div class="logins" style="display: flex; justify-content: space-around;">
+            <button type="button" class="btn btn-danger mb-3" id="deleteCurrTech">Delete</button>
+            <button type="submit" class="btn btn-primary mb-3">Update</button>
+            <a href="/Attendence-Tracker/<%=collId%>/College-Page"><button type="button" class="btn btn-success mb-3">Cancle</button></a>      
         </div>
       </div>
     </form>

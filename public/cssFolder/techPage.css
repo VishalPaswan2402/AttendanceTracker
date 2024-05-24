@@ -27,7 +27,7 @@ body{
     color: blueviolet;
 }
 .prof{
-    height: 125px;
+    height: 120px;
     width: 80%;
     margin: 15px auto;
     border: 3px solid black;
@@ -40,7 +40,7 @@ body{
     padding-left: 25px;
 }
 .about p{
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 600;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
@@ -109,6 +109,18 @@ body{
 }
 .stColor{
     height: 100%;
+}
+.studName{
+    width: 25%;
+}
+.norWidth{
+    width: 10%;
+}
+.norWidth1{
+    width: 17%;
+}
+.norWidth3{
+    width: 10%;
 }
 .data{
     height: 30px;
@@ -201,7 +213,7 @@ body{
     display: none;
 }
 
-@media(min-width:1150px) and (max-width:1250px){
+@media(min-width:1180px) and (max-width:1250px){
     .prof{
         width: 85%;
     }
@@ -212,3 +224,256 @@ body{
         width: 97%;
     }
 }
+@media(min-width:1000px) and (max-width:1180px){
+    .prof{
+        width: 85%;
+        height: 90px;
+    }
+    #attend{
+        width: 97%;
+    }
+    #downl{
+        width: 97%;
+    }
+    .tabHide1{
+        display: none;
+    }
+    .studName{
+        width: 29%;
+    }
+    .norWidth{
+        width: 10%;
+    }
+    .norWidth1{
+        width: 17%;
+    }
+    .norWidth3{
+        width: 14%;
+    }
+    .about p{
+        font-weight: 550;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-size: 1rem;
+    }
+    .colName{
+        display: none;
+    }
+    .top{
+        font-size: 2.4rem;
+    }
+}
+@media(min-width:600px) and (max-width:1000px){
+    .prof{
+        width: 95%;
+        height: 90px;
+    }
+    .about p{
+        font-weight: 550;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-size: 1rem;
+    }
+    .colName{
+        display: none;
+    }
+    .tabHide1{
+        display: none;
+    }
+    #attend{
+        height: 335px;
+        width: 95%;
+    }
+    .tabHide{
+        display: none;
+    }
+    .norWidth{
+        width: 16%;
+    }
+    .norWidth1{
+        width: 28%;
+    }
+    .norWidth3{
+        width: 20%;
+    }
+    .top{
+        font-size: 2.3rem;
+    }
+    #SubAttend,#notMarkedAtt{
+        position: absolute;
+        top: 33%;
+        left: 28%;
+        z-index: 10000;
+        display: none;
+    }
+}
+@media(min-width:450px) and (max-width:650px){
+    .prof{
+        width: 95%;
+        height: 55px;
+        border: 1px solid black;
+        border-radius: 20px;
+        box-shadow: 1px 1px 8px gray;
+    }
+    .about p{
+        font-weight: 550;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-size: 1rem;
+    }
+    .colName{
+        display: none;
+    }
+    #attend{
+        height: 335px;
+        width: 95%;
+    }
+    .tabHide{
+        display: none;
+    }
+    .mobHide{
+        display: none;
+    }
+    .norWidth{
+        width: 22%;
+    }
+    .norWidth1{
+        width: 35%;
+    }
+    .norWidth3{
+        width: 35%;
+    }
+    .data{
+        font-size: 1rem;
+        font-weight: 500;
+    }
+    .stColorTop{
+        font-family:monospace;
+        font-size: 0.9rem;
+    }
+    .centerItems{
+        font-weight: 550;
+    }
+    .top{
+        font-size: 2.1rem;
+    }
+    #SubAttend,#notMarkedAtt{
+        position: absolute;
+        top: 33%;
+        left: 20%;
+        z-index: 10000;
+        display: none;
+    }
+}
+@media(min-width:350px) and (max-width:450px){
+    .prof{
+        width: 95%;
+        height: 55px;
+        border: 1px solid black;
+        border-radius: 20px;
+        box-shadow: 1px 1px 8px gray;
+    }
+    .about p{
+        font-weight: 550;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-size: 0.8rem;
+    }
+    .colName{
+        display: none;
+    }
+    #attend{
+        height: 335px;
+        width: 95%;
+    }
+    .tabHide{
+        display: none;
+    }
+    .mobHide{
+        display: none;
+    }
+    .norWidth{
+        width: 22%;
+    }
+    .norWidth1{
+        width: 35%;
+    }
+    .norWidth3{
+        width: 35%;
+    }
+    .data{
+        font-size: 0.8rem;
+        font-weight: 500;
+    }
+    .stColorTop{
+        font-family:monospace;
+        font-size: 0.7rem;
+    }
+    .centerItems{
+        font-weight: 550;
+    }
+    .top{
+        font-size: 1.7rem;
+    }
+    #SubAttend,#notMarkedAtt{
+        position: absolute;
+        top: 33%;
+        left: 10%;
+        z-index: 10000;
+        display: none;
+    }
+}
+@media(min-width:300px) and (max-width:350px){
+    .prof{
+        width: 95%;
+        height: 50px;
+        border: 1px solid black;
+        border-radius: 20px;
+        box-shadow: 1px 1px 8px gray;
+    }
+    .about p{
+        font-weight: 550;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-size: 0.7rem;
+    }
+    .colName{
+        display: none;
+    }
+    #attend{
+        height: 335px;
+        width: 95%;
+    }
+    .tabHide{
+        display: none;
+    }
+    .mobHide{
+        display: none;
+    }
+    .norWidth{
+        width: 21%;
+    }
+    .norWidth1{
+        width: 35%;
+    }
+    .norWidth3{
+        width: 40%;
+    }
+    .data{
+        font-size: 0.7rem;
+        font-weight: 500;
+    }
+    .stColorTop{
+        font-family:monospace;
+        font-size: 0.6rem;
+    }
+    .centerItems{
+        font-weight: 550;
+    }
+    #SubAttend,#notMarkedAtt{
+        position: absolute;
+        top: 33%;
+        left: 0%;
+        z-index: 10000;
+        display: none;
+    }
+    .top{
+        font-size: 1.5rem;
+    }
+}
+
