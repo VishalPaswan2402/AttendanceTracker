@@ -30,4 +30,4 @@ Any college teacher's can create there account of there particular class and can
 <br>
 
 ### This is a student attendance page where student can access his attendance data in table form...
-![studentPage2](/public/imageFolder/studentPage1.png)
+![studentPage1](/public/imageFolder/studentPage1.png)
