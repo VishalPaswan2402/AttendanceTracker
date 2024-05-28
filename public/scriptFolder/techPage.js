@@ -54,7 +54,7 @@ presentButtons.forEach(button => {
         const preIdInput = document.querySelector(`input[name="preId"][data-student-id="${studentId}"]`);
         const absIdInput = document.querySelector(`input[name="absId"][data-student-id="${studentId}"]`);
         if (this.classList.contains('preP')) {
-            console.log('Pre. button clicked for student ID: ' + studentId);
+            // console.log('Pre. button clicked for student ID: ' + studentId);
             preIdInput.value = studentId;
             absIdInput.value = "";
             this.style.backgroundColor = "rgb(100, 188, 100)"; // Change color for Pre. button
@@ -62,7 +62,7 @@ presentButtons.forEach(button => {
             const absButton = document.querySelector(`.absA[data-student-id="${studentId}"]`);
             absButton.style.backgroundColor = "";
         } else if (this.classList.contains('absA')) {
-            console.log('Abs. button clicked for student ID: ' + studentId);
+            // console.log('Abs. button clicked for student ID: ' + studentId);
             absIdInput.value = studentId;
             preIdInput.value = "";
             this.style.backgroundColor = "red"; // Change color for Abs. button

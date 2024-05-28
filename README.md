@@ -10,15 +10,19 @@ Any college teacher's can create there account of there particular class and can
 <br>
 
 ### This is a home page of website...
-![homePage](/public/imageFolder/home.png)
+![homePage](/public/imageFolder/HomePage.png)
 <br>
 
-### This is a teacher home page where all class show...
+### This is a teacher home page where all classes show...
 ![teacherHomePage](/public/imageFolder/teacherHome.png)
 <br>
 
+### This is a college home page where all teacher data show...
+![teacherHomePage](/public/imageFolder/CollegePage.png)
+<br>
+
 ### This is a attendance page from where teacher mark the attendance of students...
-![attendancePage](/public/imageFolder/attendancePage.png)
+![attendancePage](/public/imageFolder/TeacherPage.png)
 <br>
 
 ### This is a student attendance page where student can access his attendance data in graph form...
@@ -26,4 +30,4 @@ Any college teacher's can create there account of there particular class and can
 <br>
 
 ### This is a student attendance page where student can access his attendance data in table form...
-![studentPage2](/public/imageFolder/studentPage2.png)
+![studentPage2](/public/imageFolder/studentPage1.png)

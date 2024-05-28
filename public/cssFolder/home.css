@@ -42,9 +42,9 @@ body{
 }
 .collegeName{
     font-size: 1.7rem;
-    font-family: "Teko", sans-serif;
-    font-weight: 600;
-    color: brown;
+    font-family: "Rowdies", sans-serif;
+    font-style: normal;
+    color: rgb(93, 5, 122);
     text-align: center;
 }
 @media(min-width:430px) and (max-width:500px){
