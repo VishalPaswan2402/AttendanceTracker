@@ -26,7 +26,7 @@ Any college teacher's can create there account of there particular class and can
 <br>
 
 ### This is a student attendance page where student can access his attendance data in graph form...
-![studentPage](/public/imageFolder/StudentPage.png)
+![studentPage](/public/imageFolder/studentPage.png)
 <br>
 
 ### This is a student attendance page where student can access his attendance data in table form...
