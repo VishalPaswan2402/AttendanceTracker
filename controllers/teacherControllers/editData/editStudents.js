@@ -31,7 +31,7 @@ module.exports.editStudentData=async(req,res,next)=>{
         let newRoll=await allStudent.findOne({studentRollNo:sRollNo,studentSemester:currStudent.studentSemester,studentSection:currStudent.studentSection,college:currStudent.college});
         if(newRoll){
             req.flash("error","Student already exist with same roll number.");
-            return res.redirect(`/Attendence-Tracker/${techId}/${classId}/Attendence-Sheet`);
+            return res.redirect(`/Attendance-Tracker/${techId}/${classId}/Attendance-Sheet`);
         }
         else{
             let stEdit=await allStudent.findByIdAndUpdate(stId,({studentName:capitalizedString,studentRollNo:sRollNo.toUpperCase()}));
@@ -77,7 +77,7 @@ module.exports.editStudentData=async(req,res,next)=>{
         }
     }
     req.flash("success","Student data updated successfully.");
-    return res.redirect(`/Attendence-Tracker/${techId}/${classId}/Attendence-Sheet`);
+    return res.redirect(`/Attendance-Tracker/${techId}/${classId}/Attendance-Sheet`);
 };
 
 module.exports.destroyStudents=async(req,res)=>{
@@ -85,5 +85,5 @@ module.exports.destroyStudents=async(req,res)=>{
     let destroyStudent=await allStudent.findByIdAndDelete(stId);
     let destAtt=await Attendence.deleteMany({studentId:stId});
     req.flash("success","Student data deleted successfully.");
-    return res.redirect(`/Attendence-Tracker/${techId}/${classId}/Attendence-Sheet`);
+    return res.redirect(`/Attendance-Tracker/${techId}/${classId}/Attendance-Sheet`);
 };

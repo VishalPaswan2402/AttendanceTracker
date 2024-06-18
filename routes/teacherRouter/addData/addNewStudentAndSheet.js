@@ -24,7 +24,7 @@ router.post("/New-Student",isTeacLoggedIn,isOwner,validateStudent,wrapAsync(
 ));
 
 //Teachers attendence sheet page...
-router.get("/Attendence-Sheet",isTeacLoggedIn,isOwner,wrapAsync(
+router.get("/Attendance-Sheet",isTeacLoggedIn,isOwner,wrapAsync(
     teacherControllersForAddData.teacherSheet
 ));
 

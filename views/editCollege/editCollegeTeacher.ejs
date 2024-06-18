@@ -48,7 +48,7 @@
                 <a class="nav-link active textSize" aria-current="page">Edit Teacher's Data</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link textSize" href="/Attendence-Tracker/userGuide">User Guide</a>
+                <a class="nav-link textSize" href="/Attendance-Tracker/userGuide">User Guide</a>
               </li>
             </ul>
           </div>
@@ -71,7 +71,7 @@
 
     <div class="top">Attendance Tracker</div>
     
-    <form method="post" action="/Attendence-Tracker/<%=collId%>/<%=tecId%>/Edit-Teacher-Data?_method=put" class="needs-validation" novalidate>
+    <form method="post" action="/Attendance-Tracker/<%=collId%>/<%=tecId%>/Edit-Teacher-Data?_method=put" class="needs-validation" novalidate>
       <div class="card formCard">
         <div class="card-body">
           <h2 class="card-title" style="align-items: center; text-align: center;">Edit Teacher's Data</h2>
@@ -95,7 +95,7 @@
         <div class="logins" style="display: flex; justify-content: space-around;">
             <button type="button" class="btn btn-danger mb-3" id="deleteCurrTech">Delete</button>
             <button type="submit" class="btn btn-primary mb-3">Update</button>
-            <a href="/Attendence-Tracker/<%=collId%>/College-Page"><button type="button" class="btn btn-success mb-3">Cancle</button></a>      
+            <a href="/Attendance-Tracker/<%=collId%>/College-Page"><button type="button" class="btn btn-success mb-3">Cancle</button></a>      
         </div>
       </div>
     </form>
@@ -107,7 +107,7 @@
         <h4 class="card-subtitle mb-2 text-body-secondary" style="margin-top: 5px;text-align: center;" >Are You Sure ?</h4>
         <p class="card-text" style="margin-top: 5px;text-align: center;">It will permanently delete all data and accounts related to <strong><%=tecData.teacherName%></strong> , ID No. <strong><%=tecData.idNo%></strong>. The deleted data cannot be restored.</p>
         <div style="display: flex; align-items: center; justify-content: space-evenly;">
-          <form action="/Attendence-Tracker/<%=collId%>/<%=tecId%>/collegeTeacher-Destroy?_method=Delete" method="post">
+          <form action="/Attendance-Tracker/<%=collId%>/<%=tecId%>/collegeTeacher-Destroy?_method=Delete" method="post">
               <a href="#" class="card-link"><button type="submit" class="btn btn-danger">Delete it</button></a>
           </form>
           <button type="button" id="cancleDel" class="btn btn-primary">Cancle it</button>

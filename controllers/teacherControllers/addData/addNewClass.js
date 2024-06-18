@@ -26,10 +26,10 @@ module.exports.addNewClass=async(req,res,next)=>{
             }
         }
         req.flash("success","New class added successfully.");
-        return res.redirect(`/Attendence-Tracker/${id}/TeacherHome`);
+        return res.redirect(`/Attendance-Tracker/${id}/TeacherHome`);
     }
     else{
         req.flash("error","A teacher already exists for this class and subject.");
-        return res.redirect(`/Attendence-Tracker/${id}/TeacherHome`);
+        return res.redirect(`/Attendance-Tracker/${id}/TeacherHome`);
     }
 };

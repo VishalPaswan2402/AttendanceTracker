@@ -40,7 +40,7 @@ module.exports.verifyTeacher=async(req,res,next)=>{
             return next(err);
         }
         req.flash("success","Account created successfully.");
-        return res.redirect(`/Attendence-Tracker/${id}/TeacherHome`);
+        return res.redirect(`/Attendance-Tracker/${id}/TeacherHome`);
         })
     }
     else{

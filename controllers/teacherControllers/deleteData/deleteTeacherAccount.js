@@ -64,6 +64,6 @@ module.exports.destroyTeacherAccount=async(req,res,next)=>{
     }
     else{
         req.flash("error","Please enter all data correctly to delete your account.");
-        return res.redirect(`/Attendence-Tracker/${techId}/Delete-Account`);
+        return res.redirect(`/Attendance-Tracker/${techId}/Delete-Account`);
     }
 };

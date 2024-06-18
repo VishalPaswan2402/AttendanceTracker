@@ -36,14 +36,14 @@
                 <a class="nav-link textSize" aria-current="page" href="/">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active textSize" aria-current="page" href="/Attendence-Tracker/<%=currCollege._id%>/College-Page">College Page</a>
+                <a class="nav-link active textSize" aria-current="page" href="/Attendance-Tracker/<%=currCollege._id%>/College-Page">College Page</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link textSize" href="/Attendence-Tracker/userGuide">User Guide</a>
+                <a class="nav-link textSize" href="/Attendance-Tracker/userGuide">User Guide</a>
               </li>
               <%if(currUsers && currUsers._id.equals(currCollege._id)){%>
               <li class="nav-item">
-                <a class="nav-link textSize" href="/Attendence-Tracker/College-Log-Out">Log Out</a>
+                <a class="nav-link textSize" href="/Attendance-Tracker/College-Log-Out">Log Out</a>
               </li>
               <%}%>
             </ul>
@@ -71,7 +71,7 @@
             <div class="container-fluid" style="display: flex;justify-content: center;flex-wrap: wrap;">
               <%if(currUsers && currUsers._id.equals(currCollege._id)){%>
                 <button id="addTeacher" type="button" class="btn btn-primary" style="margin-right: 10px; margin-top: 10px;">Add New</button>
-                <form method="get" action="/Attendence-Tracker/<%=currCollege._id%>/Search-Teacher" class="d-flex needs-validation" novalidate role="search" style="margin-top: 10px;">
+                <form method="get" action="/Attendance-Tracker/<%=currCollege._id%>/Search-Teacher" class="d-flex needs-validation" novalidate role="search" style="margin-top: 10px;">
                   <input class="form-control me-2 " <%if(teacherName===0){%> placeholder='Search by teacher name' <%}else{%> value='<%=teacherName%>' <%}%>  name="teacherName" style="width: 14rem;" type="text" aria-label="Search" required>
                   <button type="submit" class="btn btn-primary">Search</button>
                 </form>
@@ -101,7 +101,7 @@
                   <h6 class="card-title">Accounts&nbsp;&nbsp;: <%=teacher.totalAccount%></h6>
                   <%if(currUsers && currUsers._id.equals(currCollege._id)){%>
                     <div style="display: flex; justify-content: center;">
-                      <a href="/Attendence-Tracker/<%=currCollege._id%>/<%=teacher._id%>/Edit-Teacher" class="btn btn-outline-primary" style="width: 12rem;">Edit Teacher's Data</a>
+                      <a href="/Attendance-Tracker/<%=currCollege._id%>/<%=teacher._id%>/Edit-Teacher" class="btn btn-outline-primary" style="width: 12rem;">Edit Teacher's Data</a>
                     </div>
                   <%}%>
               </div>
@@ -114,7 +114,7 @@
     <div class="card formCard" style="width: 22rem; position: absolute; top: 26%; left: 38.5%; display: none;" id="teacherForm">
         <div class="card-body" style="width: 21.7rem;">
           <h5 class="card-title">Add New Teacher's</h5>
-          <form method="post" action="/Attendence-Tracker/<%=currCollege._id%>/Add-Teacher" class="needs-validation" novalidate>
+          <form method="post" action="/Attendance-Tracker/<%=currCollege._id%>/Add-Teacher" class="needs-validation" novalidate>
             <div class="form-floating mb-3 mt-3">
                 <input type="text" name="teacherName" class="form-control" id="floatingn" placeholder="Teacher's Name" required>
                 <label for="floatingn">Teacher's Name</label>

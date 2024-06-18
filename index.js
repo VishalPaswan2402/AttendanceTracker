@@ -70,27 +70,27 @@ app.use((req,res,next)=>{
 })  
 
 // All Routers...
-app.use("/Attendence-Tracker",collegeLoginLogout);
-app.use("/Attendence-Tracker/:id",addCollegeTeacher);
-app.use("/Attendence-Tracker",collegeSignUp);
-app.use("/Attendence-Tracker",sendVerifyCollegeOtp);
-app.use("/Attendence-Tracker",changeCollegePassword);
-app.use("/Attendence-Tracker/:id",searchTeacher);
-app.use("/Attendence-Tracker/:collId/:tecId",editCollegeTeacher);
-app.use("/Attendence-Tracker",teacherSignUp);
-app.use("/Attendence-Tracker",sendVerifyTeacherOtp);
-app.use("/Attendence-Tracker",teachersLoginLogout);
-app.use("/Attendence-Tracker",students);
-app.use("/Attendence-Tracker",changeTeacherPassword);
-app.use("/Attendence-Tracker/:techId/:classId/:stId",editStudent);
-app.use("/Attendence-Tracker/:id",addNewClass);
-app.use("/Attendence-Tracker/:id",teacherHomePage);
-app.use("/Attendence-Tracker/:idTeacher/:idClass",addNewStudentAndSheet);
-app.use("/Attendence-Tracker",markAttendance);
-app.use("/Attendence-Tracker/:techId/:sub/:classId",printAttendance);
-app.use("/Attendence-Tracker/:techId/:classId",deleteTeacherClass);
-app.use("/Attendence-Tracker/:techId",deleteTeacherAccount);
-app.use("/Attendence-Tracker",guide);
+app.use("/Attendance-Tracker",collegeLoginLogout);
+app.use("/Attendance-Tracker/:id",addCollegeTeacher);
+app.use("/Attendance-Tracker",collegeSignUp);
+app.use("/Attendance-Tracker",sendVerifyCollegeOtp);
+app.use("/Attendance-Tracker",changeCollegePassword);
+app.use("/Attendance-Tracker/:id",searchTeacher);
+app.use("/Attendance-Tracker/:collId/:tecId",editCollegeTeacher);
+app.use("/Attendance-Tracker",teacherSignUp);
+app.use("/Attendance-Tracker",sendVerifyTeacherOtp);
+app.use("/Attendance-Tracker",teachersLoginLogout);
+app.use("/Attendance-Tracker",students);
+app.use("/Attendance-Tracker",changeTeacherPassword);
+app.use("/Attendance-Tracker/:techId/:classId/:stId",editStudent);
+app.use("/Attendance-Tracker/:id",addNewClass);
+app.use("/Attendance-Tracker/:id",teacherHomePage);
+app.use("/Attendance-Tracker/:idTeacher/:idClass",addNewStudentAndSheet);
+app.use("/Attendance-Tracker",markAttendance);
+app.use("/Attendance-Tracker/:techId/:sub/:classId",printAttendance);
+app.use("/Attendance-Tracker/:techId/:classId",deleteTeacherClass);
+app.use("/Attendance-Tracker/:techId",deleteTeacherAccount);
+app.use("/Attendance-Tracker",guide);
 // All Routers...
 
 // Home page...

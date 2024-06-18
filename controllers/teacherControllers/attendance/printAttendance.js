@@ -9,13 +9,13 @@ module.exports.printAll=async(req,res,next)=>{
     let currAttend=await Attendence.findOne({classId:classId});
     if(!currAttend){
         req.flash("error","No students have been added to the class yet !");
-        return res.redirect(`/Attendence-Tracker/${techId}/${classId}/Attendence-Sheet`);
+        return res.redirect(`/Attendance-Tracker/${techId}/${classId}/Attendance-Sheet`);
     }
     else{
         let currClass=await newClass.findById(classId);
         let currTech=await Teacher.findById(techId);
         let totalStudents=await allStudent.find();
-        return res.render("attendance/printAttendence.ejs",{totalStudents,currClass,currAttend,classId,techId,currTech});
+        return res.render("attendance/printAttendance.ejs",{totalStudents,currClass,currAttend,classId,techId,currTech});
     }
 };
 
@@ -25,7 +25,7 @@ module.exports.printDetained=async(req,res,next)=>{
     let currAttend=await Attendence.findOne({classId:classId});
     if(!currAttend){
         req.flash("error","No students have been added to the class yet !");
-        return res.redirect(`/Attendence-Tracker/${techId}/${classId}/Attendence-Sheet`);
+        return res.redirect(`/Attendance-Tracker/${techId}/${classId}/Attendance-Sheet`);
     }
     else{
         let currClass=await newClass.findById(classId);

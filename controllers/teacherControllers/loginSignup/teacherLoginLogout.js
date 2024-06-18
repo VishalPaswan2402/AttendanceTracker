@@ -7,7 +7,7 @@ module.exports.loginForm=(req,res)=>{
 module.exports.loginUser=async(req,res,next)=>{
     let{user}=req;
     req.flash("success","Welcome back to Attendance Tracker.");
-    return res.redirect(`/Attendence-Tracker/${user._id}/TeacherHome`);
+    return res.redirect(`/Attendance-Tracker/${user._id}/TeacherHome`);
 };
 
 module.exports.logOut=async(req,res,next)=>{

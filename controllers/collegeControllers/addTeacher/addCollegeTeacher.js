@@ -18,11 +18,11 @@ module.exports.addCollegeTeacher=async(req,res)=>{
         let addTech= new collegeTeacher({collegeId:id,teacherName:capitalizedString,gender:gender,idNo:idNo,collegeName:currColl.username});
         await addTech.save();
         req.flash("success","New teacher added successfully.");
-        return res.redirect(`/Attendence-Tracker/${id}/College-Page`);
+        return res.redirect(`/Attendance-Tracker/${id}/College-Page`);
     }
     else{
         req.flash("error","Teacher already exist with same ID.");
-        return res.redirect(`/Attendence-Tracker/${id}/College-Page`);
+        return res.redirect(`/Attendance-Tracker/${id}/College-Page`);
     }
 };
 

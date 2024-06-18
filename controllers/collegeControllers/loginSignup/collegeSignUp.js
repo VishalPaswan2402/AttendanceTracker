@@ -16,13 +16,13 @@ module.exports.signUpUser=async(req,res,next)=>{
     if(password!=cPassword){
         req.session.CollData={collegeName,collegeType,cLocation};
         req.flash("error","Passwords do not match. Please make sure you enter the same password in both fields.");
-        return res.redirect("/Attendence-Tracker/College-SignUp");
+        return res.redirect("/Attendance-Tracker/College-SignUp");
     }
     else{
         let findColl=await collegeAccount.findOne({username:collegeName});
         if(findColl){
             req.flash("error","College account already exist. Please Login to your account.");
-            return res.redirect("/Attendence-Tracker/College-Login")
+            return res.redirect("/Attendance-Tracker/College-Login")
         }
         else{
             let totalCollege=await allCollege.findOne({colleges:collegeName});

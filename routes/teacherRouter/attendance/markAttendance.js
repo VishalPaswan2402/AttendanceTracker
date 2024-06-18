@@ -6,7 +6,7 @@ const {isTeacLoggedIn,isOwner}=require("../../../middlewares/authenticateTeacher
 const teacherControllersForAttendance=require("../../../controllers/teacherControllers/attendance/markAttendance.js");
 
 // For marking present and absent for all students...
-router.post("/Submit-All-Attendence",isTeacLoggedIn,isOwner,wrapAsync(
+router.post("/Submit-All-Attendance",isTeacLoggedIn,isOwner,wrapAsync(
     teacherControllersForAttendance.markAttendanceOfStudents
 ));
 

@@ -47,11 +47,11 @@ module.exports.addNewStudent=async(req,res,next)=>{
             }
         }
         req.flash("success","Student added to your class successfully.");
-        return res.redirect(`/Attendence-Tracker/${idTeacher}/${idClass}/Attendence-Sheet`);
+        return res.redirect(`/Attendance-Tracker/${idTeacher}/${idClass}/Attendance-Sheet`);
     }
     else{
         req.flash("error","A student with the same roll number has already been added to the sheet.");
-        return res.redirect(`/Attendence-Tracker/${idTeacher}/${idClass}/Attendence-Sheet`);
+        return res.redirect(`/Attendance-Tracker/${idTeacher}/${idClass}/Attendance-Sheet`);
     }
 };
 

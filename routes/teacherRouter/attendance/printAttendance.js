@@ -6,12 +6,12 @@ const {isTeacLoggedIn,isOwner}=require("../../../middlewares/authenticateTeacher
 const teacherControllersForAttendance=require("../../../controllers/teacherControllers/attendance/printAttendance.js");
 
 // To print attendence sheet of all students...
-router.get("/Print-All-Attendence-sheet",isTeacLoggedIn,isOwner,wrapAsync(
+router.get("/Print-All-Attendance-sheet",isTeacLoggedIn,isOwner,wrapAsync(
     teacherControllersForAttendance.printAll
 ));
 
 // To print attendence sheet of detained students...
-router.get("/Print-Detained-Attendence-sheet",isTeacLoggedIn,isOwner,wrapAsync(
+router.get("/Print-Detained-Attendance-sheet",isTeacLoggedIn,isOwner,wrapAsync(
     teacherControllersForAttendance.printDetained
 ));
 

@@ -36,7 +36,7 @@ module.exports.verifyOTP=async(req,res,next)=>{
                 return next(err);
             }
             req.flash("success","Account created successfully.");
-            return res.redirect(`/Attendence-Tracker/${id}/College-Page`);
+            return res.redirect(`/Attendance-Tracker/${id}/College-Page`);
         })
     }
     else{

@@ -36,7 +36,7 @@ module.exports.verifyEmail=async(req,res,next)=>{
     }
     else{
         req.flash("error","You have entered incorrect code. Please try again later.");
-        return res.redirect("/Attendence-Tracker/Forget-college-Password");
+        return res.redirect("/Attendance-Tracker/Forget-college-Password");
     }
 };
 
@@ -47,5 +47,5 @@ module.exports.changePassword=async(req,res,next)=>{
     await currCollege.setPassword(password);
     await currCollege.save();
     req.flash("success","Password changed successfully. You can now log in with your new password.");
-    return res.redirect("/Attendence-Tracker/College-Login");
+    return res.redirect("/Attendance-Tracker/College-Login");
 };

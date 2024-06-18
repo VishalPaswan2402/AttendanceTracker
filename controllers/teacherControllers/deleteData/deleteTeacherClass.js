@@ -28,5 +28,5 @@ module.exports.destroyClass=async(req,res)=>{
     let currAttend=await Attendence.deleteMany({classId:classId});
     let delcurrClass=await newClass.deleteMany({_id:classId});
     req.flash("success", `${sem} ${sec} class deleted successfully...`);
-    return res.redirect(`/Attendence-Tracker/${techId}/TeacherHome`);
+    return res.redirect(`/Attendance-Tracker/${techId}/TeacherHome`);
 };

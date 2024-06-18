@@ -40,12 +40,12 @@ module.exports.editTeacherForm=async(req,res,next)=>{
             }
         }
         req.flash("success","Teacher data updated successfully.");
-        return res.redirect(`/Attendence-Tracker/${collId}/College-Page`);
+        return res.redirect(`/Attendance-Tracker/${collId}/College-Page`);
     }
     else{
         let curTeac=await collegeTeacher.findByIdAndUpdate(tecId,{teacherName:capitalizedString});
         req.flash("success","Teacher's data updated except ID.");
-        return res.redirect(`/Attendence-Tracker/${collId}/College-Page`);
+        return res.redirect(`/Attendance-Tracker/${collId}/College-Page`);
     }
 };
 
@@ -86,5 +86,5 @@ module.exports.destroyTeacher=async(req,res,next)=>{
     }
     let destroyCollegeTeacher=await collegeTeacher.findByIdAndDelete(tecId); 
     req.flash("success","Teacher's data deleted successfully.");
-    return res.redirect(`/Attendence-Tracker/${collId}/College-Page`);
+    return res.redirect(`/Attendance-Tracker/${collId}/College-Page`);
 };

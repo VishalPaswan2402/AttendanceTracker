@@ -32,17 +32,17 @@
                 <a class="nav-link textSize active" aria-current="page">Teacher's Page</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link textSize" href="/Attendence-Tracker/<%=classTech._id%>/TeacherHome">All Classes</a>
+                <a class="nav-link textSize" href="/Attendance-Tracker/<%=classTech._id%>/TeacherHome">All Classes</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link textSize" href="/Attendence-Tracker/userGuide">User Guide</a>
+                <a class="nav-link textSize" href="/Attendance-Tracker/userGuide">User Guide</a>
               </li>
               <%if(currUsers && currUsers._id.equals(classTech._id)){%>
               <li class="nav-item">
                 <a class="nav-link textSize" id="delClass" style="cursor: pointer;">Delete Class</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link textSize" href="/Attendence-Tracker/Teacher-Log-Out">Log Out</a>
+                <a class="nav-link textSize" href="/Attendance-Tracker/Teacher-Log-Out">Log Out</a>
               </li>
               <%}%>
             </ul>
@@ -100,7 +100,7 @@
             <%for(student of students){%>
             <div class="box2 margin">
               <%if(currUsers && currUsers._id.equals(classTech._id)){%>
-                <a href="/Attendence-Tracker/<%=classTech._id%>/<%=allClass._id%>/<%=student._id%>/Edit-Student-Page" class="editAttSt tabHide tabHide1"><div class=" data stColor" style="width: 3%; background-color: transparent;"><i class="fa-solid fa-keyboard" id="editIcons"></i></div></a>
+                <a href="/Attendance-Tracker/<%=classTech._id%>/<%=allClass._id%>/<%=student._id%>/Edit-Student-Page" class="editAttSt tabHide tabHide1"><div class=" data stColor" style="width: 3%; background-color: transparent;"><i class="fa-solid fa-keyboard" id="editIcons"></i></div></a>
                 <%}%>
                 <div class="stName stColor tabHide studName">
                     <div class="data margin student"><%=student.studentName%></div>
@@ -154,7 +154,7 @@
     </div>
 
     <!-- Store All Attendance data... -->
-    <form id="finalFormSubmit" action="/Attendence-Tracker/Submit-All-Attendence" method="post" style="display: none;">
+    <form id="finalFormSubmit" action="/Attendance-Tracker/Submit-All-Attendance" method="post" style="display: none;">
         <input name="allPresent" value="" id="allPresent">
         <input name="allAbsent" value="" id="allAbsent">
         <button type="submit" id="mySubmit"></button>
@@ -164,7 +164,7 @@
     <%if(currUsers && currUsers._id.equals(classTech._id)){%>
     <div id="downl">
         <button class="new mar studentNew tabHide">Add New Student</button>
-        <a href="/Attendence-Tracker/<%=classTech._id%>/<%=classTech.subject%>/<%=allClass._id%>/Print-All-Attendence-sheet"><button class="new mar tabHide">Attendance Sheet</button></a>
+        <a href="/Attendance-Tracker/<%=classTech._id%>/<%=classTech.subject%>/<%=allClass._id%>/Print-All-Attendance-sheet"><button class="new mar tabHide">Attendance Sheet</button></a>
         <button class="new mar tabHide" id="filterStudent">Filter Students</button>
         <%if(students.length>0){%>
           <button class="new mar" id="subAttendence" >Submit Attendance</button>
@@ -188,7 +188,7 @@
     <div class="card formCard" style="width: 22rem;" id="studentForm">
         <div class="card-body">
           <h5 class="card-title">Add New Student</h5>
-          <form method="post" action="/Attendence-Tracker/<%=classTech._id%>/<%=allClass._id%>/New-Student" class="needs-validation" novalidate>
+          <form method="post" action="/Attendance-Tracker/<%=classTech._id%>/<%=allClass._id%>/New-Student" class="needs-validation" novalidate>
             <div class="form-floating mb-3 mt-3">
                 <input type="text" name="studentName" class="form-control" id="floatingn" placeholder="Student Name" required>
                 <label for="floatingn">Student's Name</label>
@@ -213,7 +213,7 @@
           <h4 class="card-subtitle mb-2 text-body-secondary" style="margin-top: 5px;text-align: center;" >Are You Sure ?</h4>
           <p class="card-text" style="margin-top: 5px;text-align: center;">It will delete all the data related to <%=allClass.semester%> <%=allClass.section%> class permanently, and you won't be able to restore it again.</p>
           <div style="display: flex; align-items: center; justify-content: space-evenly;">
-            <form action="/Attendence-Tracker/<%=classTech._id%>/<%=allClass._id%>/Class-Destroy?_method=Delete" method="post">
+            <form action="/Attendance-Tracker/<%=classTech._id%>/<%=allClass._id%>/Class-Destroy?_method=Delete" method="post">
                 <a href="#" class="card-link"><button type="submit" class="btn btn-danger">Delete it</button></a>
             </form>
             <button type="button" id="cancleDel" class="btn btn-primary">Cancle it</button>
@@ -253,7 +253,7 @@
     <div class="card formCard" style="width: 22rem;" id="filterStudentForm">
       <div class="card-body">
         <h5 class="card-title">Filter Student</h5>
-        <form method="get" action="/Attendence-Tracker/<%=classTech._id%>/<%=classTech.subject%>/<%=allClass._id%>/Print-Detained-Attendence-sheet" class="needs-validation" novalidate>
+        <form method="get" action="/Attendance-Tracker/<%=classTech._id%>/<%=classTech.subject%>/<%=allClass._id%>/Print-Detained-Attendance-sheet" class="needs-validation" novalidate>
           <div class="form-floating mb-3 mt-3">
               <input type="number" name="percentage" min="0" class="form-control" id="floatingp" placeholder="Enter percentage to filter student" required>
               <label for="floatingp">Enter percentage to filter student</label>

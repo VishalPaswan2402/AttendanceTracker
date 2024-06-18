@@ -10,7 +10,7 @@ module.exports.loginUser=async(req,res,next)=>{
     let{user}=req;
     let id=user._id;
     req.flash("success","Welcome back to Attendance Tracker.");
-    return res.redirect(`/Attendence-Tracker/${id}/College-Page`);
+    return res.redirect(`/Attendance-Tracker/${id}/College-Page`);
 };
 
 module.exports.logOut=async(req,res,next)=>{

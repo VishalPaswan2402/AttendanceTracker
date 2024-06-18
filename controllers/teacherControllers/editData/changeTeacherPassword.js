@@ -36,7 +36,7 @@ module.exports.verifyOTP=async(req,res,next)=>{
     }
     else{
         req.flash("error","You have entered incorrect code. Please try again later.");
-        return res.redirect("/Attendence-Tracker/Forgot-Teacher-Password");
+        return res.redirect("/Attendance-Tracker/Forgot-Teacher-Password");
     }
 };
 
@@ -47,5 +47,5 @@ module.exports.changePassword=async(req,res,next)=>{
     await currTech.setPassword(password);
     await currTech.save();
     req.flash("success","Password changed successfully. You can now log in with your new password.");
-    return res.redirect("/Attendence-Tracker/Teacher-Login");
+    return res.redirect("/Attendance-Tracker/Teacher-Login");
 };
