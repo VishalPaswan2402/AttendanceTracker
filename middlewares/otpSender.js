@@ -5,15 +5,15 @@ const transporter = nodemailer.createTransport({
   port: 587,
   secure: false,
   auth: {
-    user: "alysa.keeling@ethereal.email",
-    pass: "NZwgQsdqAXwPYPvCb9",
+    user: process.env.emailUser,
+    pass: process.env.emailPass,
   },
 });
 
 async function otpSender(to,subject,text,html) {
   try{
     const info = await transporter.sendMail({
-      from: '"Attendance Tracker" <maddison53@ethereal.email>',
+      from: `"Attendance Tracker" <${process.env.emailUser}>`,
       to,
       subject,
       text,

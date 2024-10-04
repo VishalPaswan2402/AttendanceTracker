@@ -1,3 +1,6 @@
+if(process.env.NODE_EVN !="production"){
+    require("dotenv").config();
+}
 let express=require('express');
 const app=express();
 const path=require("path");
