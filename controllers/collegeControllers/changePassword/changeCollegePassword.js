@@ -23,29 +23,49 @@ module.exports.forgetFormData=async(req,res,next)=>{
         let genOtp=Math.floor(1000 + Math.random() * 9000);
         let otp=otpSender(toEmail,subject," ",passwordOtpMail(userName,genOtp));
         console.log(genOtp);
-        return res.render("editCollege/verifyCollegeCode.ejs",{currCollege,genOtp});
+        let otpSend={
+            myOtp:genOtp
+        }
+        req.session.newOtp=otpSend;
+        return res.render("editCollege/verifyCollegeCode.ejs",{currCollege});
     }
 };
 
 module.exports.verifyEmail=async(req,res,next)=>{
     let{id,pin}=req.params;
     let{code}=req.body;
-    if(code===pin){
+    let currOtp=req.session.newOtp;
+    if(currOtp && code==currOtp.myOtp){
         let currCollege=await collegeAccount.findById(id);
         return res.render("editCollege/changeCollegePassword.ejs",{currCollege});
     }
+    else if(!currOtp){
+        delete req.session.newOtp;
+        req.flash("error","Session expired!");
+        return res.redirect("/");
+    }
     else{
+        delete req.session.newOtp;
         req.flash("error","You have entered incorrect code. Please try again later.");
-        return res.redirect("/Attendance-Tracker/Forget-college-Password");
+        return res.redirect("/");
     }
 };
 
 module.exports.changePassword=async(req,res,next)=>{
-    let{id}=req.params;
-    let currCollege=await collegeAccount.findById(id);
-    let{password}=req.body;
-    await currCollege.setPassword(password);
-    await currCollege.save();
-    req.flash("success","Password changed successfully. You can now log in with your new password.");
-    return res.redirect("/Attendance-Tracker/College-Login");
+    let currOtp=req.session.newOtp;
+    if(currOtp){
+        let{id}=req.params;
+        let currCollege=await collegeAccount.findById(id);
+        let{password}=req.body;
+        await currCollege.setPassword(password);
+        await currCollege.save();
+        delete req.session.newOtp;
+        req.flash("success","Password changed successfully. You can now log in with your new password.");
+        return res.redirect("/Attendance-Tracker/College-Login");
+    }
+    else{
+        delete req.session.newOtp;
+        req.flash("error","Session expired!");
+        return res.redirect("/");
+    }
 };

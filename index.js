@@ -46,7 +46,7 @@ const session=require("express-session");
 const passport=require("./middlewares/passportConfig.js");
 
 const sessionOption={
-    secret:'attendancetracker',
+    secret:process.env.secretPass,
     resave:false,
     saveUninitialized:true,
     cookie:{

@@ -23,29 +23,49 @@ module.exports.forgetPasswordForm=async(req,res,next)=>{
         let genOtp=Math.floor(1000 + Math.random() * 9000);
         let otp=otpSender(toEmail,subject," ",passwordOtpMail(userName,genOtp));
         console.log(genOtp);
-        return res.render("editTeacher/verifyTeacherCode.ejs",{findTech,genOtp});
+        let otpSend={
+            myOtp:genOtp
+        }
+        req.session.newOtp=otpSend;
+        return res.render("editTeacher/verifyTeacherCode.ejs",{findTech});
     }
 };
 
 module.exports.verifyOTP=async(req,res,next)=>{
-    let{id,pin}=req.params;
+    let{id}=req.params;
     let{code}=req.body;
-    if(code===pin){
+    let currOtp=req.session.newOtp;
+    if(currOtp && code==currOtp.myOtp){
         let findTech=await Teacher.findById(id);
         return res.render("editTeacher/changeTeacherPassword.ejs",{findTech});
     }
+    else if(!currOtp){
+        delete req.session.newOtp;
+        req.flash("error","Session expired!");
+        return res.redirect("/");
+    }
     else{
+        delete req.session.newOtp;
         req.flash("error","You have entered incorrect code. Please try again later.");
-        return res.redirect("/Attendance-Tracker/Forgot-Teacher-Password");
+        return res.redirect("/");
     }
 };
 
 module.exports.changePassword=async(req,res,next)=>{
-    let{id}=req.params;
-    let currTech=await Teacher.findById(id);
-    let{password}=req.body;
-    await currTech.setPassword(password);
-    await currTech.save();
-    req.flash("success","Password changed successfully. You can now log in with your new password.");
-    return res.redirect("/Attendance-Tracker/Teacher-Login");
+    let currOtp=req.session.newOtp;
+    if(currOtp){
+        let{id}=req.params;
+        let currTech=await Teacher.findById(id);
+        let{password}=req.body;
+        await currTech.setPassword(password);
+        await currTech.save();
+        delete req.session.newOtp;
+        req.flash("success","Password changed successfully. You can now log in with your new password.");
+        return res.redirect("/Attendance-Tracker/Teacher-Login");
+    }
+    else{
+        delete req.session.newOtp;
+        req.flash("error","Session expired!");
+        return res.redirect("/");
+    }
 };

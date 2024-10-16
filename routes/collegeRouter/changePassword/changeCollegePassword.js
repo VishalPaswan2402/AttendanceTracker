@@ -15,7 +15,7 @@ router.post("/Restore-College-Password",wrapAsync(
 ));
 
 // Verify code...
-router.post("/:id/:pin/Verify-College-Password-Code",wrapAsync(
+router.post("/:id/Verify-College-Password-Code",wrapAsync(
     collegeControllerForChangePassword.verifyEmail
 ));
 

@@ -15,7 +15,7 @@ router.get("/Restore-Teacher-Password",wrapAsync(
 ));
 
 // Verify code..
-router.post("/:id/:pin/Verify-Teacher-Password-Code",wrapAsync(
+router.post("/:id/Verify-Teacher-Password-Code",wrapAsync(
     teacherControllerForEditData.verifyOTP
 ));
 
