@@ -43,15 +43,30 @@ const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 const flash = require('connect-flash');
 const session=require("express-session");
+const MongoStore = require('connect-mongo');
 const passport=require("./middlewares/passportConfig.js");
+let dbUrl=process.env.atlasUrl;
+
+const store=MongoStore.create({
+    mongoUrl:dbUrl,
+    crypto:{
+        secret:process.env.secretPass
+    },
+    touchAfter:24*3600,
+});
+
+store.on("error",()=>{
+    console.log("Error in mongoos session...",err);
+})
 
 const sessionOption={
+    store,
     secret:process.env.secretPass,
     resave:false,
     saveUninitialized:true,
     cookie:{
         expires:Date.now()+7*24*60*60*1000,
-         maxAge:7*24*60*60*1000,
+        maxAge:7*24*60*60*1000,
         httpOnly:true,
     },
 };
@@ -61,8 +76,16 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect('mongodb://127.0.0.1:27017/Attendance')
-  .then(() => console.log('Connected!'));
+mongooseFunction()
+    .then(()=>{
+        console.log("Connected to database...")
+    })
+    .catch((err)=>{
+        console.log(err);
+    });
+async function mongooseFunction() {
+    await mongoose.connect(dbUrl);
+};
 
 // Middleware for flash message and store current User...
 app.use((req,res,next)=>{
