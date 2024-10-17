@@ -29,7 +29,7 @@ module.exports.addNewClass=async(req,res,next)=>{
         return res.redirect(`/Attendance-Tracker/${id}/TeacherHome`);
     }
     else{
-        req.flash("error","A teacher already exists for this class and subject.");
+        req.flash("error",`A teacher already exists for ${subject} in ${section.toUpperCase()}.`);
         return res.redirect(`/Attendance-Tracker/${id}/TeacherHome`);
     }
 };
