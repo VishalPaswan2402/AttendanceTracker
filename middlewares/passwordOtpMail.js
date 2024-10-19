@@ -27,13 +27,12 @@ module.exports.passwordOtpMail = (username, otp) => {
         text-align: center;
     }
     .otpDiv{
-        display:flex;
+        display: flex;
         align-items: center;
         text-align: center;
-        justify-content: center;
+        justify-content: space-evenly;
         background-color: rgb(251, 216, 249);
         color: black;
-        height:30px;
     }
     .top{
         font-family: "Charm", cursive;
@@ -42,6 +41,9 @@ module.exports.passwordOtpMail = (username, otp) => {
         font-size: 1.5rem;
         text-align: center;
         color: blueviolet;
+    }
+    .verfy{
+        margin:15px auto;
     }
     .foot{
         align-items: center;
@@ -57,7 +59,7 @@ module.exports.passwordOtpMail = (username, otp) => {
                 <h3 class="card-title paddings">Hey ${username} ! we hope you're doing well.</h3>
             </div>
             <div class="otpDiv">
-                <h2 class="card-title">Verification Code : ${otp}</h2>
+                <h2 class="verfy">Verification Code : ${otp}</h2>
             </div>
             <div class="data">
                 <p class="card-title paddings">It seems you are trying to change your forgotten password and need to verify your email.</p>
