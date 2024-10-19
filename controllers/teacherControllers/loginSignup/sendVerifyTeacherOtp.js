@@ -39,6 +39,8 @@ module.exports.verifyTeacher=async(req,res,next)=>{
         if(err){
             return next(err);
         }
+        req.session.idv=id;
+        req.session.type='teacher';
         req.flash("success","Account created successfully.");
         return res.redirect(`/Attendance-Tracker/${id}/TeacherHome`);
         })

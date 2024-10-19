@@ -121,7 +121,17 @@ app.use("/Attendance-Tracker",guide);
 
 // Home page...
 app.get("/",(req,res)=>{
-    res.render("homePage/home");
+    let idv=req.session.idv;
+    if(idv){
+        let type=req.session.type;
+        if(type=='college'){
+            return res.redirect(`/Attendance-Tracker/${idv}/College-Page`);
+        }
+        else if(type=='teacher'){
+            return res.redirect(`/Attendance-Tracker/${idv}/TeacherHome`);
+        }
+    }
+    return res.render("homePage/home");
 });
 
 app.all("*",(req,res,next)=>{

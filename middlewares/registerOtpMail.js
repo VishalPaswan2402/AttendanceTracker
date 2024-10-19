@@ -35,10 +35,9 @@ module.exports.registerOtpMail = (username, otp) => {
         color: black;
     }
     .top{
-        font-family: "Charm", cursive;
-        font-weight: 700;
+        font-weight: 600;
         font-style: normal;
-        font-size: 1.5rem;
+        font-size: 1.4rem;
         text-align: center;
         color: blueviolet;
     }

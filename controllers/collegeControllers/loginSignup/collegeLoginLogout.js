@@ -9,6 +9,8 @@ module.exports.loginPage=async(req,res,next)=>{
 module.exports.loginUser=async(req,res,next)=>{
     let{user}=req;
     let id=user._id;
+    req.session.idv=id;
+    req.session.type='college';
     req.flash("success","Welcome back to Attendance Tracker.");
     return res.redirect(`/Attendance-Tracker/${id}/College-Page`);
 };
@@ -18,6 +20,7 @@ module.exports.logOut=async(req,res,next)=>{
         if(err){
             return next(err);
         }
+        res.clearCookie('connect.sid');
         req.flash("success","You are logged out successfully.");
         return res.redirect("/");
     })
