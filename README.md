@@ -9,6 +9,11 @@ Any college student's can log to check there present attendance of all subjects.
 Any college teacher's can create there account of there particular class and can easily mark the attendance of class students after adding them.
 <br>
 
+For sample teacher's signup use these credentials :
+Teacher ID : 1212 or 1313
+college : jkl college
+<br>
+
 ### This is a home page of website...
 ![homePage](/public/imageFolder/HomePage.png)
 <br>
