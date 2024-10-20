@@ -10,8 +10,6 @@ Any college teacher's can create there account of there particular class and can
 <br>
 
 ## Link For Live Project :
-<br>
-
 ### https://attendance-tracker-4j6u.onrender.com
 <br>
 For sample teacher's signup use these credentials :
