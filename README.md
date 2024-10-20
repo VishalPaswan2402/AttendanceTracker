@@ -10,7 +10,9 @@ Any college teacher's can create there account of there particular class and can
 <br>
 
 For sample teacher's signup use these credentials :
+<br>
 Teacher ID : 1212 or 1313
+<br>
 college : jkl college
 <br>
 
