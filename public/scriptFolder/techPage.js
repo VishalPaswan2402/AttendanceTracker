@@ -124,12 +124,18 @@ $(document).ready(function () {
     });
 });
 
+let hideAfterSubmit=document.getElementById('submitAllAttend');
+
 let subBox=document.querySelector("#SubAttend");
 let subAttendence=document.querySelector("#subAttendence");
 subAttendence.addEventListener("click",function(){
     document.getElementById("overlay").style.display = "block";
     subBox.style.display="block";
 });
+
+hideAfterSubmit.addEventListener('click',function(){
+    subBox.style.display='none';
+})
 
 let cancleSubF=document.querySelector("#cancleSub");
 cancleSubF.addEventListener("click",function(){
