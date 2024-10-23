@@ -45,6 +45,8 @@ const flash = require('connect-flash');
 const session=require("express-session");
 const MongoStore = require('connect-mongo');
 const passport=require("./middlewares/passportConfig.js");
+const collegeAccount = require("./models/collegeAccount.js");
+const Teacher = require("./models/teachers.js");
 let dbUrl=process.env.atlasUrl;
 
 const store=MongoStore.create({
@@ -120,15 +122,21 @@ app.use("/Attendance-Tracker",guide);
 // All Routers...
 
 // Home page...
-app.get("/",(req,res)=>{
+app.get("/",async(req,res)=>{
     let idv=req.session.idv;
     if(idv){
         let type=req.session.type;
         if(type=='college'){
-            return res.redirect(`/Attendance-Tracker/${idv}/College-Page`);
+            let collAcc=await collegeAccount.findById(idv);
+            if(collAcc){
+                return res.redirect(`/Attendance-Tracker/${idv}/College-Page`);
+            }
         }
         else if(type=='teacher'){
-            return res.redirect(`/Attendance-Tracker/${idv}/TeacherHome`);
+            let teachAcc=await Teacher.findById(idv);
+            if(teachAcc){
+                return res.redirect(`/Attendance-Tracker/${idv}/TeacherHome`);
+            }
         }
     }
     return res.render("homePage/home");
