@@ -12,6 +12,10 @@ cancleForm.addEventListener("click",function(){
     document.getElementById("overlay").style.display = "none";
 })
 
+document.querySelector('.disSubmit').addEventListener('click',()=>{
+    studentForm.style.display='none';
+})
+
 // Form For Delete Class....
 let deleteClass=document.querySelector("#deleteClass");
 let delClass=document.querySelector("#delClass");
@@ -163,3 +167,4 @@ filterCancle.addEventListener("click",function(){
     document.getElementById("overlay").style.display = "none";
     filterStudentForm.style.display="none";
 });
+
