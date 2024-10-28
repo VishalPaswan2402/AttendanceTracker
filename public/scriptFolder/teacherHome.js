@@ -11,7 +11,3 @@ cancleForm.addEventListener("click",function(){
   createNewForm.style.display="none";
 
 })
-
-document.querySelector('.disSubmit').addEventListener('click',()=>{
-  createNewForm.style.display='none';
-})
