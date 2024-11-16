@@ -4,59 +4,120 @@
 <title>Attendance-Tracker Home Page</title>
 <link rel="stylesheet" href="/cssFolder/home.css">
 <body>
+
+  <%- include('../loader/loader.ejs') %>
+  <div id="mainContent" style="display: none;">
+
     <nav class="navbar navbar-expand-lg bg-body-tertiary navBag">
-        <div class="container-fluid">
-          <a class="navbar-brand logo" href="/"></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active textSize" aria-current="page" href="/">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link textSize" href="/Attendance-Tracker/userGuide">User Guide</a>
-              </li>
-            </ul>
-          </div>
+      <div class="container-fluid">
+        <a class="navbar-brand logo" href="/"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active textSize" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link textSize" href="/Attendance-Tracker/userGuide">User Guide</a>
+            </li>
+          </ul>
         </div>
-      </nav>
+      </div>
+    </nav>
 
-    <!-- Flash message -->
-    <%- include('../headFoot/flashMsg.ejs') %>
-    <!-- Flash message -->
+  <!-- Flash message -->
+  <%- include('../headFoot/flashMsg.ejs') %>
+  <!-- Flash message -->
 
-    <div class="top">Attendance Tracker</div>
-            <div id="flexBox">
-                <div class="loginbox">
-                  <div class="card" style="width: 18rem;">
-                      <img src="/imageFolder/student.png" class="card-img-top iconImg">
-                      <div class="card-body">
-                        <a href="/Attendance-Tracker/Students-Login" class="btn btn-primary">Student's Login</a>
-                      </div>
-                    </div>
-                </div>
-
-                <div class="loginbox">
-                  <div class="card" style="width: 18rem;">
-                      <img src="/imageFolder/teacher.png" class="card-img-top iconImg">
-                      <div class="card-body">
-                        <a href="/Attendance-Tracker/Teacher-Login" class="btn btn-primary">Teacher's Login</a>
-                      </div>
-                  </div>
-                </div>
-            
-                <div class="loginbox">
+  <div class="top">Attendance Tracker</div>
+          <div id="flexBox">
+              <div class="loginbox">
                 <div class="card" style="width: 18rem;">
-                    <img src="/imageFolder/colleges.png" class="card-img-top iconImg">
+                    <img src="/imageFolder/student.png" class="card-img-top iconImg">
                     <div class="card-body">
-                      <a href="/Attendance-Tracker/College-Login" class="btn btn-primary">College Login</a>
+                      <a href="/Attendance-Tracker/Students-Login" class="btn btn-primary">Student's Login</a>
+                    </div>
+                  </div>
+              </div>
+
+              <div class="loginbox">
+                <div class="card" style="width: 18rem;">
+                    <img src="/imageFolder/teacher.png" class="card-img-top iconImg">
+                    <div class="card-body">
+                      <a href="/Attendance-Tracker/Teacher-Login" class="btn btn-primary">Teacher's Login</a>
                     </div>
                 </div>
               </div>
+          
+              <div class="loginbox">
+              <div class="card" style="width: 18rem;">
+                  <img src="/imageFolder/colleges.png" class="card-img-top iconImg">
+                  <div class="card-body">
+                    <a href="/Attendance-Tracker/College-Login" class="btn btn-primary">College Login</a>
+                  </div>
+              </div>
             </div>
-    <%-include('../headFoot/footer.ejs')%>
+          </div>
+  <%-include('../headFoot/footer.ejs')%>
+
+  </div>
+  <script>
+    // Lines to be "printed" in the loader
+    const lines = [
+      "Initializing the system...",
+      "Connecting to the database...",
+      "Fetching college records...",
+      "Fetching teacher's records...",
+      "Fetching student's records...",
+      "Preparing attendance dashboard...",
+      "Analyzing attendance trends...",
+      "Cross-checking recent check-ins...",
+      "Preparing attendance reports...",
+      "Optimizing results...",
+      "Almost there...",
+    ];
+  
+    const terminalText = document.getElementById("terminal-text");
+  
+    let currentLine = 0;
+  
+    function printLine() {
+      // Clear previous lines if all are printed (for looping effect)
+      if (currentLine === 0) {
+        terminalText.textContent = ""; // Clear terminal content
+      }
+  
+      // Print the next line
+      const newLine = document.createElement("div");
+      newLine.textContent = lines[currentLine];
+      terminalText.appendChild(newLine);
+  
+      currentLine++;
+  
+      // Scroll to bottom for a realistic terminal effect
+      terminalText.scrollTop = terminalText.scrollHeight;
+  
+      // If we've reached the end of the lines array, reset for looping
+      if (currentLine >= lines.length) {
+        currentLine = 0;
+      }
+  
+      // Keep printing until the page is fully loaded
+      setTimeout(printLine, 1000); // Adjust the delay as needed
+    }
+  
+    // Show the main content after the page loads
+    window.addEventListener("load", function () {
+      document.getElementById("terminal-loader").style.display = "none"; // Hide loader
+      document.getElementById("mainContent").style.display = "block"; // Show main content
+    });
+  
+    // Start the terminal effect
+    printLine();
+  </script>
+  
 
   <script src="/scriptFolder/inputData.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

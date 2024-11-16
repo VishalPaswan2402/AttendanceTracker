@@ -48,6 +48,7 @@ const passport=require("./middlewares/passportConfig.js");
 const collegeAccount = require("./models/collegeAccount.js");
 const Teacher = require("./models/teachers.js");
 let dbUrl=process.env.atlasUrl;
+// let dbUrl='mongodb://127.0.0.1:27017/Attendance'
 
 const store=MongoStore.create({
     mongoUrl:dbUrl,
