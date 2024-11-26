@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('../headFoot/head') %>
-<title>Attendance-Tracker Teacher-Page</title>
-<link rel="stylesheet" href="/cssFolder/techPage.css">
-<body>
+  <title>Attendance-Tracker Teacher-Page</title>
+  <link rel="stylesheet" href="/cssFolder/techPage.css">
+
+  <body>
     <div class="overlay" id="overlay"></div>
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand logo" href="/"></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link textSize"  href="/">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link textSize active" aria-current="page">Teacher's Page</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link textSize" href="/Attendance-Tracker/<%=classTech._id%>/TeacherHome">All Classes</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link textSize" href="/Attendance-Tracker/userGuide">User Guide</a>
-              </li>
-              <%if(currUsers && currUsers._id.equals(classTech._id)){%>
+      <div class="container-fluid">
+        <a class="navbar-brand logo" href="/"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link textSize" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link textSize active" aria-current="page">Teacher's Page</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link textSize" href="/Attendance-Tracker/<%=classTech._id%>/TeacherHome">All Classes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link textSize" href="/Attendance-Tracker/userGuide">User Guide</a>
+            </li>
+            <%if(currUsers && currUsers._id.equals(classTech._id)){%>
               <li class="nav-item">
                 <a class="nav-link textSize" id="delClass" style="cursor: pointer;">Delete Class</a>
               </li>
@@ -34,38 +36,46 @@
                 <a class="nav-link textSize" href="/Attendance-Tracker/Teacher-Log-Out">Log Out</a>
               </li>
               <%}%>
-            </ul>
-          </div>
+          </ul>
         </div>
-      </nav>
+      </div>
+    </nav>
 
+    <!-- Flash message -->
+    <%- include('../headFoot/flashMsg.ejs') %>
       <!-- Flash message -->
-      <%- include('../headFoot/flashMsg.ejs') %>
-      <!-- Flash message -->
 
-    <div class="top">Attendance Tracker</div>
+      <div class="top">Attendance Tracker</div>
 
-  <div class="prof">
-    <div class="about mobHide">
-        <p>Teacher's Name || ID's : <span style="color: rgb(0, 83, 207);"> <%=classTech.teacherName%> || <%=classTech.teacherId%></span></p>
-    </div>
-    <div class="about">
-        <p>Semester || Section : <span style="color: rgb(0, 83, 207);"> <%=allClass.semester%> || <%=allClass.section%></span></p>
-    </div>
-    <div class="about">
-        <p>Subject Name : <span style="color: rgb(0, 83, 207);"> <%=classTech.subject%></span></p>
-    </div>
-    <div class="about colName">
-        <p>College : <span style="color: rgb(0, 83, 207);"> <%=classTech.collegeName%></span></p>
-    </div>
-</div>
-</div>
+      <div class="prof">
+        <div class="about mobHide">
+          <p>Teacher's Name || ID's : <span style="color: rgb(0, 83, 207);">
+              <%=classTech.teacherName%> || <%=classTech.teacherId%>
+            </span></p>
+        </div>
+        <div class="about">
+          <p>Semester || Section : <span style="color: rgb(0, 83, 207);">
+              <%=allClass.semester%> || <%=allClass.section%>
+            </span></p>
+        </div>
+        <div class="about">
+          <p>Subject Name : <span style="color: rgb(0, 83, 207);">
+              <%=classTech.subject%>
+            </span></p>
+        </div>
+        <div class="about colName">
+          <p>College : <span style="color: rgb(0, 83, 207);">
+              <%=classTech.collegeName%>
+            </span></p>
+        </div>
+      </div>
+      </div>
 
-    <div id="attend">
+      <div id="attend">
         <div id="stcol">
-            <div class="topBar margin">
-              <%if(currUsers && currUsers._id.equals(classTech._id)){%>
-                <div class="stName stColorTop centerItems tabHide tabHide1" style="width: 3%;"> Edit</div>
+          <div class="topBar margin">
+            <%if(currUsers && currUsers._id.equals(classTech._id)){%>
+              <div class="stName stColorTop centerItems tabHide tabHide1" style="width: 3%;"> Edit</div>
               <%}%>
                 <div class="stName stColorTop centerItems tabHide norWidth2 studName"> Student's Name</div>
                 <div class="stRoll stColorTop centerItems norWidth1"> Student's Roll No.</div>
@@ -74,171 +84,234 @@
                 <div class="stPer stColorTop centerItems norWidth">Percentage</div>
                 <div class="stPrev stColorTop centerItems norWidth3 mobHide tabHide1">Previous Day</div>
                 <div class="stTod stColorTop centerItems norWidth3" id="todayClass">Today's Class</div>
-            </div>
-            <%if(students.length>0){%>
+          </div>
+          <%if(students.length>0){%>
             <%for(student of students){%>
-            <div class="box2 margin">
-              <%if(currUsers && currUsers._id.equals(classTech._id)){%>
-                <a href="/Attendance-Tracker/<%=classTech._id%>/<%=allClass._id%>/<%=student._id%>/Edit-Student-Page" class="editAttSt tabHide tabHide1"><div class=" data stColor" style="width: 3%; background-color: transparent;"><i class="fa-solid fa-keyboard" id="editIcons"></i></div></a>
-                <%}%>
-                <div class="stName stColor tabHide studName">
-                    <div class="data margin student"><%=student.studentName%></div>
-                </div>
-                <div class="stRoll stColor norWidth1">
-                    <div class="data margin"><%=student.studentRollNo%></div>
-                </div>
+              <div class="box2 margin">
+                <%if(currUsers && currUsers._id.equals(classTech._id)){%>
+                  <a href="/Attendance-Tracker/<%=classTech._id%>/<%=allClass._id%>/<%=student._id%>/Edit-Student-Page"
+                    class="editAttSt tabHide tabHide1">
+                    <div class=" data stColor" style="width: 3%; background-color: transparent;"><i
+                        class="fa-solid fa-keyboard" id="editIcons"></i></div>
+                  </a>
+                  <%}%>
+                    <div class="stName stColor tabHide studName">
+                      <div class="data margin student">
+                        <%=student.studentName%>
+                      </div>
+                    </div>
+                    <div class="stRoll stColor norWidth1">
+                      <div class="data margin">
+                        <%=student.studentRollNo%>
+                      </div>
+                    </div>
                     <%for(attend of studentAttendence){%>
-                        <%if(attend.studentId.toString()===student._id.toString()){%>
-                            <div class="stTotal stColor norWidth mobHide">
-                                <%if(attend.totalClass>0){%>
-                                    <div class="data margin to1" data-student-id="<%=attend._id%>"><%=attend.totalClass%></div>
-                                <%}%>    
+                      <%if(attend.studentId.toString()===student._id.toString()){%>
+                        <div class="stTotal stColor norWidth mobHide">
+                          <%if(attend.totalClass>0){%>
+                            <div class="data margin to1" data-student-id="<%=attend._id%>">
+                              <%=attend.totalClass%>
                             </div>
-                            <div class="stAttend stColor norWidth mobHide">
-                                <%if(attend.totalClass>0){%>
-                                    <div class="data margin at1" data-student-id="<%=attend._id%>"><%=attend.attendenClass%></div>
-                                <%}%>    
+                            <%}%>
+                        </div>
+                        <div class="stAttend stColor norWidth mobHide">
+                          <%if(attend.totalClass>0){%>
+                            <div class="data margin at1" data-student-id="<%=attend._id%>">
+                              <%=attend.attendenClass%>
                             </div>
-                            <div class="stPer stColor norWidth">
-                                <%if(attend.totalClass>0){%>
-                                    <div class="data margin per1" data-student-id="<%=attend._id%>"><%=attend.classPercent%> %</div>
-                                <%}%>
+                            <%}%>
+                        </div>
+                        <div class="stPer stColor norWidth">
+                          <%if(attend.totalClass>0){%>
+                            <div class="data margin per1" data-student-id="<%=attend._id%>">
+                              <%=attend.classPercent%> %
                             </div>
-                            <div class="stPrev stColor norWidth3 mobHide tabHide1">
-                                <%if(attend.totalClass>0){%>
-                                <div class="data margin" data-student-id="<%=attend._id%>"><%=attend.classPrevious%></div>
-                                <%}%>
+                            <%}%>
+                        </div>
+                        <div class="stPrev stColor norWidth3 mobHide tabHide1">
+                          <%if(attend.totalClass>0){%>
+                            <div class="data margin" data-student-id="<%=attend._id%>">
+                              <%=attend.classPrevious%>
                             </div>
-                            <!-- For Marking present and absent... -->
-                            <div class="stTod stColor norWidth3">
-                                <div class="data margin preColor" id="buttonContainer">
-                                    <div><button type="submit" data-student-id="<%=attend._id%>" class="present preP">Pre.</button></div>
-                                    <div><button type="submit" data-student-id="<%=attend._id%>" class="present absA absent">Abs.</button></div>
-                                    <form method="post" data-student-id="<%=attend._id%>" style="display: none;">
-                                        <div style="display: flex;">
-                                            <input name="preId" data-student-id="<%=attend._id%>" class="preIdInput" value="">
-                                            <input name="absId" data-student-id="<%=attend._id%>" class="absIdInput" value="">
-                                            <button type="submit" data-student-id="<%=attend._id%>" id="letSubmit">Submit</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <!-- For marking present and absent... -->
+                            <%}%>
+                        </div>
+                        <!-- For Marking present and absent... -->
+                        <div class="stTod stColor norWidth3">
+                          <div class="data margin preColor" id="buttonContainer">
+                            <div><button type="submit" data-student-id="<%=attend._id%>"
+                                class="present preP">Pre.</button></div>
+                            <div><button type="submit" data-student-id="<%=attend._id%>"
+                                class="present absA absent">Abs.</button></div>
+                            <form id="addingAttendanceForMark" method="post" data-student-id="<%=attend._id%>"
+                              style="display: none;">
+                              <div style="display: flex;">
+                                <input name="preId" data-student-id="<%=attend._id%>" class="preIdInput" value="">
+                                <input name="absId" data-student-id="<%=attend._id%>" class="absIdInput" value="">
+                                <button type="submit" data-student-id="<%=attend._id%>" id="letSubmit">Submit</button>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                        <!-- For marking present and absent... -->
                         <%break}%>
-                    <%}%>
-            </div>
-            <%}%>
-            <%}%>
+                          <%}%>
+              </div>
+              <%}%>
+                <%}%>
         </div>
-    </div>
+      </div>
 
-    <!-- Store All Attendance data... -->
-    <form id="finalFormSubmit" action="/Attendance-Tracker/Submit-All-Attendance" method="post" style="display: none;">
+      <!-- Store All Attendance data... -->
+      <form id="finalFormSubmit" action="/Attendance-Tracker/Submit-All-Attendance" method="post"
+        style="display: none;">
         <input name="allPresent" value="" id="allPresent">
         <input name="allAbsent" value="" id="allAbsent">
         <button type="submit" id="mySubmit"></button>
-    </form>
-    <!-- Store All Attendance data... -->
+      </form>
+      <!-- Store All Attendance data... -->
 
-    <%if(currUsers && currUsers._id.equals(classTech._id)){%>
-    <div id="downl">
-        <button class="new mar studentNew tabHide">Add New Student</button>
-        <a href="/Attendance-Tracker/<%=classTech._id%>/<%=classTech.subject%>/<%=allClass._id%>/Print-All-Attendance-sheet"><button class="new mar tabHide">Attendance Sheet</button></a>
-        <button class="new mar tabHide" id="filterStudent">Filter Students</button>
-        <%if(students.length>0){%>
-          <button class="new mar" id="subAttendence" >Submit Attendance</button>
+      <%if(currUsers && currUsers._id.equals(classTech._id)){%>
+        <div id="downl">
+          <button class="new mar studentNew tabHide">Add New Student</button>
+          <a
+            href="/Attendance-Tracker/<%=classTech._id%>/<%=classTech.subject%>/<%=allClass._id%>/Print-All-Attendance-sheet"><button
+              class="new mar tabHide">Attendance Sheet</button></a>
+          <button class="new mar tabHide" id="filterStudent">Filter Students</button>
+          <%if(students.length>0){%>
+            <button class="new mar" id="subAttendence">Submit Attendance</button>
+            <%}%>
+        </div>
         <%}%>
-    </div>
-    <%}%>
 
-    <%-include('../headFoot/footer.ejs')%>
+          <%-include('../headFoot/footer.ejs')%>
 
-    <!-- FORM FOR New Students -->
-    <div class="card formCard" style="width: 22rem;" id="studentForm">
-        <div class="card-body">
-          <h5 class="card-title">Add New Student</h5>
-          <form method="post" action="/Attendance-Tracker/<%=classTech._id%>/<%=allClass._id%>/New-Student" class="needs-validation" novalidate>
-            <div class="form-floating mb-3 mt-3">
-                <input type="text" name="studentName" class="form-control" id="floatingn" placeholder="Student Name" required>
-                <label for="floatingn">Student's Name</label>
+            <!-- FORM FOR New Students -->
+            <div class="card formCard" style="width: 22rem;" id="studentForm">
+              <div class="card-body">
+                <h5 class="card-title">Add New Student</h5>
+                <form id="addNewStudentByTeacher" method="post"
+                  action="/Attendance-Tracker/<%=classTech._id%>/<%=allClass._id%>/New-Student" class="needs-validation"
+                  novalidate>
+                  <div class="form-floating mb-3 mt-3">
+                    <input type="text" name="studentName" class="form-control inp1" id="floatingn"
+                      placeholder="Student Name" required>
+                    <label for="floatingn">Student's Name</label>
+                  </div>
+                  <div class="form-floating">
+                    <input type="text" name="studentRollNo" class="form-control inp1" style="text-transform: uppercase;"
+                      id="floatingr" placeholder="Student Roll No." required>
+                    <label for="floatingr">Student's Roll No.</label>
+                  </div>
+                  <div style="display: flex; align-items: center; justify-content: space-evenly; margin-top: 20px;">
+                    <button type="submit" class="btn btn-primary disSubmit addNewStudentByTeacher">Add Student</button>
+                    <button type="button" class="btn btn-danger studCancle">Cancle Student</button>
+                  </div>
+                </form>
               </div>
-              <div class="form-floating">
-                <input type="text" name="studentRollNo" class="form-control" style="text-transform: uppercase;" id="floatingr" placeholder="Student Roll No." required>
-                <label for="floatingr">Student's Roll No.</label>
+            </div>
+            <!-- FORM FOR New Students -->
+
+            <!-- Alert to delete class -->
+            <div class="card" style="width: 20rem;" id="deleteClass">
+              <div class="card-body">
+                <i class="fa-solid fa-triangle-exclamation" id="alertSt"></i>
+                <h4 class="card-subtitle mb-2 text-body-secondary" style="margin-top: 5px;text-align: center;">Are You
+                  Sure ?</h4>
+                <p class="card-text" style="margin-top: 5px;text-align: center;">It will delete all the data related to
+                  <%=allClass.semester%>
+                    <%=allClass.section%> section permanently, and you won't be able to restore it again.
+                </p>
+                <div style="display: flex; align-items: center; justify-content: space-evenly;">
+                  <form id="deleteClassByTeacher"
+                    action="/Attendance-Tracker/<%=classTech._id%>/<%=allClass._id%>/Class-Destroy?_method=Delete"
+                    method="post">
+                    <a href="#" class="card-link"><button id="delTech" type="submit"
+                        class="btn btn-danger deleteClassByTeacher">Delete it</button></a>
+                  </form>
+                  <button type="button" id="cancleDel" class="btn btn-primary">Cancle it</button>
+                </div>
               </div>
-              <div style="display: flex; align-items: center; justify-content: space-evenly; margin-top: 20px;">
-                <button type="submit" class="btn btn-primary disSubmit">Add Student</button>
-                <button type="button" class="btn btn-danger studCancle">Cancle Student</button>
             </div>
-          </form>
-        </div>
-      </div>
-    <!-- FORM FOR New Students -->
+            <!-- Alert to delete class -->
 
-    <!-- Alert to delete class -->
-    <div class="card" style="width: 20rem;" id="deleteClass">
-        <div class="card-body">
-          <i class="fa-solid fa-triangle-exclamation" id="alertSt"></i>
-          <h4 class="card-subtitle mb-2 text-body-secondary" style="margin-top: 5px;text-align: center;" >Are You Sure ?</h4>
-          <p class="card-text" style="margin-top: 5px;text-align: center;">It will delete all the data related to <%=allClass.semester%> <%=allClass.section%> class permanently, and you won't be able to restore it again.</p>
-          <div style="display: flex; align-items: center; justify-content: space-evenly;">
-            <form action="/Attendance-Tracker/<%=classTech._id%>/<%=allClass._id%>/Class-Destroy?_method=Delete" method="post">
-                <a href="#" class="card-link"><button type="submit" class="btn btn-danger">Delete it</button></a>
-            </form>
-            <button type="button" id="cancleDel" class="btn btn-primary">Cancle it</button>
-          </div>
-        </div>
-      </div>
-      <!-- Alert to delete class -->
-
-      <!-- Submit class attendance -->
-    <div class="card" style="width: 20rem;" id="SubAttend">
-      <div class="card-body">
-        <i class="fa-solid fa-circle-exclamation" id="alertSt"></i>
-        <h4 class="card-subtitle mb-2 text-body-secondary" style="margin-top: 5px;text-align: center;" >Are You Sure ?</h4>
-        <p class="card-text" style="margin-top: 5px;text-align: center;">Once attendance is submitted, it cannot be changed later.</p>
-        <div style="display: flex; align-items: center; justify-content: space-evenly;">
-          <button type="button" id="submitAllAttend" class="btn btn-primary">Submit it</button>
-          <button type="button" id="cancleSub" class="btn btn-danger">Cancle it</button>
-        </div>
-      </div>
-    </div>
-    <!-- Submit class attendance -->
-
-    <!-- Attendance not marked -->
-    <div class="card" style="width: 20rem;" id="notMarkedAtt">
-      <div class="card-body">
-        <i class="fa-solid fa-circle-radiation" id="alertSt"></i>
-        <h4 class="card-subtitle mb-2 text-body-secondary" style="margin-top: 5px;text-align: center;" >Not Marked</h4>
-        <p class="card-text" style="margin-top: 5px;text-align: center;">Some students have not been marked as present or absent. Please go back and mark them also.</p>
-        <div style="display: flex; align-items: center; justify-content: space-evenly;">
-          <button type="button" id="notMarkedOk" class="btn btn-primary" style="width: 6rem;">OK</button>
-        </div>
-      </div>
-    </div>
-    <!-- Attendance not marked -->
-
-    <!-- FORM for filter Students -->
-    <div class="card formCard" style="width: 22rem;" id="filterStudentForm">
-      <div class="card-body">
-        <h5 class="card-title">Filter Student</h5>
-        <form method="get" action="/Attendance-Tracker/<%=classTech._id%>/<%=classTech.subject%>/<%=allClass._id%>/Print-Detained-Attendance-sheet" class="needs-validation" novalidate>
-          <div class="form-floating mb-3 mt-3">
-              <input type="number" name="percentage" min="0" class="form-control" id="floatingp" placeholder="Enter percentage to filter student" required>
-              <label for="floatingp">Enter percentage to filter student</label>
+            <!-- Submit class attendance -->
+            <div class="card" style="width: 20rem;" id="SubAttend">
+              <div class="card-body">
+                <i class="fa-solid fa-circle-exclamation" id="alertSt"></i>
+                <h4 class="card-subtitle mb-2 text-body-secondary" style="margin-top: 5px;text-align: center;">Are You
+                  Sure ?</h4>
+                <p class="card-text" style="margin-top: 5px;text-align: center;">Once attendance is submitted, it cannot
+                  be changed later.</p>
+                <div style="display: flex; align-items: center; justify-content: space-evenly;">
+                  <button type="button" id="submitAllAttend" class="btn btn-primary">Submit it</button>
+                  <button type="button" id="cancleSub" class="btn btn-danger">Cancle it</button>
+                </div>
+              </div>
             </div>
-            <div style="display: flex; align-items: center; justify-content: space-evenly; margin-top: 20px;">
-              <button type="submit" class="btn btn-primary">Filter Data</button>
-              <button type="button" class="btn btn-danger filterCancle">Cancle Data</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  <!-- FORM for filter Students -->
+            <!-- Submit class attendance -->
 
-  <script src="/scriptFolder/inputData.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  <script src="/scriptFolder/techPage.js"></script>
-</body>
+            <!-- Attendance not marked -->
+            <div class="card" style="width: 20rem;" id="notMarkedAtt">
+              <div class="card-body">
+                <i class="fa-solid fa-circle-radiation" id="alertSt"></i>
+                <h4 class="card-subtitle mb-2 text-body-secondary" style="margin-top: 5px;text-align: center;">Not
+                  Marked</h4>
+                <p class="card-text" style="margin-top: 5px;text-align: center;">Some students have not been marked as
+                  present or absent. Please go back and mark them also.</p>
+                <div style="display: flex; align-items: center; justify-content: space-evenly;">
+                  <button type="button" id="notMarkedOk" class="btn btn-primary" style="width: 6rem;">OK</button>
+                </div>
+              </div>
+            </div>
+            <!-- Attendance not marked -->
+
+            <!-- FORM for filter Students -->
+            <div class="card formCard" style="width: 22rem;" id="filterStudentForm">
+              <div class="card-body">
+                <h5 class="card-title">Filter Student</h5>
+                <form id="formForFilter" method="get"
+                  action="/Attendance-Tracker/<%=classTech._id%>/<%=classTech.subject%>/<%=allClass._id%>/Print-Detained-Attendance-sheet"
+                  class="needs-validation" novalidate>
+                  <div class="form-floating mb-3 mt-3">
+                    <input type="number" name="percentage" min="0" class="form-control inp1" id="floatingp"
+                      placeholder="Enter percentage to filter student" required>
+                    <label for="floatingp">Enter percentage to filter student</label>
+                  </div>
+                  <div style="display: flex; align-items: center; justify-content: space-evenly; margin-top: 20px;">
+                    <button type="submit" class="btn btn-primary formForFilter">Filter Data</button>
+                    <button type="button" class="btn btn-danger filterCancle">Cancle Data</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!-- FORM for filter Students -->
+
+            <script>
+              let submit_1 = 'formForFilter';
+              let submit_2 = 'addNewStudentByTeacher';
+              let submit_3 = 'deleteClassByTeacher';
+
+              document.querySelector(`.${submit_2}`).addEventListener('click', (e) => {
+                document.querySelector('.studCancle').style.display = 'none';
+                addingEffects(submit_2);
+              });
+
+              document.querySelector(`.${submit_1}`).addEventListener('click', (e) => {
+                document.querySelector('.filterCancle').style.display = 'none';
+                addingEffects(submit_1);
+              });
+              
+              document.querySelector(`.${submit_3}`).addEventListener('click', (e) => {
+                document.querySelector('#cancleDel').style.display = 'none';
+                setLoadingEffect(document.querySelector(`.${submit_3}`));
+              });
+            </script>
+            <script src="/scriptFolder/inputData.js"></script>
+            <script src="/scriptFolder/loadingEffect.js"></script>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+              integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+              crossorigin="anonymous"></script>
+            <script src="/scriptFolder/techPage.js"></script>
+  </body>
 </html>

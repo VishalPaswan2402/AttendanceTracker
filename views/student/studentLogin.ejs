@@ -1,46 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('../headFoot/head') %>
-<title>Attendance-Tracker Student-Login</title>
-<link rel="stylesheet" href="/cssFolder/login.css">
-<body>
+  <title>Attendance-Tracker Student-Login</title>
+  <link rel="stylesheet" href="/cssFolder/login.css">
+
+  <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand logo" href="/"></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link textSize" href="/">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active textSize" aria-current="page">Student's LogIn</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link textSize" href="/Attendance-Tracker/userGuide">User Guide</a>
-              </li>
-            </ul>
-          </div>
+      <div class="container-fluid">
+        <a class="navbar-brand logo" href="/"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link textSize" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active textSize" aria-current="page">Student's LogIn</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link textSize" href="/Attendance-Tracker/userGuide">User Guide</a>
+            </li>
+          </ul>
         </div>
-      </nav>
+      </div>
+    </nav>
     <div class="top">Attendance Tracker</div>
-    
-    <form action="/Attendance-Tracker/Students-Page" method="get" novalidate class="needs-validation">
+
+    <form id="checkAttendance" action="/Attendance-Tracker/Students-Page" method="get" id="checkAttendanceForm"
+      novalidate class="needs-validation">
       <div class="card formCard">
         <div class="card-body">
           <h2 class="card-title" style="align-items: center; text-align: center;">Student's Login</h2>
           <div class="form-floating mb-3 mt-3">
-            <input type="text" name="sName" class="form-control" id="floatingn" placeholder="Student's Name" required>
+            <input type="text" name="sName" class="form-control inp1" id="floatingn" placeholder="Student's Name"
+              required>
             <label for="floatingn">Student's Name</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="text" name="sRollNo" class="form-control" style="text-transform: uppercase;" id="floatingr" placeholder="Student's Roll No." required>
+            <input type="text" name="sRollNo" class="form-control inp1" style="text-transform: uppercase;"
+              id="floatingr" placeholder="Student's Roll No." required>
             <label for="floatingr">Student's Roll No.</label>
           </div>
           <div class="form-floating mb-3">
-            <select class="form-select" name="semester" id="floatingSelect" aria-label="Floating label select example" required>
+            <select class="form-select inp1" name="semester" id="floatingSelect"
+              aria-label="Floating label select example" required>
               <option value="" disabled selected>Select Your Semester</option>
               <option>1st Semester</option>
               <option>2nd Semester</option>
@@ -54,26 +60,40 @@
             <label for="floatingSelect">Current Semester</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="text" name="section" class="form-control" style="text-transform: uppercase;" id="floatings" placeholder="Section" required>
+            <input type="text" name="section" class="form-control inp1" style="text-transform: uppercase;"
+              id="floatings" placeholder="Section" required>
             <label for="floatings">Your Section</label>
           </div>
           <div class="form-floating ">
-            <select class="form-select" name="collegeName" id="floatingSelectc" aria-label="Floating label select example" required>
+            <select class="form-select inp1" name="collegeName" id="floatingSelectc"
+              aria-label="Floating label select example" required>
               <option value="" disabled selected>Select Your College</option>
-              <% colleges.forEach(colleg => { %>
-                <option  value="<%= colleg.colleges %>"><%= colleg.colleges %></option>
-            <% }); %>
+              <% colleges.forEach(colleg=> { %>
+                <option value="<%= colleg.colleges %>">
+                  <%= colleg.colleges %>
+                </option>
+                <% }); %>
             </select>
             <label for="floatingSelectc">Select Your College</label>
           </div>
         </div>
-        <button type="submit" style="width: 12rem; margin: auto;" class="btn btn-primary mb-3">Check Attendance</button>
+        <button type="submit" style="width: 12rem; margin: auto;" class="btn btn-primary mb-3 checkAttendance">Check
+          Attendance</button>
       </div>
     </form>
 
     <%-include('../headFoot/footer.ejs')%>
-    
-  <script src="/scriptFolder/inputData.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-</body>
+
+    <script>
+      let submit_1 = 'checkAttendance';
+      document.querySelector(`.${submit_1}`).addEventListener('click', (e) => {
+        addingEffects(submit_1);
+      });
+    </script>
+      <script src="/scriptFolder/inputData.js"></script>
+      <script src="/scriptFolder/loadingEffect.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+  </body>
 </html>

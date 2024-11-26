@@ -53,7 +53,7 @@ let dbUrl=process.env.atlasUrl;
 const store=MongoStore.create({
     mongoUrl:dbUrl,
     crypto:{
-        secret:process.env.secretPass
+        secret:process.env.secretPass || 'attendanceTracker'
     },
     touchAfter:24*3600,
 });
@@ -64,7 +64,7 @@ store.on("error",()=>{
 
 const sessionOption={
     store,
-    secret:process.env.secretPass,
+    secret:process.env.secretPass || 'attendanceTracker' ,
     resave:false,
     saveUninitialized:true,
     cookie:{

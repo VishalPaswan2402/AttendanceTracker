@@ -1,127 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('../headFoot/head') %>
-<title>Attendance-Tracker College Page</title>
-<link rel="stylesheet" href="/cssFolder/home.css">
-<style>
-  #teacherForm{
-    z-index: 10000;
-    display: none;
-  }
-</style>
-<body>
+  <title>Attendance-Tracker College Page</title>
+  <link rel="stylesheet" href="/cssFolder/home.css">
+  <style>
+    #teacherForm {
+      z-index: 10000;
+      display: none;
+    }
+  </style>
+
+  <body>
     <div class="overlay" id="overlay"></div>
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary navBag">
-        <div class="container-fluid">
-          <a class="navbar-brand logo" href="/"></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link textSize" aria-current="page" href="/">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active textSize" aria-current="page" href="/Attendance-Tracker/<%=currCollege._id%>/College-Page">College Page</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link textSize" href="/Attendance-Tracker/userGuide">User Guide</a>
-              </li>
-              <%if(currUsers && currUsers._id.equals(currCollege._id)){%>
+      <div class="container-fluid">
+        <a class="navbar-brand logo" href="/"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link textSize" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active textSize" aria-current="page"
+                href="/Attendance-Tracker/<%=currCollege._id%>/College-Page">College Page</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link textSize" href="/Attendance-Tracker/userGuide">User Guide</a>
+            </li>
+            <%if(currUsers && currUsers._id.equals(currCollege._id)){%>
               <li class="nav-item">
                 <a class="nav-link textSize" href="/Attendance-Tracker/College-Log-Out">Log Out</a>
               </li>
               <%}%>
-            </ul>
-          </div>
+          </ul>
         </div>
+      </div>
     </nav>
 
     <!-- Flash Message... -->
     <%- include('../headFoot/flashMsg.ejs') %>
-    <!-- Flash Message... -->
+      <!-- Flash Message... -->
 
-    <div class="top">Attendance Tracker</div>
-    <div class="collegeName"><%=currCollege.username%></div>
+      <div class="top">Attendance Tracker</div>
+      <div class="collegeName">
+        <%=currCollege.username%>
+      </div>
 
-            <div class="container-fluid" style="display: flex;justify-content: center;flex-wrap: wrap;">
-              <%if(currUsers && currUsers._id.equals(currCollege._id)){%>
-                <button id="addTeacher" type="button" class="btn btn-primary" style="margin-right: 10px; margin-top: 10px;">Add New</button>
-                <form method="get" action="/Attendance-Tracker/<%=currCollege._id%>/Search-Teacher" class="d-flex needs-validation" novalidate role="search" style="margin-top: 10px;">
-                  <input class="form-control me-2 " <%if(teacherName===0){%> placeholder='Search by teacher name' <%}else{%> value='<%=teacherName%>' <%}%>  name="teacherName" style="width: 14rem;" type="text" aria-label="Search" required>
+      <div class="container-fluid" style="display: flex;justify-content: center;flex-wrap: wrap;">
+        <%if(currUsers && currUsers._id.equals(currCollege._id)){%>
+          <button id="addTeacher" type="button" class="btn btn-primary"
+            style="margin-right: 10px; margin-top: 10px;">Add New</button>
+          <form id="searchTeacherForm" method="get" action="/Attendance-Tracker/<%=currCollege._id%>/Search-Teacher"
+            class="d-flex needs-validation" novalidate role="search" style="margin-top: 10px;">
+            <input class="form-control me-2 inp1" <%if(teacherName===0){%> placeholder='Search by teacher name'
+            <%}else{%> value='<%=teacherName%>' <%}%> name="teacherName" style="width: 14rem;" type="text"
+                  aria-label="Search" required>
                   <button type="submit" class="btn btn-primary">Search</button>
-                </form>
-              <%}%>
+          </form>
+          <%}%>
+      </div>
+
+      <div id="flexBox">
+        <%if(allTeachers.length<1){%>
+          <%if(searching==='True' && allTeachers.length<1){%>
+            <div style="margin-top: 20px;">
+              <h4>No teacher found with this name !</h4>
             </div>
-
-    <div id="flexBox">
-      <%if(allTeachers.length<1){%>
-        <%if(searching==='True' && allTeachers.length<1){%>
-          <div style="margin-top: 20px;">
-            <h4>No teacher found with this name !</h4>
-          </div>
-        <%}else{%>
-          <div style="margin-top: 20px;">
-            <h4>No teacher's added yet !</h4>
-            <h4>Click on Add New to add a teacher.</h4>
-          </div>
-        <%}%>
-
-      <%}else{%>
-        <%for(teacher of allTeachers){%>
-          <div class="card" id="teacherData" style="width: 18rem; text-align: left; margin-top: 20px;">
-              <div class="card-body" style="width: 17.7rem;">
-                  <h5 class="card-title"><%=teacher.teacherName%></h5>
-                  <h6 class="card-title">Gender : <%=teacher.gender%></h6>
-                  <h6 class="card-title">ID No.&nbsp;&nbsp;: <%=teacher.idNo%></h6>
-                  <h6 class="card-title">Accounts&nbsp;&nbsp;: <%=teacher.totalAccount%></h6>
-                  <%if(currUsers && currUsers._id.equals(currCollege._id)){%>
-                    <div style="display: flex; justify-content: center;">
-                      <a href="/Attendance-Tracker/<%=currCollege._id%>/<%=teacher._id%>/Edit-Teacher" class="btn btn-outline-primary" style="width: 12rem;">Edit Teacher's Data</a>
-                    </div>
-                  <%}%>
+            <%}else{%>
+              <div style="margin-top: 20px;">
+                <h4>No teacher's added yet !</h4>
+                <h4>Click on Add New to add a teacher.</h4>
               </div>
-          </div>
-        <%}%>
-      <%}%>
-    </div>
+              <%}%>
 
-    <!-- FORM FOR New teacher -->
-    <div class="card formCard" style="width: 22rem; position: absolute; top: 26%; left: 38.5%; display: none;" id="teacherForm">
+                <%}else{%>
+                  <%for(teacher of allTeachers){%>
+                    <div class="card" id="teacherData" style="width: 18rem; text-align: left; margin-top: 20px;">
+                      <div class="card-body" style="width: 17.7rem;">
+                        <h5 class="card-title">
+                          <%=teacher.teacherName%>
+                        </h5>
+                        <h6 class="card-title">Gender : <%=teacher.gender%>
+                        </h6>
+                        <h6 class="card-title">ID No.&nbsp;&nbsp;: <%=teacher.idNo%>
+                        </h6>
+                        <h6 class="card-title">Accounts&nbsp;&nbsp;: <%=teacher.totalAccount%>
+                        </h6>
+                        <%if(currUsers && currUsers._id.equals(currCollege._id)){%>
+                          <div style="display: flex; justify-content: center;">
+                            <a href="/Attendance-Tracker/<%=currCollege._id%>/<%=teacher._id%>/Edit-Teacher"
+                              class="btn btn-outline-primary" style="width: 12rem;">Edit Teacher's Data</a>
+                          </div>
+                          <%}%>
+                      </div>
+                    </div>
+                    <%}%>
+                      <%}%>
+      </div>
+
+      <!-- FORM FOR New teacher -->
+      <div class="card formCard" style="width: 22rem; position: absolute; top: 26%; left: 38.5%; display: none;"
+        id="teacherForm">
         <div class="card-body" style="width: 21.7rem;">
           <h5 class="card-title">Add New Teacher's</h5>
-          <form method="post" action="/Attendance-Tracker/<%=currCollege._id%>/Add-Teacher" class="needs-validation" novalidate>
+          <form id="addNewTeacherByCollege" method="post" action="/Attendance-Tracker/<%=currCollege._id%>/Add-Teacher"
+            class="needs-validation" novalidate>
             <div class="form-floating mb-3 mt-3">
-                <input type="text" name="teacherName" class="form-control" id="floatingn" placeholder="Teacher's Name" required>
-                <label for="floatingn">Teacher's Name</label>
-              </div>
-              <div class="form-floating ">
-                <select class="form-select" name="gender" id="floatingSelectG" aria-label="Floating label select example" required>
-                  <option value="" disabled selected>Teacher's Gender</option>
-                    <option>Male</option>
-                    <option>Female</option>
-                </select>
-                <label for="floatingSelectG">Teacher's Gender</label>
-              </div>
-              <div class="form-floating mb-3 mt-3">
-                <input name="idNo" class="form-control" id="floatingId" placeholder="Teacher's ID" required>
-                <label for="floatingnId">Teacher's ID</label>
-              </div>
-              <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 20px;">
-                <button type="submit" class="btn btn-primary">Add Teacher</button>
-                <button type="button" id="cancleForm" class="btn btn-danger">Cancle Form</button>
+              <input type="text" name="teacherName" class="form-control inp1" id="floatingn"
+                placeholder="Teacher's Name" required>
+              <label for="floatingn">Teacher's Name</label>
+            </div>
+            <div class="form-floating ">
+              <select class="form-select inp1" name="gender" id="floatingSelectG"
+                aria-label="Floating label select example" required>
+                <option value="" disabled selected>Teacher's Gender</option>
+                <option>Male</option>
+                <option>Female</option>
+              </select>
+              <label for="floatingSelectG">Teacher's Gender</label>
+            </div>
+            <div class="form-floating mb-3 mt-3">
+              <input name="idNo" class="form-control inp1" id="floatingId" placeholder="Teacher's ID" required>
+              <label for="floatingnId">Teacher's ID</label>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-evenly; margin-top: 20px;">
+              <button type="submit" class="btn btn-primary addNewTeacherByCollege">Add Teacher</button>
+              <button type="button" id="cancleForm" class="btn btn-danger logInfo">Cancle Form</button>
             </div>
           </form>
         </div>
       </div>
-    <!-- FORM FOR New teacher -->
+      <!-- FORM FOR New teacher -->
 
-     <%-include('../headFoot/footer.ejs')%>
-     
-  <script src="/scriptFolder/collegePage.js"></script>
-  <script src="/scriptFolder/inputData.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-</body>
+      <%-include('../headFoot/footer.ejs')%>
+
+        <script>
+          let submit_1 = 'addNewTeacherByCollege';
+          document.querySelector(`.${submit_1}`).addEventListener('click', (e) => {
+            addingEffects(submit_1);
+          });
+        </script>
+        <script src="/scriptFolder/collegePage.js"></script>
+        <script src="/scriptFolder/inputData.js"></script>
+        <script src="/scriptFolder/loadingEffect.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+          crossorigin="anonymous"></script>
+  </body>
 </html>

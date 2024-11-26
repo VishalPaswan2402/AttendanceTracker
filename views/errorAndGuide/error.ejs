@@ -1,43 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('../headFoot/head') %>
-<title>Error</title>
-<link rel="stylesheet" href="/cssFolder/home.css">
-<style>
-  .container {
-    text-align: center;
-    margin-top: 20px;
-  }
-</style>
-<body>
+  <title>Error</title>
+  <link rel="stylesheet" href="/cssFolder/home.css">
+  <style>
+    .container {
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+
+  <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary navBag">
-        <div class="container-fluid">
-          <a class="navbar-brand logo" href="/"></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active textSize" aria-current="page" href="/">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link textSize" href="/Attendance-Tracker/userGuide">User Guide</a>
-              </li>
-            </ul>
-          </div>
+      <div class="container-fluid">
+        <a class="navbar-brand logo" href="/"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active textSize" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link textSize" href="/Attendance-Tracker/userGuide">User Guide</a>
+            </li>
+          </ul>
         </div>
-      </nav>
+      </div>
+    </nav>
 
     <div class="container">
       <img src="/imageFolder/error1.webp" style="height: auto;width: 250px;" alt="404 Error">
       <h1>Landed On Wrong Planet.</h1>
-      <h6>Oops ! <%=message%></h6>
+      <h6>Oops ! <%=message%>
+      </h6>
       <a href="/">Back To Home Planet.</a>
     </div>
 
     <%-include('../headFoot/footer.ejs')%>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-</body>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+  </body>
 </html>

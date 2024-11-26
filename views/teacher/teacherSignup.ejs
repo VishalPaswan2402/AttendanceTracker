@@ -1,87 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('../headFoot/head') %>
-<title>Attendance-Tracker Teacher-Signup</title>
-<link rel="stylesheet" href="/cssFolder/login.css">
-<body>
+  <title>Attendance-Tracker Teacher-Signup</title>
+  <link rel="stylesheet" href="/cssFolder/login.css">
+
+  <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand logo" href="/"></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link textSize" href="/">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active textSize" aria-current="page">Teacher's SignUp</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link textSize" href="/Attendance-Tracker/userGuide">User Guide</a>
-              </li>
-            </ul>
-          </div>
+      <div class="container-fluid">
+        <a class="navbar-brand logo" href="/"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link textSize" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active textSize" aria-current="page">Teacher's SignUp</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link textSize" href="/Attendance-Tracker/userGuide">User Guide</a>
+            </li>
+          </ul>
         </div>
-      </nav>
-
-      <!-- Flash Message... -->
-      <%- include('../headFoot/flashMsg.ejs') %>
-      <!-- Flash Message... -->
-      
-    <div class="top">Attendance Tracker</div>
-    
-    <form method="post" action="/Attendance-Tracker/Teacher-SignUp" id="teacherForm" class="needs-validation" novalidate>
-      <div class="card formCard">
-        <div class="card-body">
-          <h2 class="card-title" style="align-items: center; text-align: center;">Teacher's SignUp</h2>
-          <div class="form-floating mb-3 mt-3">
-            <input name="username" value="<%= formData.username || '' %>" class="form-control" id="floatingu" placeholder="User Name" required>
-            <label for="floatingu">User Name</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="text" name="teacherName" value="<%= formData.teacherName || '' %>" class="form-control" id="floatingt" placeholder="Teacher's Name" required>
-            <label for="floatingt">Teacher's Name</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input name="teacherId" value="<%= formData.teacherId || '' %>" class="form-control" id="floatingi" placeholder="Teacher's ID" required>
-            <label for="floatingi">Teacher's ID</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="email" name="teacherEmail" value="<%= formData.teacherEmail || '' %>" class="form-control" id="floatinge" placeholder="Teacher's E-mail" required>
-            <label for="floatinge">Teacher's E-mail</label>
-          </div>
-          <div class="form-floating mb-3">
-            <select class="form-select" name="collegeName" id="floatingSelect" aria-label="Floating label select example" required>
-              <option value="" disabled selected>Select Your College</option>
-                  <% colleges.forEach(colleg => { %>
-                      <option value="<%= colleg.colleges %>" <%= formData.collegeName === colleg.colleges ? 'selected' : '' %>><%= colleg.colleges %></option>
-                  <% }); %>
-            </select>
-            <label for="floatingSelect">Select Your College</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="text" name="subject" maxlength="6" value="<%= formData.subject1 || '' %>" class="form-control" style="text-transform: uppercase;" id="floatings" placeholder="Enter Your Subject In Short Form only" required>
-            <label for="floatings">Enter Subject In Short Form Only</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="password" name="password" class="form-control " id="password" placeholder="Enter Your Password" required>
-            <label for="password">Enter Your Password</label>
-          </div>
-          <div class="form-floating">
-            <input type="password" name="cPassword" class="form-control " id="cPassword" placeholder="Re-enter Your Password" required>
-            <label for="cPassword">Re-enter Your Password</label>
-          </div>
-        </div>
-        <button type="submit" style="width: 12rem; margin: auto;" class="btn btn-primary mb-3">Create Account</button>
-        <div class="tec centerItems mb-3"><a href="/Attendance-Tracker/Teacher-Login" class="teach">Teacher's Login</a></div>
       </div>
-    </form>
+    </nav>
 
-    <%-include('../headFoot/footer.ejs')%>
-    
-  <script src="/scriptFolder/inputData.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-</body>
+    <!-- Flash Message... -->
+    <%- include('../headFoot/flashMsg.ejs') %>
+      <!-- Flash Message... -->
+
+      <div class="top">Attendance Tracker</div>
+
+      <form method="post" action="/Attendance-Tracker/Teacher-SignUp" id="teacherForm" class="needs-validation"
+        novalidate>
+        <div class="card formCard">
+          <div class="card-body">
+            <h2 class="card-title" style="align-items: center; text-align: center;">Teacher's SignUp</h2>
+            <div class="form-floating mb-3 mt-3">
+              <input name="username" value="<%= formData.username || '' %>" class="form-control inp1" id="floatingu"
+                placeholder="User Name" required>
+              <label for="floatingu">User Name</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="text" name="teacherName" value="<%= formData.teacherName || '' %>" class="form-control inp1"
+                id="floatingt" placeholder="Teacher's Name" required>
+              <label for="floatingt">Teacher's Name</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input name="teacherId" value="<%= formData.teacherId || '' %>" class="form-control inp1" id="floatingi"
+                placeholder="Teacher's ID" required>
+              <label for="floatingi">Teacher's ID</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="email" name="teacherEmail" value="<%= formData.teacherEmail || '' %>"
+                class="form-control inp1" id="floatinge" placeholder="Teacher's E-mail" required>
+              <label for="floatinge">Teacher's E-mail</label>
+            </div>
+            <div class="form-floating mb-3">
+              <select class="form-select inp1" name="collegeName" id="floatingSelect"
+                aria-label="Floating label select example" required>
+                <option value="" disabled selected>Select Your College</option>
+                <% colleges.forEach(colleg=> { %>
+                  <option value="<%= colleg.colleges %>" <%=formData.collegeName===colleg.colleges ? 'selected' : '' %>>
+                    <%= colleg.colleges %>
+                  </option>
+                  <% }); %>
+              </select>
+              <label for="floatingSelect">Select Your College</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="text" name="subject" maxlength="6" value="<%= formData.subject1 || '' %>"
+                class="form-control inp1" style="text-transform: uppercase;" id="floatings"
+                placeholder="Enter Your Subject In Short Form only" required>
+              <label for="floatings">Enter Subject In Short Form Only</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="password" name="password" class="form-control inp1" id="password"
+                placeholder="Enter Your Password" required>
+              <label for="password">Enter Your Password</label>
+            </div>
+            <div class="form-floating">
+              <input type="password" name="cPassword" class="form-control inp1" id="cPassword"
+                placeholder="Re-enter Your Password" required>
+              <label for="cPassword">Re-enter Your Password</label>
+            </div>
+          </div>
+          <button type="submit" style="width: 12rem; margin: auto;" class="btn btn-primary mb-3 teacherForm">Create
+            Account</button>
+          <div class="tec centerItems mb-3 logInfo"><a href="/Attendance-Tracker/Teacher-Login" class="teach">Teacher's
+              Login</a></div>
+        </div>
+      </form>
+
+      <%-include('../headFoot/footer.ejs')%>
+
+        <script>
+          let submit_1 = 'teacherForm';
+          document.querySelector(`.${submit_1}`).addEventListener('click', (e) => {
+            addingEffects(submit_1);
+          });
+        </script>
+        <script src="/scriptFolder/inputData.js"></script>
+        <script src="/scriptFolder/loadingEffect.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+          crossorigin="anonymous"></script>
+  </body>
 </html>

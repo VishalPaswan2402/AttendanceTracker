@@ -1,36 +1,32 @@
 // Form For New Student....
-let attend=document.querySelector("#attend");
-let studentForm=document.querySelector("#studentForm");
-let studentNew=document.querySelector(".studentNew");
-let cancleForm=document.querySelector(".studCancle");
-studentNew.addEventListener("click",function(){
-    studentForm.style.display="block";
+let attend = document.querySelector("#attend");
+let studentForm = document.querySelector("#studentForm");
+let studentNew = document.querySelector(".studentNew");
+let cancleForm = document.querySelector(".studCancle");
+studentNew.addEventListener("click", function () {
+    studentForm.style.display = "block";
     document.getElementById("overlay").style.display = "block";
 })
-cancleForm.addEventListener("click",function(){
-    studentForm.style.display="none";
+cancleForm.addEventListener("click", function () {
+    studentForm.style.display = "none";
     document.getElementById("overlay").style.display = "none";
 })
 
-document.querySelector('.disSubmit').addEventListener('click',()=>{
-    studentForm.style.display='none';
-})
-
 // Form For Delete Class....
-let deleteClass=document.querySelector("#deleteClass");
-let delClass=document.querySelector("#delClass");
-let cancleDel=document.querySelector("#cancleDel");
-delClass.addEventListener("click",function(){
-    deleteClass.style.display="block";
+let deleteClass = document.querySelector("#deleteClass");
+let delClass = document.querySelector("#delClass");
+let cancleDel = document.querySelector("#cancleDel");
+delClass.addEventListener("click", function () {
+    deleteClass.style.display = "block";
     document.getElementById("overlay").style.display = "block";
 })
-cancleDel.addEventListener("click",function(){
-    deleteClass.style.display="none";
+cancleDel.addEventListener("click", function () {
+    deleteClass.style.display = "none";
     document.getElementById("overlay").style.display = "none";
 })
 
 // To change background color according to percentage...
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.stPer .data').forEach(perElement => {
         const percentage = parseFloat(perElement.textContent.replace('%', ''));
         if (!isNaN(percentage) && percentage < 75) {
@@ -40,12 +36,12 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Previous day value color change...
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.stPrev .data').forEach(prevElement => {
         const studentId = prevElement.dataset.studentId;
         const isPresent = prevElement.textContent.trim().toLowerCase() === 'absent';
         if (isPresent) {
-            prevElement.style.backgroundColor ="#ffb00564";
+            prevElement.style.backgroundColor = "#ffb00564";
         }
     });
 });
@@ -53,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Select the present absent value button
 const presentButtons = document.querySelectorAll('.present');
 presentButtons.forEach(button => {
-    button.addEventListener('click', function() {
+    button.addEventListener('click', function () {
         const studentId = this.getAttribute('data-student-id');
         const preIdInput = document.querySelector(`input[name="preId"][data-student-id="${studentId}"]`);
         const absIdInput = document.querySelector(`input[name="absId"][data-student-id="${studentId}"]`);
@@ -118,8 +114,8 @@ $(document).ready(function () {
         var totalMarkedStudents = presentStudents.length + absentStudents.length;
         if (totalMarkedStudents < totalStudents) {
             // Some students not marked
-            let allSub=document.querySelector("#notMarkedAtt");
-            allSub.style.display="block"
+            let allSub = document.querySelector("#notMarkedAtt");
+            allSub.style.display = "block"
             document.getElementById("overlay").style.display = "block";
         } else {
             // Submit the form if all students are marked
@@ -128,43 +124,42 @@ $(document).ready(function () {
     });
 });
 
-let hideAfterSubmit=document.getElementById('submitAllAttend');
+let hideAfterSubmit = document.getElementById('submitAllAttend');
 
-let subBox=document.querySelector("#SubAttend");
-let subAttendence=document.querySelector("#subAttendence");
-subAttendence.addEventListener("click",function(){
+let subBox = document.querySelector("#SubAttend");
+let subAttendence = document.querySelector("#subAttendence");
+subAttendence.addEventListener("click", function () {
     document.getElementById("overlay").style.display = "block";
-    subBox.style.display="block";
+    subBox.style.display = "block";
 });
 
-hideAfterSubmit.addEventListener('click',function(){
-    subBox.style.display='none';
+hideAfterSubmit.addEventListener('click', function () {
+    subBox.style.display = 'none';
 })
 
-let cancleSubF=document.querySelector("#cancleSub");
-cancleSubF.addEventListener("click",function(){
+let cancleSubF = document.querySelector("#cancleSub");
+cancleSubF.addEventListener("click", function () {
     document.getElementById("overlay").style.display = "none";
-    subBox.style.display="none";
+    subBox.style.display = "none";
 });
 
-let notMarkedOk=document.querySelector("#notMarkedOk");
-notMarkedOk.addEventListener("click",function(){
+let notMarkedOk = document.querySelector("#notMarkedOk");
+notMarkedOk.addEventListener("click", function () {
     document.getElementById("overlay").style.display = "none";
     document.getElementById("notMarkedAtt").style.display = "none";
     document.getElementById("SubAttend").style.display = "none";
 });
 
-let filterStudent=document.querySelector("#filterStudent");
-let filterStudentForm=document.querySelector("#filterStudentForm");
-filterStudent.addEventListener("click",function(){
+let filterStudent = document.querySelector("#filterStudent");
+let filterStudentForm = document.querySelector("#filterStudentForm");
+filterStudent.addEventListener("click", function () {
     document.getElementById("overlay").style.display = "block";
-    filterStudentForm.style.display="block";
+    filterStudentForm.style.display = "block";
 });
 
-let filterCancle=document.querySelector(".filterCancle");
-filterCancle.addEventListener("click",function(){
+let filterCancle = document.querySelector(".filterCancle");
+filterCancle.addEventListener("click", function () {
     console.log("Cancle");
     document.getElementById("overlay").style.display = "none";
-    filterStudentForm.style.display="none";
+    filterStudentForm.style.display = "none";
 });
-
