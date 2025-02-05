@@ -1,8 +1,8 @@
-const expressError=require("../../../utility/expressError.js");
+const expressError = require("../../../utility/expressError.js");
 const Attendence = require("../../../models/attendence.js");
 const allStudent = require('../../../models/students.js');
 
-module.exports.markAttendanceOfStudents=async (req, res,next) => {
+module.exports.markAttendanceOfStudents = async (req, res, next) => {
     let techId;
     let claId;
     let presentIds = req.body.allPresent.split(',');
@@ -19,18 +19,18 @@ module.exports.markAttendanceOfStudents=async (req, res,next) => {
     var year = today.getFullYear();
     var month = today.getMonth() + 1;
     var day = today.getDate();
-    var formattedDate = (day < 10 ? '0' : '') + day + '-' + (month < 10 ? '0' : '') + month + '-' +year ;
+    var formattedDate = (day < 10 ? '0' : '') + day + '-' + (month < 10 ? '0' : '') + month + '-' + year;
 
-    if(presentIdsLength>0){
+    if (presentIdsLength > 0) {
         for (let id of presentIds) {
-            let previous="Present";
+            let previous = "Present";
             let attendData = await Attendence.findById(id);
             techId = attendData.teacherId;
             claId = attendData.classId;
             let a = attendData.totalClass + 1;
             let b = attendData.attendenClass + 1;
             let c = ((b / a) * 100).toFixed(1);
-            let saveAttendence = await Attendence.findByIdAndUpdate(id, { totalClass: a, attendenClass: b, classPercent: c, classPrevious: previous,markedOn: formattedDate });
+            let saveAttendence = await Attendence.findByIdAndUpdate(id, { totalClass: a, attendenClass: b, classPercent: c, classPrevious: previous, markedOn: formattedDate });
             let allStudGroup = await allStudent.find();
             if (allStudGroup.length > 0) {
                 for (let i = 0; i < allStudGroup.length; i++) {
@@ -51,9 +51,9 @@ module.exports.markAttendanceOfStudents=async (req, res,next) => {
             }
         }
     }
-    if(absentIdsLength>0){
+    if (absentIdsLength > 0) {
         for (let id of absentIds) {
-            let previous="Absent";
+            let previous = "Absent";
             let attendData = await Attendence.findById(id);
             techId = attendData.teacherId;
             claId = attendData.classId;
@@ -61,7 +61,7 @@ module.exports.markAttendanceOfStudents=async (req, res,next) => {
             let b = attendData.attendenClass;
             let c = ((b / a) * 100).toFixed(1);
             // let TodayMarkAbs=(formattedDate + '  [ Absent ]');
-            let saveAttendence = await Attendence.findByIdAndUpdate(id, { totalClass: a, attendenClass: b, classPercent: c, classPrevious: previous,markedOn:formattedDate });
+            let saveAttendence = await Attendence.findByIdAndUpdate(id, { totalClass: a, attendenClass: b, classPercent: c, classPrevious: previous, markedOn: formattedDate });
             let allStudGroup = await allStudent.find();
             if (allStudGroup.length > 0) {
                 for (let i = 0; i < allStudGroup.length; i++) {
@@ -82,6 +82,6 @@ module.exports.markAttendanceOfStudents=async (req, res,next) => {
             }
         }
     }
-    req.flash("success","Attendance saved successfully.");
-    return res.redirect(`/Attendance-Tracker/${techId}/${claId}/Attendance-Sheet`);       
+    req.flash("success", "Attendance saved successfully.");
+    return res.redirect(`/Attendance-Tracker/${techId}/${claId}/Attendance-Sheet`);
 };

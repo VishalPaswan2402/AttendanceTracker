@@ -1,23 +1,23 @@
 const { required } = require("joi");
-const mongoose=require("mongoose");
-const Schema=mongoose.Schema;
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const attendenceSchema = new Schema({
     subject: {
         type: String,
-        required:true,
+        required: true,
     },
     teacherId: {
         type: String,
-        required:true,
+        required: true,
     },
     classId: {
         type: String,
-        required:true,
+        required: true,
     },
     studentId: {
         type: String,
-        required:true,
+        required: true,
     },
     totalClass: {
         type: Number,
@@ -33,13 +33,13 @@ const attendenceSchema = new Schema({
     },
     classPrevious: {
         type: String,
-        default:"-",
+        default: "-",
     },
     markedOn: {
         type: String,
-        default:"-",
+        default: "-",
     },
 });
 
-const Attendence=mongoose.model("Attendence",attendenceSchema);
-module.exports=Attendence;
+const Attendence = mongoose.model("Attendence", attendenceSchema);
+module.exports = Attendence;

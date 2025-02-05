@@ -1,33 +1,33 @@
 const { required } = require("joi");
-const mongoose=require("mongoose");
-const Schema=mongoose.Schema;
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const newClassSchema = new Schema({
     teacherId: {
         type: String,
-        required:true,
+        required: true,
     },
-    idNo:{
+    idNo: {
         type: String,
-        required:true,
+        required: true,
     },
     semester: {
         type: String,
-        required:true,
+        required: true,
     },
     section: {
         type: String,
-        required:true,
+        required: true,
     },
-    subject:{
+    subject: {
         type: String,
-        required:true,
+        required: true,
     },
     college: {
         type: String,
-        required:true,
+        required: true,
     },
 });
 
-const newClass=mongoose.model("newClass",newClassSchema);
-module.exports=newClass;
+const newClass = mongoose.model("newClass", newClassSchema);
+module.exports = newClass;

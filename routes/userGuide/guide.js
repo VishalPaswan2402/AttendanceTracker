@@ -1,7 +1,7 @@
-let express=require('express');
-const router=express.Router();
-const userGuideController=require("../../controllers/userGuide/guide");
+let express = require('express');
+const router = express.Router();
+const userGuideController = require("../../controllers/userGuide/guide");
 
-router.get("/userGuide",userGuideController.userGuide);
+router.get("/userGuide", userGuideController.userGuide);
 
-module.exports=router
+module.exports = router
