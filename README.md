@@ -4,12 +4,19 @@ This is an **Attendance Tracker** web application built using these **(MongoDB, 
 
 ## Features
 - **College Login**: Colleges can add teacher IDs for their respective teachers.
+
 - **Student Login**: Students can log in to view their attendance for all subjects.
+
 - **Teacher Login & Signup**: Teachers can log in to mark attendance or create an account for their class to start managing attendance.
+
 - **Student Attendance Details**: Students can check their present attendance status for all subjects.
+
 - **Teacher Attendance Page**: Teachers can mark attendance as "Present" or "Absent" for each student in their class.
+
 - **No Credentials Required for Students**: Students can log in directly to view their attendance without needing to create an account.
+
 - **Responsive Design**: The application is mobile-friendly and works well on both desktop and mobile devices.
+
 - **Real-Time Updates**: Attendance data is updated in real time and can be accessed by both students and teachers.
 
 ## Technologies Used
@@ -88,19 +95,19 @@ This is an **Attendance Tracker** web application built using these **(MongoDB, 
 ## How to Use
 
 1. **Teacher's Signup:**
-   - Create account using ID provided by college.
+- Create account using ID provided by college.
 
 2. **Student Login:**
-   - Any student can log in to check their attendance status for all subjects using there roll no.
+- Any student can log in to check their attendance status for all subjects using there roll no.
 
 3. **College Login:**
-   - College can login to add there college teacher id name which all teacher to create there account.
+- College can login to add there college teacher id name which all teacher to create there account.
 
 4. **Teacher Attendance Page:**
-   - After logging in, teachers can add class and mark attendance for their class students by selecting "Present" or "Absent".
+- After logging in, teachers can add class and mark attendance for their class students by selecting "Present" or "Absent".
 
 5. **College Signup:**
-   - College can create account using college name, email and other input values
+- College can create account using college name, email and other input values
 
 ## Advantages
 - **User-Friendly**: Simple interface for students, college and teachers to easily track and mark attendance.
