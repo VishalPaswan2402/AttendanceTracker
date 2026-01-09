@@ -30,6 +30,10 @@ This is an **Attendance Tracker** web application built using these **(MongoDB, 
 
 ## Live Project Link
 [Live Project - Attendance Tracker](https://attendance-tracker-4j6u.onrender.com)
+#### Demo Login :
+Teacher:
+Username: trackUser
+Password: trackPassword
 
 ## Website images
 
